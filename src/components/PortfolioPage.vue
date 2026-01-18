@@ -8,161 +8,39 @@
       <!-- Header with fade effect -->
       <header class="header">
         <div class="container">
+          <div class="eyebrow">Research Group</div>
           <h1 class="group-title">{{ group.name }}</h1>
           <p class="group-desc">{{ group.description }}</p>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-value">{{ totalPeople }}</span>
+              <span class="stat-label">People</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">{{ totalPublications }}</span>
+              <span class="stat-label">Publications</span>
+            </div>
+          </div>
+          <div class="affiliation">
+            <div class="logos">
+              <img :src="getImage('tuke-logo.png')" alt="TUKE Logo" class="logo" />
+              <img :src="getImage('kpi-logo.png')" alt="KPI TUKE Logo" class="logo" />
+            </div>
+            <p class="affiliation-text">
+              Technical University of Kosice · Faculty of Electrical Engineering and Informatics
+            </p>
+          </div>
         </div>
       </header>
 
-      <!-- Tabs for switching between People and Publications -->
-      <nav class="tabs">
-        <button :class="{ active: activeTab === 'people' }" @click="activeTab = 'people'">
-          People
-        </button>
-        <button :class="{ active: activeTab === 'publications' }" @click="activeTab = 'publications'">
-          Publications
-        </button>
-      </nav>
+      <!-- Tabs for switching between People, Publications, and Teaching -->
+      <TabNav v-model="activeTab" :tabs="tabs" />
 
       <!-- Main content (People or Publications) -->
       <div class="container content">
-        <!-- People Section -->
-        <div v-if="activeTab === 'people'" class="people-section">
-          <!-- Professor -->
-          <section class="people-group" v-if="people.professor.length">
-            <h2>Professor</h2>
-            <div class="people-cards">
-              <div class="card" v-for="(person, index) in people.professor" :key="'prof-'+index">
-                <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
-                <h3>{{ person.name }}</h3>
-                <p class="email">{{ person.email }}</p>
-                <p>{{ person.info }}</p>
-                <div class="links">
-                  <a
-                    v-for="(link, idx) in person.links"
-                    :key="idx"
-                    :href="link.url"
-                    target="_blank"
-                    class="link-item"
-                  >
-                    <template v-if="link.label.toLowerCase() === 'linkedin'">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s" alt="LinkedIn" class="linkedin-logo" />
-                    </template>
-                    <template v-else>
-                      {{ link.label }}
-                    </template>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Associate Professor -->
-          <section class="people-group" v-if="people.associateProfessor.length">
-            <h2>Associate Professor</h2>
-            <div class="people-cards">
-              <div class="card" v-for="(person, index) in people.associateProfessor" :key="'assoc-'+index">
-                <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
-                <h3>{{ person.name }}</h3>
-                <p class="email">{{ person.email }}</p>
-                <p>{{ person.info }}</p>
-                <div class="links">
-                  <a
-                    v-for="(link, idx) in person.links"
-                    :key="idx"
-                    :href="link.url"
-                    target="_blank"
-                    class="link-item"
-                  >
-                    <template v-if="link.label.toLowerCase() === 'linkedin'">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s" alt="LinkedIn" class="linkedin-logo" />
-                    </template>
-                    <template v-else>
-                      {{ link.label }}
-                    </template>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Research Assistants -->
-          <section class="people-group" v-if="people.researchAssistants.length">
-            <h2>Research Assistants</h2>
-            <div class="people-cards">
-              <div class="card" v-for="(person, index) in people.researchAssistants" :key="'ra-'+index">
-                <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
-                <h3>{{ person.name }}</h3>
-                <p class="email">{{ person.email }}</p>
-                <p>{{ person.info }}</p>
-                <div class="links">
-                  <a
-                    v-for="(link, idx) in person.links"
-                    :key="idx"
-                    :href="link.url"
-                    target="_blank"
-                    class="link-item"
-                  >
-                    <template v-if="link.label.toLowerCase() === 'linkedin'">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s" alt="LinkedIn" class="linkedin-logo" />
-                    </template>
-                    <template v-else>
-                      {{ link.label }}
-                    </template>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- PhD Candidates -->
-          <section class="people-group" v-if="people.phdCandidates.length">
-            <h2>PhD Candidates</h2>
-            <div class="people-cards">
-              <div class="card" v-for="(person, index) in people.phdCandidates" :key="'phd-'+index">
-                <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
-                <h3>{{ person.name }}</h3>
-                <p class="email">{{ person.email }}</p>
-                <p>{{ person.info }}</p>
-                <div class="links">
-                  <a
-                    v-for="(link, idx) in person.links"
-                    :key="idx"
-                    :href="link.url"
-                    target="_blank"
-                    class="link-item"
-                  >
-                    <template v-if="link.label.toLowerCase() === 'linkedin'">
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s" alt="LinkedIn" class="linkedin-logo" />
-                    </template>
-                    <template v-else>
-                      {{ link.label }}
-                    </template>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <!-- Publications Section -->
-        <div v-else-if="activeTab === 'publications'" class="publications-section">
-          <h2>Publications Timeline</h2>
-          <div class="timeline">
-            <div class="year-group" v-for="group in groupedPublications" :key="group.year">
-              <div class="year-label">{{ group.year }}</div>
-              <div class="timeline-item" v-for="(pub, index) in group.items" :key="index">
-                <div class="timeline-item-connector"></div>
-                <div class="timeline-content">
-                  <small class="pub-authors">{{ pub.authors }}</small>
-                  <div class="pub-title">{{ pub.title }}</div>
-                  <small class="pub-venue">
-                    <a :href="pub.link" target="_blank">{{ pub.venue }}</a>
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PeopleTab v-if="activeTab === 'people'" :people="people" :getImage="getImage" />
+        <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" />
+        <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" />
       </div> <!-- .content -->
 
       <!-- Footer with logos -->
@@ -183,12 +61,27 @@
 
 <script>
 import Papa from "papaparse";
+import TabNav from "./TabNav.vue";
+import PeopleTab from "./PeopleTab.vue";
+import PublicationsTab from "./PublicationsTab.vue";
+import TeachingTab from "./TeachingTab.vue";
 /* global particlesJS */
 export default {
   name: "ResearchGroup",
+  components: {
+    TabNav,
+    PeopleTab,
+    PublicationsTab,
+    TeachingTab
+  },
   data() {
     return {
       activeTab: "people",
+      tabs: [
+        { id: "people", label: "People" },
+        { id: "publications", label: "Publications" },
+        { id: "teaching", label: "Teaching" }
+      ],
       group: {
         name: "Software Engineering and Usability Group",
         description: `We focus on the interaction between humans and computers in two dimensions:
@@ -202,8 +95,100 @@ export default {
         researchAssistants: [],
         phdCandidates: []
       },
+      teachingSubjects: [
+        {
+          name: "Zaklady algoritmizacie a programovania",
+          offerings: [
+            "ZS 2021 — 2 cvika",
+            "ZS 2022 — 1 cvicenie"
+          ]
+        },
+        {
+          name: "Zaklady algoritmizacie a programovania EN",
+          offerings: [
+            "ZS 2023 — prednaska a cvicenie",
+            "ZS 2024 — prednaska a cvicenie",
+            "ZS 2025 — prednaska a cvicenie"
+          ]
+        },
+        {
+          name: "Programovanie v jazyku C",
+          offerings: [
+            "LS 2022 — 2 cvika",
+            "LS 2023 — 2 cvika"
+          ]
+        },
+        {
+          name: "Programovanie v jazyku C EN",
+          offerings: [
+            "LS 2024 — prednaska a cvicenie",
+            "LS 2025 — prednaska a cvicenie"
+          ]
+        },
+        {
+          name: "Pouzivatelske rozhrania a pouzivatelsky zazitok SK",
+          offerings: [
+            "ZS 2022 — 1 cvicenie",
+            "ZS 2023 — 2 cvicenie",
+            "ZS 2025 — 1 cvicenie"
+          ]
+        },
+        {
+          name: "Pouzivatelske rozhrania a pouzivatelsky zazitok EN",
+          offerings: [
+            "ZS 2023 — prednaska a cvicenie",
+            "ZS 2024 — prednaska a cvicenie",
+            "ZS 2025 — prednaska a cvicenie"
+          ]
+        },
+        {
+          name: "Aktualne trendy v informatike 1 EN",
+          offerings: [
+            "ZS 2023 — prednaska",
+            "LS 2024 — prednaska",
+            "ZS 2024 — prednaska"
+          ]
+        },
+        {
+          name: "Aktualne trendy v informatike 2 EN",
+          offerings: [
+            "LS 2025 — prednaska a cvicenie"
+          ]
+        },
+        {
+          name: "Bezpecnost v informacnych systemoch",
+          offerings: [
+            "LS 2024 — 2 cvika"
+          ]
+        },
+        {
+          name: "Inzinierstvo poziadaviek",
+          offerings: [
+            "ZS 2024 — 2 cvika"
+          ]
+        },
+        {
+          name: "Databazove systemy",
+          offerings: [
+            "LS 2025 — 2 cvicenia"
+          ]
+        },
+        {
+          name: "Pokrocile softverove inzinierstvo",
+          offerings: [
+            "ZS 2025 — 2 cvika"
+          ]
+        }
+      ],
       publications: []
     };
+  },
+  watch: {
+    activeTab() {
+      this.$nextTick(() => {
+        window.dispatchEvent(new Event("resize"));
+      });
+    }
   },
   computed: {
     groupedPublications() {
@@ -217,6 +202,17 @@ export default {
       return Object.keys(groups)
         .sort((a, b) => b - a)
         .map(year => ({ year, items: groups[year] }));
+    },
+    totalPeople() {
+      return (
+        this.people.professor.length +
+        this.people.associateProfessor.length +
+        this.people.researchAssistants.length +
+        this.people.phdCandidates.length
+      );
+    },
+    totalPublications() {
+      return this.publications.length;
     }
   },
   methods: {
@@ -293,6 +289,30 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:global(:root) {
+  --ink: #0f172a;
+  --muted: #4b5563;
+  --accent: #f15a29;
+  --accent-2: #0f766e;
+  --accent-3: #f59e0b;
+  --paper: #ffffff;
+  --mist: #f6f3ee;
+  --line: rgba(15, 23, 42, 0.12);
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+:global(body) {
+  background: var(--mist);
+  color: var(--ink);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+:global(*) {
+  box-sizing: border-box;
+}
+
 /* Reset */
 * {
   box-sizing: border-box;
@@ -308,7 +328,24 @@ export default {
   position: relative;
   min-height: 100vh;
   width: 100%;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(241, 90, 41, 0.15), transparent 60%),
+    radial-gradient(900px 600px at 90% 10%, rgba(15, 118, 110, 0.16), transparent 55%),
+    linear-gradient(180deg, #fbf7f1 0%, #eef5f4 100%);
+  overflow: hidden;
+  z-index: 0;
 }
+
+.portfolio-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(120deg, rgba(15, 23, 42, 0.04) 0%, transparent 60%);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
 
 /* Particles background */
 #particles-js {
@@ -317,43 +354,120 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 /* Main content area (white frame) */
 .portfolio-content {
-  width: 80%;
-  max-width: 1200px;
-  background-color: #fff;
-  padding: 20px 40px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: min(92%, 1020px);
+  background-color: var(--paper);
+  padding: 16px 20px 24px;
+  box-shadow: var(--shadow);
   position: relative;
   z-index: 1;
-  margin: 20px auto;
+  margin: 20px auto 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 /* Header with fade effect and brand colors */
 .header {
-  background: linear-gradient(135deg, #19aeff, #0084c8, #005c94);
-  color: #fff;
-  padding: 50px 20px;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(15, 23, 42, 0.92)),
+    radial-gradient(400px 200px at 20% 20%, rgba(245, 158, 11, 0.35), transparent 60%);
+  color: #f8fafc;
+  padding: 20px 20px;
   text-align: center;
+  border-radius: 18px;
   animation: fadeIn 1s ease-out;
 }
+.header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+.eyebrow {
+  font-size: 0.85em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.75);
+}
 .header .group-title {
-  font-size: 2.6em;
-  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-family: "Fraunces", "Times New Roman", serif;
   font-weight: 700;
-  margin-bottom: 10px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  margin-bottom: 0;
+  text-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
 }
 .group-desc {
-  font-size: 1.1em;
-  max-width: 800px;
+  font-size: 0.95rem;
+  max-width: 560px;
   margin: 0 auto;
   white-space: pre-line;
-  line-height: 1.6;
+  line-height: 1.5;
+  opacity: 0.92;
+}
+.stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.stat {
+  background: rgba(248, 250, 252, 0.1);
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  border-radius: 14px;
+  padding: 8px 12px;
+  min-width: 120px;
+  backdrop-filter: blur(6px);
+}
+.stat-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(248, 250, 252, 0.7);
+}
+
+.affiliation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+  justify-content: center;
+}
+.affiliation .logos {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.affiliation .logo {
+  width: 48px;
+  height: auto;
+  filter: brightness(0) invert(1);
   opacity: 0.9;
+}
+.affiliation-text {
+  font-size: 0.82rem;
+  color: rgba(248, 250, 252, 0.72);
+  max-width: 340px;
+  text-align: center;
 }
 
 /* Fade animation */
@@ -362,220 +476,206 @@ export default {
   to { opacity: 1; }
 }
 
-/* Tabs styling */
-.tabs {
-  display: flex;
-  justify-content: center;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin: 20px 0;
-  padding: 10px 0;
-}
-.tabs button {
-  background: none;
-  border: none;
-  padding: 12px 25px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s, color 0.3s;
-  color: #555;
-  font-weight: 600;
-  margin: 0 10px;
-}
-.tabs button.active {
-  background: #0084c8;
-  color: #fff;
-  border-radius: 4px;
-}
-.tabs button:hover {
-  background: #005c94;
-  color: #fff;
-  border-radius: 4px;
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Tabs styling */
 /* Content area within frame */
 .content {
-  background: #fff;
+  background: #ffffff;
   margin-top: 20px;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  position: relative;
+  z-index: 1;
 }
 
 /* People Section */
-.people-section h2 {
+:global(.people-section) h2 {
   margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
+  border-bottom: 1px solid var(--line);
   padding-bottom: 5px;
-  font-size: 1.6em;
-  color: #444;
+  font-size: 1.5rem;
+  color: var(--ink);
 }
-.people-group {
+:global(.people-group) {
   margin-bottom: 40px;
 }
-.people-cards {
+:global(.people-cards) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
 }
-.card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
+:global(.card) {
+  background: var(--paper);
+  padding: 18px;
+  border-radius: 16px;
   text-align: center;
-  border: 1px solid rgba(0,132,200,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  animation: riseIn 0.6s ease both;
+  animation-delay: calc(var(--i) * 0.06s);
 }
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+:global(.card):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  border-color: rgba(15, 118, 110, 0.4);
 }
-.profile-pic {
-  width: 90px;
-  height: 90px;
+:global(.profile-pic) {
+  width: 92px;
+  height: 92px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 10px;
+  border: 3px solid rgba(241, 90, 41, 0.3);
 }
-.card h3 {
+:global(.card) h3 {
   margin-bottom: 8px;
-  font-size: 1.2em;
+  font-size: 1.1rem;
   font-weight: 600;
 }
-.email {
-  font-size: 0.9em;
-  color: #0084c8;
+:global(.email) {
+  font-size: 0.9rem;
+  color: var(--accent-2);
   margin-bottom: 8px;
 }
-.card p {
-  font-size: 0.9em;
+:global(.card) p {
+  font-size: 0.92rem;
   margin-bottom: 10px;
-  color: #666;
+  color: var(--muted);
 }
-.links a {
-  display: inline-block;
-  margin: 0 5px;
-  font-size: 0.9em;
-  color: #0084c8;
+:global(.links) a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 4px;
+  font-size: 0.85rem;
+  color: var(--ink);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
 }
-.links a:hover {
-  color: #005c94;
+:global(.links) a:hover {
+  color: var(--accent);
+  border-color: rgba(241, 90, 41, 0.35);
 }
 
 /* Style for LinkedIn logo inside links */
-.linkedin-logo {
+:global(.linkedin-logo) {
   width: 16px;
   height: 16px;
   vertical-align: middle;
 }
 
 /* Publications Timeline */
-.publications-section h2 {
-  text-align: center;
+:global(.publications-section) h2 {
+  text-align: left;
   margin-bottom: 30px;
-  font-size: 1.6em;
-  color: #444;
+  font-size: 1.5rem;
+  color: var(--ink);
 }
-.timeline {
+:global(.timeline) {
   position: relative;
   margin: 0 auto;
   max-width: 800px;
   padding-left: 40px;
 }
-.timeline::before {
+:global(.timeline)::before {
   content: "";
   position: absolute;
   left: 20px;
   top: 0;
   bottom: 0;
-  width: 6px;
-  background: #0084c8;
-  border-radius: 3px;
+  width: 2px;
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 999px;
 }
-.year-group {
+:global(.year-group) {
   margin-bottom: 40px;
 }
-.year-label {
-  font-size: 1.4em;
+:global(.year-label) {
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #0084c8;
+  color: var(--accent-2);
   margin-bottom: 20px;
 }
-.timeline-item {
+:global(.timeline-item) {
   position: relative;
   margin-bottom: 20px;
   padding-left: 20px;
+  animation: riseIn 0.6s ease both;
+  animation-delay: calc(var(--i) * 0.05s);
 }
-.timeline-item-connector {
+:global(.timeline-item-connector) {
   position: absolute;
-  left: -20px;
+  left: -26px;
   top: 50%;
-  width: 20px;
-  height: 2px;
-  background: #0084c8;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.2);
   transform: translateY(-50%);
 }
-.timeline-content {
-  background: #fff;
-  padding: 10px 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+:global(.timeline-content) {
+  background: var(--paper);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
-.pub-authors {
-  font-size: 0.85em;
-  color: #666;
+:global(.pub-authors) {
+  font-size: 0.82rem;
+  color: var(--muted);
   display: block;
   margin-bottom: 4px;
-  text-transform: lowercase;
+  text-transform: none;
 }
-.pub-title {
-  font-size: 1em;
-  color: #333;
+:global(.pub-title) {
+  font-size: 1rem;
+  color: var(--ink);
   margin-bottom: 4px;
 }
-.pub-venue a {
-  font-size: 0.85em;
-  color: #0084c8;
+:global(.pub-venue) a {
+  font-size: 0.85rem;
+  color: var(--accent-2);
   text-decoration: none;
   transition: color 0.3s;
 }
-.pub-venue a:hover {
-  color: #005c94;
+:global(.pub-venue) a:hover {
+  color: var(--accent);
 }
 
 /* Footer */
 .footer {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
-  text-align: center;
-}
-.footer .footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-.footer .logos {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-.footer .logo {
-  width: 80px;
-  height: auto;
-}
-.footer .footer-text {
-  font-size: 0.9em;
-  color: #555;
+  display: none;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .portfolio-content {
-    width: 95%;
-    padding: 15px 20px;
+    width: 92%;
+    padding: 14px 12px 22px;
+  }
+  .header {
+    padding: 28px 18px;
+  }
+  .stats {
+    gap: 12px;
+  }
+  .stat {
+    flex: 1 1 140px;
   }
   .timeline {
     padding-left: 30px;
