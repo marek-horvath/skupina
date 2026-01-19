@@ -64,7 +64,15 @@ export default {
 @media (max-width: 768px) {
   .tabs {
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .tabs button {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    flex: 1 1 120px;
   }
 }
 </style>

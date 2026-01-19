@@ -12,7 +12,7 @@
       </span>
     </div>
     <div class="timeline">
-      <div class="year-group" v-for="group in groupedPublications" :key="group.year">
+      <div class="year-group" v-for="group in visibleGroups" :key="group.year">
         <div class="year-label">{{ group.year }}</div>
         <div
           class="timeline-item"
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+    <div v-if="hasMore" ref="loadMore" class="load-more">Loading more…</div>
   </div>
 </template>
 
@@ -41,6 +42,47 @@ export default {
     groupedPublications: {
       type: Array,
       required: true
+    }
+  },
+  data() {
+    return {
+      visibleCount: 10,
+      pageSize: 10,
+      observer: null
+    };
+  },
+  computed: {
+    flatItems() {
+      const items = [];
+      this.groupedPublications.forEach(group => {
+        group.items.forEach(pub => {
+          items.push({ year: group.year, pub });
+        });
+      });
+      return items;
+    },
+    visibleGroups() {
+      const groups = {};
+      this.flatItems.slice(0, this.visibleCount).forEach(item => {
+        if (!groups[item.year]) {
+          groups[item.year] = [];
+        }
+        groups[item.year].push(item.pub);
+      });
+      return Object.keys(groups)
+        .sort((a, b) => b - a)
+        .map(year => ({ year, items: groups[year] }));
+    },
+    hasMore() {
+      return this.visibleCount < this.flatItems.length;
+    }
+  },
+  watch: {
+    groupedPublications() {
+      this.visibleCount = 10;
+      this.$nextTick(() => {
+        this.setupObserver();
+      });
     }
   },
   methods: {
@@ -56,6 +98,38 @@ export default {
         return "type-journal";
       }
       return "";
+    },
+    setupObserver() {
+      if (!("IntersectionObserver" in window)) {
+        return;
+      }
+      if (this.observer) {
+        this.observer.disconnect();
+      }
+      const target = this.$refs.loadMore;
+      if (!target || !this.hasMore) {
+        return;
+      }
+      this.observer = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting) {
+            this.visibleCount = Math.min(this.visibleCount + this.pageSize, this.flatItems.length);
+          }
+        },
+        { rootMargin: "200px" }
+      );
+      this.observer.observe(target);
+    }
+  },
+  mounted() {
+    this.setupObserver();
+  },
+  updated() {
+    this.setupObserver();
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
     }
   }
 };
@@ -217,6 +291,13 @@ export default {
   color: var(--accent, #f15a29);
 }
 
+.load-more {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted, #4b5563);
+  padding: 6px 0 2px;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -230,24 +311,37 @@ export default {
 
 @media (max-width: 768px) {
   .timeline {
-    padding-left: 40px;
+    padding: 0 6px;
   }
 
   .timeline::before {
-    left: 20px;
+    display: none;
   }
 
   .timeline-item {
-    padding-left: 20px;
+    padding-left: 0;
   }
 
   .timeline-item-connector {
-    left: -6px;
+    display: none;
   }
 
   .timeline-content {
     width: 100%;
     max-width: none;
+    margin: 0;
+  }
+
+  .year-label {
+    transform: translateX(-5%);
+  }
+
+  .timeline-item {
+    transform: translateX(-5%);
+  }
+
+  .timeline-content {
+    transform: translateX(-5%);
   }
 
   .legend {

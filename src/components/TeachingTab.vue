@@ -1,6 +1,6 @@
 <template>
   <div class="teaching-section">
-    <h2>Teaching by Subject</h2>
+    <h2>Subjects We Teach</h2>
     <div class="teaching-grid">
       <article
         v-for="(subject, index) in subjects"

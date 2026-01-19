@@ -69,8 +69,8 @@
 
           <div class="person-publications">
             <h2>Publications</h2>
-            <div v-if="groupedSelectedPublications.length" class="person-timeline">
-              <div class="year-group" v-for="group in groupedSelectedPublications" :key="group.year">
+            <div v-if="groupedSelectedPublicationsVisible.length" class="person-timeline">
+              <div class="year-group" v-for="group in groupedSelectedPublicationsVisible" :key="group.year">
                 <div class="year-label">{{ group.year }}</div>
                 <div class="person-timeline-item" v-for="(pub, index) in group.items" :key="index" :style="{ '--i': index }">
                   <div class="person-timeline-connector"></div>
@@ -84,7 +84,7 @@
                 </div>
               </div>
             </div>
-            <p v-else class="person-empty">No publications found for this author yet.</p>
+            <div v-if="hasMoreSelectedPublications" ref="personLoadMore" class="person-load-more">Loading more…</div>
           </div>
         </div>
         <template v-else>
@@ -154,7 +154,10 @@ export default {
       teachingSubjects: [],
       publications: [],
       currentSlug: "",
-      suppressRouteSync: false
+      suppressRouteSync: false,
+      personVisibleCount: 10,
+      personPageSize: 10,
+      personObserver: null
     };
   },
   watch: {
@@ -166,6 +169,12 @@ export default {
       window.history.pushState({}, "", nextPath);
       this.$nextTick(() => {
         window.dispatchEvent(new Event("resize"));
+      });
+    },
+    selectedPerson() {
+      this.personVisibleCount = 10;
+      this.$nextTick(() => {
+        this.setupPersonObserver();
       });
     }
   },
@@ -222,6 +231,30 @@ export default {
       return Object.keys(groups)
         .sort((a, b) => b - a)
         .map(year => ({ year, items: groups[year] }));
+    },
+    flatSelectedPublications() {
+      const items = [];
+      this.groupedSelectedPublications.forEach(group => {
+        group.items.forEach(pub => {
+          items.push({ year: group.year, pub });
+        });
+      });
+      return items;
+    },
+    groupedSelectedPublicationsVisible() {
+      const groups = {};
+      this.flatSelectedPublications.slice(0, this.personVisibleCount).forEach(item => {
+        if (!groups[item.year]) {
+          groups[item.year] = [];
+        }
+        groups[item.year].push(item.pub);
+      });
+      return Object.keys(groups)
+        .sort((a, b) => b - a)
+        .map(year => ({ year, items: groups[year] }));
+    },
+    hasMoreSelectedPublications() {
+      return this.personVisibleCount < this.flatSelectedPublications.length;
     },
     tabModel: {
       get() {
@@ -298,6 +331,30 @@ export default {
       window.history.pushState({}, "", "/");
       this.currentSlug = "";
       this.activeTab = "people";
+    },
+    setupPersonObserver() {
+      if (!("IntersectionObserver" in window)) {
+        return;
+      }
+      if (this.personObserver) {
+        this.personObserver.disconnect();
+      }
+      const target = this.$refs.personLoadMore;
+      if (!target || !this.hasMoreSelectedPublications) {
+        return;
+      }
+      this.personObserver = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting) {
+            this.personVisibleCount = Math.min(
+              this.personVisibleCount + this.personPageSize,
+              this.flatSelectedPublications.length
+            );
+          }
+        },
+        { rootMargin: "200px" }
+      );
+      this.personObserver.observe(target);
     }
   },
   mounted() {
@@ -382,6 +439,9 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener("popstate", this.setRouteFromPath);
+    if (this.personObserver) {
+      this.personObserver.disconnect();
+    }
   }
 };
 </script>
@@ -447,11 +507,11 @@ export default {
 
 /* Particles background */
 #particles-js {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 0;
   opacity: 0.8;
   pointer-events: none;
@@ -653,6 +713,21 @@ export default {
   border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
+@media (max-width: 768px) {
+  .person-timeline {
+    padding-left: 0;
+  }
+
+  .person-timeline::before,
+  .person-timeline-connector {
+    display: none;
+  }
+
+  .person-timeline-item {
+    padding-left: 0;
+  }
+}
+
 .person-hero {
   display: flex;
   gap: 20px;
@@ -707,6 +782,13 @@ export default {
 .person-publications h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
+}
+
+.person-load-more {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 6px 0 2px;
 }
 
 .person-empty {
