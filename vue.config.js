@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: '/portfolio/' // Pridaj názov svojho repozitára
+  publicPath: '/skupina/' // Pridaj názov svojho repozitára
 })
