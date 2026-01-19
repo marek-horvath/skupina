@@ -1,6 +1,16 @@
 <template>
   <div class="publications-section">
     <h2>Publications Timeline</h2>
+    <div class="legend">
+      <span class="legend-item">
+        <span class="legend-swatch conference"></span>
+        Conference
+      </span>
+      <span class="legend-item">
+        <span class="legend-swatch journal"></span>
+        Journal
+      </span>
+    </div>
     <div class="timeline">
       <div class="year-group" v-for="group in groupedPublications" :key="group.year">
         <div class="year-label">{{ group.year }}</div>
@@ -11,7 +21,7 @@
           :style="{ '--i': index }"
         >
           <div class="timeline-item-connector"></div>
-          <div class="timeline-content">
+          <div class="timeline-content" :class="typeClass(pub.type)">
             <small class="pub-authors">{{ pub.authors }}</small>
             <div class="pub-title">{{ pub.title }}</div>
             <small class="pub-venue">
@@ -31,6 +41,21 @@ export default {
     groupedPublications: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    typeClass(value) {
+      if (!value) {
+        return "";
+      }
+      const normalized = value.toString().trim().toLowerCase();
+      if (normalized === "conference") {
+        return "type-conference";
+      }
+      if (normalized === "journal") {
+        return "type-journal";
+      }
+      return "";
     }
   }
 };
@@ -57,6 +82,38 @@ export default {
   margin-bottom: 8px;
   font-size: 1.5rem;
   color: var(--ink, #0f172a);
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted, #4b5563);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+}
+
+.legend-swatch.conference {
+  background: #e7f2ff;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.legend-swatch.journal {
+  background: #e7f7ee;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .timeline {
@@ -124,6 +181,16 @@ export default {
   margin: 0;
 }
 
+.timeline-content.type-conference {
+  background: #e7f2ff;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.timeline-content.type-journal {
+  background: #e7f7ee;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
 .pub-authors {
   font-size: 0.82rem;
   color: var(--muted, #4b5563);
@@ -181,6 +248,10 @@ export default {
   .timeline-content {
     width: 100%;
     max-width: none;
+  }
+
+  .legend {
+    flex-wrap: wrap;
   }
 }
 </style>

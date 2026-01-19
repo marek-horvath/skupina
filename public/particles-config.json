@@ -8,7 +8,7 @@
       }
     },
     "color": {
-      "value": "#6f8791"
+      "value": "#6a8896"
     },
     "shape": {
       "type": "circle",
@@ -18,23 +18,23 @@
       }
     },
     "opacity": {
-      "value": 0.9,
-      "random": false
+      "value": 0.8,
+      "random": true
     },
     "size": {
-      "value": 3.2,
+      "value": 3.6,
       "random": true
     },
     "line_linked": {
       "enable": true,
       "distance": 160,
-      "color": "#6f8791",
-      "opacity": 0.9,
-      "width": 1.6
+      "color": "#6a8896",
+      "opacity": 0.8,
+      "width": 1.8
     },
     "move": {
       "enable": true,
-      "speed": 1.4,
+      "speed": 1.5,
       "direction": "none",
       "random": false,
       "straight": false,

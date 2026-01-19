@@ -9,9 +9,10 @@
         :style="{ '--i': index }"
       >
         <h3>{{ subject.name }}</h3>
-        <ul>
-          <li v-for="(item, idx) in subject.offerings" :key="idx">{{ item }}</li>
-        </ul>
+        <p v-if="subject.description" class="subject-desc">{{ subject.description }}</p>
+        <a v-if="subject.link" :href="subject.link" target="_blank" class="subject-link">
+          {{ subject.link }}
+        </a>
       </article>
     </div>
   </div>
@@ -68,31 +69,22 @@ export default {
   color: var(--ink);
 }
 
-.term-card ul {
-  list-style: none;
-  padding-left: 0;
+.subject-desc {
+  margin: 0 0 10px;
   color: var(--muted);
-  display: grid;
-  gap: 6px;
+  font-size: 0.92rem;
   line-height: 1.5;
 }
 
-.term-card li {
-  padding-left: 16px;
-  position: relative;
-  font-size: 0.92rem;
+.subject-link {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-size: 0.9rem;
   word-break: break-word;
 }
 
-.term-card li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+.subject-link:hover {
+  color: var(--accent);
 }
 
 @keyframes riseIn {

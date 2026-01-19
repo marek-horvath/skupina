@@ -34,13 +34,69 @@
       </header>
 
       <!-- Tabs for switching between People, Publications, and Teaching -->
-      <TabNav v-model="activeTab" :tabs="tabs" />
+      <TabNav v-model="tabModel" :tabs="tabs" />
 
       <!-- Main content (People or Publications) -->
       <div class="container content">
-        <PeopleTab v-if="activeTab === 'people'" :people="people" :getImage="getImage" />
-        <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" />
-        <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" />
+        <div v-if="selectedPerson" class="person-detail">
+          <div class="person-hero">
+            <img
+              :src="getImage(selectedPerson.image)"
+              alt="Profile Picture"
+              class="person-photo"
+            />
+            <div class="person-meta">
+              <div class="person-name-row">
+                <h2>{{ selectedPerson.name }}</h2>
+                <a
+                  v-if="personLinkedin(selectedPerson)"
+                  :href="personLinkedin(selectedPerson)"
+                  target="_blank"
+                  class="person-linkedin"
+                  aria-label="LinkedIn profile"
+                >
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
+                    alt="LinkedIn"
+                    class="linkedin-logo"
+                  />
+                </a>
+              </div>
+              <p class="person-email">{{ selectedPerson.email }}</p>
+              <p class="person-info">{{ selectedPerson.info }}</p>
+            </div>
+          </div>
+
+          <div class="person-publications">
+            <h2>Publications</h2>
+            <div v-if="groupedSelectedPublications.length" class="person-timeline">
+              <div class="year-group" v-for="group in groupedSelectedPublications" :key="group.year">
+                <div class="year-label">{{ group.year }}</div>
+                <div class="person-timeline-item" v-for="(pub, index) in group.items" :key="index" :style="{ '--i': index }">
+                  <div class="person-timeline-connector"></div>
+                  <div class="person-timeline-content">
+                    <small class="pub-authors">{{ pub.authors }}</small>
+                    <div class="pub-title">{{ pub.title }}</div>
+                    <small class="pub-venue">
+                      <a :href="pub.link" target="_blank">{{ pub.venue }}</a>
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p v-else class="person-empty">No publications found for this author yet.</p>
+          </div>
+        </div>
+        <template v-else>
+          <PeopleTab
+            v-if="activeTab === 'people'"
+            :people="people"
+            :getImage="getImage"
+            @select="openPerson"
+          />
+          <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" />
+          <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" />
+        </template>
       </div> <!-- .content -->
 
       <!-- Footer with logos -->
@@ -95,96 +151,19 @@ export default {
         researchAssistants: [],
         phdCandidates: []
       },
-      teachingSubjects: [
-        {
-          name: "Zaklady algoritmizacie a programovania",
-          offerings: [
-            "ZS 2021 — 2 cvika",
-            "ZS 2022 — 1 cvicenie"
-          ]
-        },
-        {
-          name: "Zaklady algoritmizacie a programovania EN",
-          offerings: [
-            "ZS 2023 — prednaska a cvicenie",
-            "ZS 2024 — prednaska a cvicenie",
-            "ZS 2025 — prednaska a cvicenie"
-          ]
-        },
-        {
-          name: "Programovanie v jazyku C",
-          offerings: [
-            "LS 2022 — 2 cvika",
-            "LS 2023 — 2 cvika"
-          ]
-        },
-        {
-          name: "Programovanie v jazyku C EN",
-          offerings: [
-            "LS 2024 — prednaska a cvicenie",
-            "LS 2025 — prednaska a cvicenie"
-          ]
-        },
-        {
-          name: "Pouzivatelske rozhrania a pouzivatelsky zazitok SK",
-          offerings: [
-            "ZS 2022 — 1 cvicenie",
-            "ZS 2023 — 2 cvicenie",
-            "ZS 2025 — 1 cvicenie"
-          ]
-        },
-        {
-          name: "Pouzivatelske rozhrania a pouzivatelsky zazitok EN",
-          offerings: [
-            "ZS 2023 — prednaska a cvicenie",
-            "ZS 2024 — prednaska a cvicenie",
-            "ZS 2025 — prednaska a cvicenie"
-          ]
-        },
-        {
-          name: "Aktualne trendy v informatike 1 EN",
-          offerings: [
-            "ZS 2023 — prednaska",
-            "LS 2024 — prednaska",
-            "ZS 2024 — prednaska"
-          ]
-        },
-        {
-          name: "Aktualne trendy v informatike 2 EN",
-          offerings: [
-            "LS 2025 — prednaska a cvicenie"
-          ]
-        },
-        {
-          name: "Bezpecnost v informacnych systemoch",
-          offerings: [
-            "LS 2024 — 2 cvika"
-          ]
-        },
-        {
-          name: "Inzinierstvo poziadaviek",
-          offerings: [
-            "ZS 2024 — 2 cvika"
-          ]
-        },
-        {
-          name: "Databazove systemy",
-          offerings: [
-            "LS 2025 — 2 cvicenia"
-          ]
-        },
-        {
-          name: "Pokrocile softverove inzinierstvo",
-          offerings: [
-            "ZS 2025 — 2 cvika"
-          ]
-        }
-      ],
-      publications: []
+      teachingSubjects: [],
+      publications: [],
+      currentSlug: "",
+      suppressRouteSync: false
     };
   },
   watch: {
     activeTab() {
+      if (this.suppressRouteSync || this.selectedPerson) {
+        return;
+      }
+      const nextPath = this.activeTab === "people" ? "/" : `/${this.activeTab}`;
+      window.history.pushState({}, "", nextPath);
       this.$nextTick(() => {
         window.dispatchEvent(new Event("resize"));
       });
@@ -213,16 +192,120 @@ export default {
     },
     totalPublications() {
       return this.publications.length;
+    },
+    allPeople() {
+      return [
+        ...this.people.professor,
+        ...this.people.associateProfessor,
+        ...this.people.researchAssistants,
+        ...this.people.phdCandidates
+      ];
+    },
+    selectedPerson() {
+      if (!this.currentSlug) {
+        return null;
+      }
+      return this.allPeople.find(person => this.personSlug(person) === this.currentSlug) || null;
+    },
+    groupedSelectedPublications() {
+      if (!this.selectedPerson) {
+        return [];
+      }
+      const matching = this.publications.filter(pub => this.isAuthorMatch(pub, this.selectedPerson));
+      const groups = {};
+      matching.forEach(pub => {
+        if (!groups[pub.date]) {
+          groups[pub.date] = [];
+        }
+        groups[pub.date].push(pub);
+      });
+      return Object.keys(groups)
+        .sort((a, b) => b - a)
+        .map(year => ({ year, items: groups[year] }));
+    },
+    tabModel: {
+      get() {
+        return this.selectedPerson ? "" : this.activeTab;
+      },
+      set(value) {
+        this.currentSlug = "";
+        this.activeTab = value || "people";
+      }
     }
   },
   methods: {
     getImage(filename) {
       return require(`../assets/${filename}`);
+    },
+    setRouteFromPath() {
+      const part = window.location.pathname.replace(/^\/+/, "").split("/")[0];
+      this.suppressRouteSync = true;
+      if (part === "publications") {
+        this.currentSlug = "";
+        this.activeTab = "publications";
+      } else if (part === "teaching") {
+        this.currentSlug = "";
+        this.activeTab = "teaching";
+      } else if (part) {
+        this.currentSlug = part;
+      } else {
+        this.currentSlug = "";
+        this.activeTab = "people";
+      }
+      this.$nextTick(() => {
+        this.suppressRouteSync = false;
+      });
+    },
+    slugify(value) {
+      return value
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "")
+        .trim();
+    },
+    normalizeText(value) {
+      return value
+        .toString()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    },
+    personSlug(person) {
+      const lastName = person.name.split(" ").slice(-1)[0] || person.name;
+      return this.slugify(lastName);
+    },
+    personLinkedin(person) {
+      if (!person.links || !person.links.length) {
+        return "";
+      }
+      const link = person.links.find(item => item.label && item.label.toLowerCase() === "linkedin");
+      return link ? link.url : "";
+    },
+    isAuthorMatch(pub, person) {
+      const authors = this.normalizeText(pub.authors || "");
+      const fullName = this.normalizeText(person.name);
+      const lastName = this.normalizeText(person.name.split(" ").slice(-1)[0]);
+      return authors.includes(fullName) || authors.includes(lastName);
+    },
+    openPerson(person) {
+      const slug = this.personSlug(person);
+      window.history.pushState({}, "", `/${slug}`);
+      this.currentSlug = slug;
+    },
+    closePerson() {
+      window.history.pushState({}, "", "/");
+      this.currentSlug = "";
+      this.activeTab = "people";
     }
   },
   mounted() {
+    this.setRouteFromPath();
+    window.addEventListener("popstate", this.setRouteFromPath);
     // Načítanie particles s pôvodnou konfiguráciou
-    particlesJS.load("particles-js", "./particles-config.json", () => {
+    const particlesConfig = `${process.env.BASE_URL || "/"}particles-config.json`;
+    particlesJS.load("particles-js", particlesConfig, () => {
       console.log("Particles.js loaded!");
     });
 
@@ -230,12 +313,15 @@ export default {
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?gid=1186507161&single=true&output=csv";
     const publicationsCSVUrl =
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?output=csv";
+    const teachingCSVUrl =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?gid=1202110167&single=true&output=csv";
 
     Promise.all([
       fetch(peopleCSVUrl).then(response => response.text()),
-      fetch(publicationsCSVUrl).then(response => response.text())
+      fetch(publicationsCSVUrl).then(response => response.text()),
+      fetch(teachingCSVUrl).then(response => response.text())
     ])
-      .then(([peopleCsvText, publicationsCsvText]) => {
+      .then(([peopleCsvText, publicationsCsvText, teachingCsvText]) => {
         // Spracovanie CSV pre ľudí
         const parsedPeople = Papa.parse(peopleCsvText, { header: true, skipEmptyLines: true });
         const peopleObj = {
@@ -278,12 +364,24 @@ export default {
         const parsedPublications = Papa.parse(publicationsCsvText, { header: true, skipEmptyLines: true });
         this.publications = parsedPublications.data.filter(row => row.date && row.title);
 
+        const parsedTeaching = Papa.parse(teachingCsvText, { header: true, skipEmptyLines: true });
+        this.teachingSubjects = parsedTeaching.data
+          .filter(row => row.Name)
+          .map(row => ({
+            name: row.Name,
+            description: row.Description || "",
+            link: row.Link || ""
+          }));
+
         // Po načítaní dát vyvoláme resize event pre opravu renderovania particles
         this.$nextTick(() => {
           window.dispatchEvent(new Event("resize"));
         });
       })
       .catch(error => console.error("Error loading CSV data:", error));
+  },
+  beforeUnmount() {
+    window.removeEventListener("popstate", this.setRouteFromPath);
   }
 };
 </script>
@@ -355,7 +453,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 0.8;
   pointer-events: none;
 }
 
@@ -497,6 +595,123 @@ export default {
   border: 1px solid rgba(15, 23, 42, 0.08);
   position: relative;
   z-index: 1;
+}
+
+.person-detail {
+  display: grid;
+  gap: 24px;
+}
+
+.person-publications {
+  display: grid;
+  gap: 12px;
+}
+
+.person-timeline {
+  position: relative;
+  margin: 0 auto;
+  max-width: 800px;
+  padding-left: 40px;
+}
+
+.person-timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 999px;
+}
+
+.person-timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  animation: riseIn 0.6s ease both;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+
+.person-timeline-connector {
+  position: absolute;
+  left: -26px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 3px rgba(241, 90, 41, 0.2);
+  transform: translateY(-50%);
+}
+
+.person-timeline-content {
+  background: var(--paper);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.person-hero {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+}
+
+.person-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(241, 90, 41, 0.3);
+}
+
+.person-meta {
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+}
+
+.person-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.person-linkedin {
+  display: inline-flex;
+  align-items: center;
+}
+
+.person-name-row h2 {
+  font-size: 1.6rem;
+}
+
+.person-email {
+  color: var(--accent-2);
+  font-size: 0.95rem;
+}
+
+.person-info {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.person-publications h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.person-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 /* People Section */
