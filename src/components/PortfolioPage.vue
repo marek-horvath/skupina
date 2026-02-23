@@ -110,7 +110,7 @@
                     @click="openPublication(pub.link)"
                     @keydown.enter="openPublication(pub.link)"
                   >
-                    <small class="pub-authors">{{ pub.authors }}</small>
+                    <small class="pub-authors">{{ formatAuthors(pub.authors) }}</small>
                     <div class="pub-title">{{ pub.title }}</div>
                     <small class="pub-venue">
                       <a :href="pub.link" target="_blank" @click.stop>{{ pub.venue }}</a>
@@ -184,7 +184,9 @@ export default {
         professor: [],
         associateProfessor: [],
         researchAssistants: [],
-        phdCandidates: []
+        phdCandidates: [],
+        exMembers: [],
+        students: []
       },
       teachingSubjects: [],
       publications: [],
@@ -378,6 +380,16 @@ export default {
       }
       return "";
     },
+    formatAuthors(authors) {
+      const list = (authors || "")
+        .split(";")
+        .map(item => item.trim())
+        .filter(Boolean);
+      if (list.length <= 3) {
+        return list.join("; ");
+      }
+      return `${list.slice(0, 3).join("; ")}; et al.`;
+    },
     openPublication(url) {
       if (!url) {
         return;
@@ -453,7 +465,9 @@ export default {
           professor: [],
           associateProfessor: [],
           researchAssistants: [],
-          phdCandidates: []
+          phdCandidates: [],
+          exMembers: [],
+          students: []
         };
         parsedPeople.data.forEach(row => {
           const role = row.role.trim().toLowerCase();
@@ -487,6 +501,10 @@ export default {
             peopleObj.researchAssistants.push(person);
           } else if (role === "phd candidate") {
             peopleObj.phdCandidates.push(person);
+          } else if (role === "ex" && person.name) {
+            peopleObj.exMembers.push({ name: person.name });
+          } else if (role === "student" && person.name) {
+            peopleObj.students.push({ name: person.name });
           }
         });
         this.people = peopleObj;

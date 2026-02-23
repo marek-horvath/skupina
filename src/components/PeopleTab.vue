@@ -211,6 +211,24 @@
         </div>
       </div>
     </section>
+    <section
+      class="people-group names-grid"
+      v-if="(people.exMembers && people.exMembers.length) || (people.students && people.students.length)"
+    >
+      <div class="names-col" v-if="people.exMembers && people.exMembers.length">
+        <h2>Ex Members</h2>
+        <ul class="names-list">
+          <li v-for="(person, index) in people.exMembers" :key="'ex-' + index">{{ person.name }}</li>
+        </ul>
+      </div>
+
+      <div class="names-col" v-if="people.students && people.students.length">
+        <h2>Students</h2>
+        <ul class="names-list">
+          <li v-for="(person, index) in people.students" :key="'student-' + index">{{ person.name }}</li>
+        </ul>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -344,4 +362,37 @@ export default {
   background: #6b7280;
   color: #ffffff;
 }
+
+
+.names-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 28px;
+  margin-top: 12px;
+}
+
+.names-col h2 {
+  margin-bottom: 12px;
+}
+
+.names-list {
+  list-style: disc;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.names-list li {
+  font-size: 1.04rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .names-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 </style>

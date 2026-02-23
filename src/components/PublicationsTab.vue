@@ -29,7 +29,7 @@
             @click="openPublication(pub.link)"
             @keydown.enter="openPublication(pub.link)"
           >
-            <small class="pub-authors">{{ pub.authors }}</small>
+            <small class="pub-authors">{{ formatAuthors(pub.authors) }}</small>
             <div class="pub-title">{{ pub.title }}</div>
             <small class="pub-venue">
               <a :href="pub.link" target="_blank" @click.stop>{{ pub.venue }}</a>
@@ -105,6 +105,16 @@ export default {
         return "type-journal";
       }
       return "";
+    },
+    formatAuthors(authors) {
+      const list = (authors || "")
+        .split(";")
+        .map(item => item.trim())
+        .filter(Boolean);
+      if (list.length <= 3) {
+        return list.join("; ");
+      }
+      return `${list.slice(0, 3).join("; ")}; et al.`;
     },
     setupObserver() {
       if (!("IntersectionObserver" in window)) {
