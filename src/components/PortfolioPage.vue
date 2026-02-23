@@ -61,6 +61,24 @@
                     class="linkedin-logo"
                   />
                 </a>
+                <a
+                  v-if="personOrcid(selectedPerson)"
+                  :href="personOrcid(selectedPerson)"
+                  target="_blank"
+                  class="person-linkedin"
+                  aria-label="ORCID profile"
+                >
+                  <img :src="getImage('orcid.png')" alt="ORCID" class="profile-social-icon" />
+                </a>
+                <a
+                  v-if="personWeb(selectedPerson)"
+                  :href="personWeb(selectedPerson)"
+                  target="_blank"
+                  class="person-linkedin"
+                  aria-label="Personal website"
+                >
+                  <img :src="getImage('web.png')" alt="Website" class="profile-social-icon" />
+                </a>
               </div>
               <p class="person-email">{{ selectedPerson.email }}</p>
               <p class="person-info">{{ selectedPerson.info }}</p>
@@ -69,16 +87,33 @@
 
           <div class="person-publications">
             <h2>Publications</h2>
+            <div class="legend">
+              <span class="legend-item">
+                <span class="legend-swatch conference"></span>
+                Conference
+              </span>
+              <span class="legend-item">
+                <span class="legend-swatch journal"></span>
+                Journal
+              </span>
+            </div>
             <div v-if="groupedSelectedPublicationsVisible.length" class="person-timeline">
               <div class="year-group" v-for="group in groupedSelectedPublicationsVisible" :key="group.year">
                 <div class="year-label">{{ group.year }}</div>
                 <div class="person-timeline-item" v-for="(pub, index) in group.items" :key="index" :style="{ '--i': index }">
                   <div class="person-timeline-connector"></div>
-                  <div class="person-timeline-content">
+                  <div
+                    class="person-timeline-content"
+                    :class="publicationTypeClass(pub.type)"
+                    role="button"
+                    tabindex="0"
+                    @click="openPublication(pub.link)"
+                    @keydown.enter="openPublication(pub.link)"
+                  >
                     <small class="pub-authors">{{ pub.authors }}</small>
                     <div class="pub-title">{{ pub.title }}</div>
                     <small class="pub-venue">
-                      <a :href="pub.link" target="_blank">{{ pub.venue }}</a>
+                      <a :href="pub.link" target="_blank" @click.stop>{{ pub.venue }}</a>
                     </small>
                   </div>
                 </div>
@@ -316,6 +351,39 @@ export default {
       const link = person.links.find(item => item.label && item.label.toLowerCase() === "linkedin");
       return link ? link.url : "";
     },
+    personOrcid(person) {
+      if (!person.links || !person.links.length) {
+        return "";
+      }
+      const link = person.links.find(item => item.label && item.label.toLowerCase() === "orcid");
+      return link ? link.url : "";
+    },
+    personWeb(person) {
+      if (!person.links || !person.links.length) {
+        return "";
+      }
+      const link = person.links.find(item => item.label && item.label.toLowerCase() === "web");
+      return link ? link.url : "";
+    },
+    publicationTypeClass(value) {
+      if (!value) {
+        return "";
+      }
+      const normalized = value.toString().trim().toLowerCase();
+      if (normalized === "conference") {
+        return "type-conference";
+      }
+      if (normalized === "journal") {
+        return "type-journal";
+      }
+      return "";
+    },
+    openPublication(url) {
+      if (!url) {
+        return;
+      }
+      window.open(url, "_blank");
+    },
     isAuthorMatch(pub, person) {
       const authors = this.normalizeText(pub.authors || "");
       const fullName = this.normalizeText(person.name);
@@ -404,6 +472,12 @@ export default {
           }
           if (row.github) {
             person.links.push({ label: "GitHub", url: row.github });
+          }
+          if (row.orcid) {
+            person.links.push({ label: "ORCID", url: row.orcid });
+          }
+          if (row.web) {
+            person.links.push({ label: "Web", url: row.web });
           }
           if (role === "professor") {
             peopleObj.professor.push(person);
@@ -667,6 +741,38 @@ export default {
   gap: 12px;
 }
 
+.legend {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+}
+
+.legend-swatch.conference {
+  background: #e7f2ff;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.legend-swatch.journal {
+  background: #e7f7ee;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
 .person-timeline {
   position: relative;
   margin: 0 auto;
@@ -711,6 +817,28 @@ export default {
   padding: 12px 16px;
   border-radius: 12px;
   border: 1px solid rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.person-timeline-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 28px 46px rgba(15, 23, 42, 0.26);
+}
+
+.person-timeline-content:focus-visible {
+  outline: 2px solid rgba(15, 118, 110, 0.7);
+  outline-offset: 2px;
+}
+
+.person-timeline-content.type-conference {
+  background: #e7f2ff;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.person-timeline-content.type-journal {
+  background: #e7f7ee;
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -762,6 +890,12 @@ export default {
 .person-linkedin {
   display: inline-flex;
   align-items: center;
+}
+
+.profile-social-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .person-name-row h2 {

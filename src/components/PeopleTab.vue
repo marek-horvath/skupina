@@ -16,7 +16,7 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="linkedin-link" @click.stop
+              class="social-link" @click.stop
               aria-label="LinkedIn profile"
             >
               <img
@@ -24,6 +24,24 @@
                 alt="LinkedIn"
                 class="linkedin-logo"
               />
+            </a>
+            <a
+              v-if="orcidUrl(person)"
+              :href="orcidUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="ORCID profile"
+            >
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+            </a>
+            <a
+              v-if="webUrl(person)"
+              :href="webUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="Personal website"
+            >
+              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
             </a>
           </div>
           <div class="email-row">
@@ -51,7 +69,7 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="linkedin-link" @click.stop
+              class="social-link" @click.stop
               aria-label="LinkedIn profile"
             >
               <img
@@ -59,6 +77,24 @@
                 alt="LinkedIn"
                 class="linkedin-logo"
               />
+            </a>
+            <a
+              v-if="orcidUrl(person)"
+              :href="orcidUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="ORCID profile"
+            >
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+            </a>
+            <a
+              v-if="webUrl(person)"
+              :href="webUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="Personal website"
+            >
+              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
             </a>
           </div>
           <div class="email-row">
@@ -86,7 +122,7 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="linkedin-link" @click.stop
+              class="social-link" @click.stop
               aria-label="LinkedIn profile"
             >
               <img
@@ -94,6 +130,24 @@
                 alt="LinkedIn"
                 class="linkedin-logo"
               />
+            </a>
+            <a
+              v-if="orcidUrl(person)"
+              :href="orcidUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="ORCID profile"
+            >
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+            </a>
+            <a
+              v-if="webUrl(person)"
+              :href="webUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="Personal website"
+            >
+              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
             </a>
           </div>
           <div class="email-row">
@@ -121,7 +175,7 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="linkedin-link" @click.stop
+              class="social-link" @click.stop
               aria-label="LinkedIn profile"
             >
               <img
@@ -129,6 +183,24 @@
                 alt="LinkedIn"
                 class="linkedin-logo"
               />
+            </a>
+            <a
+              v-if="orcidUrl(person)"
+              :href="orcidUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="ORCID profile"
+            >
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+            </a>
+            <a
+              v-if="webUrl(person)"
+              :href="webUrl(person)"
+              target="_blank"
+              class="social-link" @click.stop
+              aria-label="Personal website"
+            >
+              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
             </a>
           </div>
           <div class="email-row">
@@ -157,12 +229,22 @@ export default {
     }
   },
   methods: {
-    linkedinUrl(person) {
+    socialUrl(person, label) {
       if (!person.links || !person.links.length) {
         return "";
       }
-      const link = person.links.find(item => item.label && item.label.toLowerCase() === "linkedin");
+      const wanted = label.toLowerCase();
+      const link = person.links.find(item => item.label && item.label.toLowerCase() === wanted);
       return link ? link.url : "";
+    },
+    linkedinUrl(person) {
+      return this.socialUrl(person, "linkedin");
+    },
+    orcidUrl(person) {
+      return this.socialUrl(person, "orcid");
+    },
+    webUrl(person) {
+      return this.socialUrl(person, "web");
     },
     copyEmail(email) {
       if (!email) {
@@ -192,6 +274,14 @@ export default {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+}
+
+.people-section .card:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 28px 46px rgba(15, 23, 42, 0.28) !important;
+  z-index: 4;
 }
 
 .profile-pic {
@@ -206,9 +296,15 @@ export default {
   justify-content: center;
 }
 
-.linkedin-link {
+.social-link {
   display: inline-flex;
   align-items: center;
+}
+
+.social-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .email-row {

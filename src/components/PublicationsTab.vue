@@ -21,11 +21,18 @@
           :style="{ '--i': index }"
         >
           <div class="timeline-item-connector"></div>
-          <div class="timeline-content" :class="typeClass(pub.type)">
+          <div
+            class="timeline-content"
+            :class="typeClass(pub.type)"
+            role="button"
+            tabindex="0"
+            @click="openPublication(pub.link)"
+            @keydown.enter="openPublication(pub.link)"
+          >
             <small class="pub-authors">{{ pub.authors }}</small>
             <div class="pub-title">{{ pub.title }}</div>
             <small class="pub-venue">
-              <a :href="pub.link" target="_blank">{{ pub.venue }}</a>
+              <a :href="pub.link" target="_blank" @click.stop>{{ pub.venue }}</a>
             </small>
           </div>
         </div>
@@ -119,6 +126,12 @@ export default {
         { rootMargin: "200px" }
       );
       this.observer.observe(target);
+    },
+    openPublication(url) {
+      if (!url) {
+        return;
+      }
+      window.open(url, "_blank");
     }
   },
   mounted() {
@@ -253,6 +266,18 @@ export default {
   width: 60%;
   max-width: 640px;
   margin: 0;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.timeline-content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 28px 46px rgba(15, 23, 42, 0.26);
+}
+
+.timeline-content:focus-visible {
+  outline: 2px solid rgba(15, 118, 110, 0.7);
+  outline-offset: 2px;
 }
 
 .timeline-content.type-conference {
