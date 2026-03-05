@@ -6,7 +6,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>SEUG</title>
-  </head>
+      <script>
+      (function() {
+        var search = window.location.search;
+        if (!search || search.indexOf('?/') !== 0) {
+          return;
+        }
+        var decoded = search
+          .slice(2)
+          .split('&')
+          .map(function(s) { return s.replace(/~and~/g, '&'); })
+          .join('?');
+
+        var baseUrl = '<%= BASE_URL %>';
+        var keepSegments = baseUrl.split('/').filter(Boolean).length;
+        var pathParts = window.location.pathname.split('/');
+        var basePath = pathParts.slice(0, keepSegments + 1).join('/');
+
+        window.history.replaceState(null, '', basePath + '/' + decoded + window.location.hash);
+      })();
+    </script>
+</head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>

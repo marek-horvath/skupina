@@ -324,7 +324,7 @@ export default {
           research_group: "Research Group",
           people: "People",
           publications: "Publications",
-          teaching: "Pedagogy",
+          teaching: "Teaching",
           conference: "Conference",
           journal: "Journal",
           affiliation: "Technical University of Kosice - Faculty of Electrical Engineering and Informatics",

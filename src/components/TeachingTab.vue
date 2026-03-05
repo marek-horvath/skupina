@@ -1,6 +1,6 @@
 <template>
   <div class="teaching-section">
-    <h2>{{ language === "sk" ? "Pedagogika" : "Pedagogy" }}</h2>
+    <h2>{{ language === "sk" ? "Predmety" : "Subjects" }}</h2>
     <div class="teaching-grid">
       <article
         v-for="(subject, index) in subjects"

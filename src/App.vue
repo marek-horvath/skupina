@@ -1,19 +1,12 @@
 <template>
-  <!-- Len vykresli PortfolioPage -->
-  <PortfolioPage/>
+  <router-view />
 </template>
 
 <script>
-import PortfolioPage from './components/PortfolioPage.vue'
-
 export default {
-  name: 'App',
-  components: {
-    PortfolioPage
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-/* Ponechaj, ako to máš */
 </style>
