@@ -1,7 +1,7 @@
 <template>
   <div class="people-section">
     <section class="people-group" v-if="people.professor.length">
-      <h2>Professor</h2>
+      <h2>{{ sectionLabel("professor") }}</h2>
       <div class="people-cards">
         <div
           class="card" @click="$emit('select', person)"
@@ -48,13 +48,13 @@
             <p class="email">{{ person.email }}</p>
             <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
           </div>
-          <p>{{ person.info }}</p>
+          <p>{{ personInfo(person) }}</p>
         </div>
       </div>
     </section>
 
     <section class="people-group" v-if="people.associateProfessor.length">
-      <h2>Associate Professor</h2>
+      <h2>{{ sectionLabel("associate") }}</h2>
       <div class="people-cards">
         <div
           class="card" @click="$emit('select', person)"
@@ -101,13 +101,13 @@
             <p class="email">{{ person.email }}</p>
             <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
           </div>
-          <p>{{ person.info }}</p>
+          <p>{{ personInfo(person) }}</p>
         </div>
       </div>
     </section>
 
     <section class="people-group" v-if="people.researchAssistants.length">
-      <h2>Research Assistants</h2>
+      <h2>{{ sectionLabel("assistants") }}</h2>
       <div class="people-cards">
         <div
           class="card" @click="$emit('select', person)"
@@ -154,13 +154,13 @@
             <p class="email">{{ person.email }}</p>
             <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
           </div>
-          <p>{{ person.info }}</p>
+          <p>{{ personInfo(person) }}</p>
         </div>
       </div>
     </section>
 
     <section class="people-group" v-if="people.phdCandidates.length">
-      <h2>PhD Candidates</h2>
+      <h2>{{ sectionLabel("phd") }}</h2>
       <div class="people-cards">
         <div
           class="card" @click="$emit('select', person)"
@@ -207,7 +207,7 @@
             <p class="email">{{ person.email }}</p>
             <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
           </div>
-          <p>{{ person.info }}</p>
+          <p>{{ personInfo(person) }}</p>
         </div>
       </div>
     </section>
@@ -216,14 +216,14 @@
       v-if="(people.exMembers && people.exMembers.length) || (people.students && people.students.length)"
     >
       <div class="names-col" v-if="people.exMembers && people.exMembers.length">
-        <h2>Ex Members</h2>
+        <h2>{{ sectionLabel("ex") }}</h2>
         <ul class="names-list">
           <li v-for="(person, index) in people.exMembers" :key="'ex-' + index">{{ person.name }}</li>
         </ul>
       </div>
 
       <div class="names-col" v-if="people.students && people.students.length">
-        <h2>Students</h2>
+        <h2>{{ sectionLabel("students") }}</h2>
         <ul class="names-list">
           <li v-for="(person, index) in people.students" :key="'student-' + index">{{ person.name }}</li>
         </ul>
@@ -244,6 +244,10 @@ export default {
     getImage: {
       type: Function,
       required: true
+    },
+    language: {
+      type: String,
+      default: "en"
     }
   },
   methods: {
@@ -263,6 +267,35 @@ export default {
     },
     webUrl(person) {
       return this.socialUrl(person, "web");
+    },
+    personInfo(person) {
+      if (!person) {
+        return "";
+      }
+      if (this.language === "sk" && person.infoSK) {
+        return person.infoSK;
+      }
+      return person.info || "";
+    },
+    sectionLabel(key) {
+      const labels = this.language === "sk"
+        ? {
+            professor: "Profesor",
+            associate: "Docent",
+            assistants: "Odborni asistenti",
+            phd: "Doktorandi",
+            ex: "Byvali clenovia",
+            students: "Studenti"
+          }
+        : {
+            professor: "Professor",
+            associate: "Associate Professor",
+            assistants: "Research Assistants",
+            phd: "PhD Candidates",
+            ex: "Ex Members",
+            students: "Students"
+          };
+      return labels[key] || key;
     },
     copyEmail(email) {
       if (!email) {

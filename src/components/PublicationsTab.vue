@@ -1,14 +1,14 @@
 <template>
   <div class="publications-section">
-    <h2>Publications Timeline</h2>
+    <h2>{{ language === "sk" ? "Casova os publikacii" : "Publications Timeline" }}</h2>
     <div class="legend">
       <span class="legend-item">
         <span class="legend-swatch conference"></span>
-        Conference
+        {{ language === "sk" ? "Konferencia" : "Conference" }}
       </span>
       <span class="legend-item">
         <span class="legend-swatch journal"></span>
-        Journal
+        {{ language === "sk" ? "Casopis" : "Journal" }}
       </span>
     </div>
     <div class="timeline">
@@ -49,6 +49,10 @@ export default {
     groupedPublications: {
       type: Array,
       required: true
+    },
+    language: {
+      type: String,
+      default: "en"
     }
   },
   data() {

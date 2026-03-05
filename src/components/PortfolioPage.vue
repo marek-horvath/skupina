@@ -8,17 +8,23 @@
       <!-- Header with fade effect -->
       <header class="header">
         <div class="container">
-          <div class="eyebrow">Research Group</div>
-          <h1 class="group-title">{{ group.name }}</h1>
-          <p class="group-desc">{{ group.description }}</p>
+          <div class="header-top">
+            <div class="eyebrow">{{ t("research_group") }}</div>
+            <div class="lang-switch" role="group" aria-label="Language switch">
+              <button type="button" :class="{ active: language === 'sk' }" @click="setLanguage('sk')">SK</button>
+              <button type="button" :class="{ active: language === 'en' }" @click="setLanguage('en')">EN</button>
+            </div>
+          </div>
+          <h1 class="group-title">{{ groupName }}</h1>
+          <p class="group-desc">{{ groupDescription }}</p>
           <div class="stats">
             <div class="stat">
               <span class="stat-value">{{ totalPeople }}</span>
-              <span class="stat-label">People</span>
+              <span class="stat-label">{{ t("people") }}</span>
             </div>
             <div class="stat">
               <span class="stat-value">{{ totalPublications }}</span>
-              <span class="stat-label">Publications</span>
+              <span class="stat-label">{{ t("publications") }}</span>
             </div>
           </div>
           <div class="affiliation">
@@ -26,15 +32,13 @@
               <img :src="getImage('tuke-logo.png')" alt="TUKE Logo" class="logo" />
               <img :src="getImage('kpi-logo.png')" alt="KPI TUKE Logo" class="logo" />
             </div>
-            <p class="affiliation-text">
-              Technical University of Kosice · Faculty of Electrical Engineering and Informatics
-            </p>
+            <p class="affiliation-text">{{ t("affiliation") }}</p>
           </div>
         </div>
       </header>
 
       <!-- Tabs for switching between People, Publications, and Teaching -->
-      <TabNav v-model="tabModel" :tabs="tabs" />
+      <TabNav v-model="tabModel" :tabs="localizedTabs" />
 
       <!-- Main content (People or Publications) -->
       <div class="container content">
@@ -81,20 +85,20 @@
                 </a>
               </div>
               <p class="person-email">{{ selectedPerson.email }}</p>
-              <p class="person-info">{{ selectedPerson.info }}</p>
+              <p class="person-info">{{ personInfo(selectedPerson) }}</p>
             </div>
           </div>
 
           <div class="person-publications">
-            <h2>Publications</h2>
+            <h2>{{ t("publications") }}</h2>
             <div class="legend">
               <span class="legend-item">
                 <span class="legend-swatch conference"></span>
-                Conference
+                {{ t("conference") }}
               </span>
               <span class="legend-item">
                 <span class="legend-swatch journal"></span>
-                Journal
+                {{ t("journal") }}
               </span>
             </div>
             <div v-if="groupedSelectedPublicationsVisible.length" class="person-timeline">
@@ -126,11 +130,12 @@
           <PeopleTab
             v-if="activeTab === 'people'"
             :people="people"
+            :language="language"
             :getImage="getImage"
             @select="openPerson"
           />
-          <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" />
-          <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" />
+          <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" :language="language" />
+          <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" :language="language" />
         </template>
       </div> <!-- .content -->
 
@@ -141,9 +146,7 @@
             <img :src="getImage('tuke-logo.png')" alt="TÚ KE Logo" class="logo" />
             <img :src="getImage('kpi-logo.png')" alt="KPI TÚ Logo" class="logo" />
           </div>
-          <p class="footer-text">
-            We are part of the Technical University of Košice and the Faculty of Electrical Engineering and Informatics.
-          </p>
+          <p class="footer-text">{{ t("footer_text") }}</p>
         </div>
       </footer>
     </div> <!-- .portfolio-content -->
@@ -168,17 +171,7 @@ export default {
   data() {
     return {
       activeTab: "people",
-      tabs: [
-        { id: "people", label: "People" },
-        { id: "publications", label: "Publications" },
-        { id: "teaching", label: "Teaching" }
-      ],
-      group: {
-        name: "Software Engineering and Usability Group",
-        description: `We focus on the interaction between humans and computers in two dimensions:
-- Software creation by humans (Software Engineering)
-- Software usage by humans (Usability)`
-      },
+      language: "en",
       // People and publications budú načítané dynamicky z CSV endpointov.
       people: {
         professor: [],
@@ -216,6 +209,27 @@ export default {
     }
   },
   computed: {
+    localizedTabs() {
+      return [
+        { id: "people", label: this.t("people") },
+        { id: "publications", label: this.t("publications") },
+        { id: "teaching", label: this.t("teaching") }
+      ];
+    },
+    groupName() {
+      return this.language === "sk"
+        ? "Skupina softveroveho inzinierstva a pouzitelnosti"
+        : "Software Engineering and Usability Group";
+    },
+    groupDescription() {
+      return this.language === "sk"
+        ? `Zameriavame sa na interakciu medzi clovekom a pocitacom v dvoch rovinach:
+- Tvorba softveru ludmi (Softverove inzinierstvo)
+- Pouzivanie softveru ludmi (Pouzitelnost)`
+        : `We focus on the interaction between humans and computers in two dimensions:
+- Software creation by humans (Software Engineering)
+- Software usage by humans (Usability)`;
+    },
     groupedPublications() {
       const groups = {};
       this.publications.forEach(pub => {
@@ -304,6 +318,43 @@ export default {
     }
   },
   methods: {
+    t(key) {
+      const dictionary = {
+        en: {
+          research_group: "Research Group",
+          people: "People",
+          publications: "Publications",
+          teaching: "Pedagogy",
+          conference: "Conference",
+          journal: "Journal",
+          affiliation: "Technical University of Kosice - Faculty of Electrical Engineering and Informatics",
+          footer_text: "We are part of the Technical University of Kosice and the Faculty of Electrical Engineering and Informatics."
+        },
+        sk: {
+          research_group: "Vyskumna Skupina",
+          people: "Ludia",
+          publications: "Publikacie",
+          teaching: "Pedagogika",
+          conference: "Konferencia",
+          journal: "Casopis",
+          affiliation: "Technicka univerzita v Kosiciach - Fakulta elektrotechniky a informatiky",
+          footer_text: "Sme sucastou Technickej univerzity v Kosiciach a Fakulty elektrotechniky a informatiky."
+        }
+      };
+      return (dictionary[this.language] && dictionary[this.language][key]) || dictionary.en[key] || key;
+    },
+    setLanguage(lang) {
+      this.language = lang;
+    },
+    personInfo(person) {
+      if (!person) {
+        return "";
+      }
+      if (this.language === "sk" && person.infoSK) {
+        return person.infoSK;
+      }
+      return person.info || "";
+    },
     getImage(filename) {
       return require(`../assets/${filename}`);
     },
@@ -438,6 +489,7 @@ export default {
     }
   },
   mounted() {
+    this.language = "en";
     this.setRouteFromPath();
     window.addEventListener("popstate", this.setRouteFromPath);
     // Načítanie particles s pôvodnou konfiguráciou
@@ -475,6 +527,7 @@ export default {
             name: row.name,
             email: row.email,
             info: row.info,
+            infoSK: row.infoSK || "",
             image: row.image, // napr. "jaro.jpg"
             links: []
           };
@@ -518,7 +571,9 @@ export default {
           .filter(row => row.Name)
           .map(row => ({
             name: row.Name,
+            nameSK: row.NameSK || "",
             description: row.Description || "",
+            descriptionSK: row.DescriptionSK || "",
             link: row.Link || ""
           }));
 
@@ -646,6 +701,40 @@ export default {
   flex-direction: column;
   gap: 18px;
   align-items: center;
+}
+
+.header-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(248, 250, 252, 0.14);
+  border: 1px solid rgba(248, 250, 252, 0.2);
+}
+
+.lang-switch button {
+  border: none;
+  background: transparent;
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-switch button.active {
+  background: #ffffff;
+  color: #0f172a;
 }
 .eyebrow {
   font-size: 0.85em;
@@ -1119,6 +1208,10 @@ export default {
   }
   .header {
     padding: 28px 18px;
+  }
+  .header-top {
+    flex-direction: column;
+    align-items: center;
   }
   .stats {
     gap: 12px;
