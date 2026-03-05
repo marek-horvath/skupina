@@ -1,1 +1,18 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/skupina/favicon.ico"><title>SEUG</title><script defer="defer" src="/skupina/js/chunk-vendors.ae5bcb98.js"></script><script defer="defer" src="/skupina/js/app.19c036a3.js"></script><link href="/skupina/css/app.1942cd78.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but skupina doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script></body></html>
+<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>SEUG</title><script>(function() {
+        var search = window.location.search;
+        if (!search || search.indexOf('?/') !== 0) {
+          return;
+        }
+        var decoded = search
+          .slice(2)
+          .split('&')
+          .map(function(s) { return s.replace(/~and~/g, '&'); })
+          .join('?');
+
+        var baseUrl = '/';
+        var keepSegments = baseUrl.split('/').filter(Boolean).length;
+        var pathParts = window.location.pathname.split('/');
+        var basePath = pathParts.slice(0, keepSegments + 1).join('/');
+
+        window.history.replaceState(null, '', basePath + '/' + decoded + window.location.hash);
+      })();</script><script defer="defer" src="/js/chunk-vendors.6f05d637.js"></script><script defer="defer" src="/js/app.6069cd22.js"></script><link href="/css/app.a8537945.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but skupina doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script></body></html>
