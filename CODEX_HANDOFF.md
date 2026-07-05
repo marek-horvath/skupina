@@ -39,6 +39,7 @@ Data loading:
 - In production, the frontend uses `VUE_APP_API_BASE_URL` if set, otherwise
   `https://seug-api.167.233.132.16.sslip.io`.
 - If API reads fail, the public site falls back to JSON files in `public/data/`.
+- Production frontend builds use Vue `publicPath` `/skupina/` for GitHub Pages. `PortfolioPage.vue` strips this base path when reading routes and adds it back for `pushState`.
 
 Editable data:
 - People: `data/people-db.json` and `public/data/people.json`.

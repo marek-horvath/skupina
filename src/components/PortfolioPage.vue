@@ -185,6 +185,7 @@ import EventsTab from "./EventsTab.vue";
 
 const API_BASE_URL = process.env.VUE_APP_API_BASE_URL ||
   (process.env.NODE_ENV === "production" ? "https://seug-api.167.233.132.16.sslip.io" : "");
+const APP_BASE_PATH = (process.env.BASE_URL || "/").replace(/\/+$/, "");
 const SITE_URL = (process.env.VUE_APP_SITE_URL || "https://marek-horvath.github.io/skupina").replace(/\/+$/, "");
 const imageAssets = require.context("../assets", false, /\.(png|jpe?g)$/);
 
@@ -241,7 +242,7 @@ export default {
     activeTab() {
       if (!this.suppressRouteSync && !this.selectedPerson) {
         const nextPath = this.activeTab === "people" ? "/" : `/${this.activeTab}`;
-        window.history.pushState({}, "", nextPath);
+        window.history.pushState({}, "", this.appPath(nextPath));
       }
       this.$nextTick(() => {
         window.dispatchEvent(new Event("resize"));
@@ -479,6 +480,17 @@ export default {
     }
   },
   methods: {
+    appPath(path) {
+      const normalized = path.startsWith("/") ? path : `/${path}`;
+      return `${APP_BASE_PATH}${normalized}`;
+    },
+    currentRoutePath() {
+      let pathname = window.location.pathname;
+      if (APP_BASE_PATH && (pathname === APP_BASE_PATH || pathname.startsWith(`${APP_BASE_PATH}/`))) {
+        pathname = pathname.slice(APP_BASE_PATH.length) || "/";
+      }
+      return pathname;
+    },
     localizedRole(role) {
       const roles = {
         en: {
@@ -613,7 +625,7 @@ export default {
       this.setCanonicalLink(this.canonicalUrl);
     },
     setRouteFromPath() {
-      const part = window.location.pathname.replace(/^\/+/, "").split("/")[0];
+      const part = this.currentRoutePath().replace(/^\/+/, "").split("/")[0];
       this.suppressRouteSync = true;
       if (["publications", "teaching", "events"].includes(part)) {
         this.currentSlug = "";
@@ -899,14 +911,14 @@ export default {
         target: `/${slug}`,
         metadata: { role: person.role || "" }
       });
-      window.history.pushState({}, "", `/${slug}`);
+      window.history.pushState({}, "", this.appPath(`/${slug}`));
       this.currentSlug = slug;
       this.$nextTick(() => {
         this.updateSeoMeta();
       });
     },
     closePerson() {
-      window.history.pushState({}, "", "/");
+      window.history.pushState({}, "", this.appPath("/"));
       this.currentSlug = "";
       this.activeTab = "people";
       this.$nextTick(() => {
