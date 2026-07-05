@@ -8,6 +8,7 @@
     "export:people": "node server/export-people.js",
     "sync:publications": "node server/openalex-sync.js",
     "build": "vue-cli-service build",
+    "postbuild": "node server/create-spa-fallbacks.js",
     "lint": "vue-cli-service lint",
     "deploy": "gh-pages -d dist"
   },

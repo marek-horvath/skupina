@@ -40,6 +40,7 @@ Data loading:
   `https://seug-api.167.233.132.16.sslip.io`.
 - If API reads fail, the public site falls back to JSON files in `public/data/`.
 - Production frontend builds use Vue `publicPath` `/skupina/` for GitHub Pages. `PortfolioPage.vue` strips this base path when reading routes and adds it back for `pushState`.
+- `npm run build` runs `server/create-spa-fallbacks.js` as `postbuild`; it copies `dist/index.html` into route directories for tabs, admin, and active person slugs so direct GitHub Pages URLs do not 404.
 
 Editable data:
 - People: `data/people-db.json` and `public/data/people.json`.
