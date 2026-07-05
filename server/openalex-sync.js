@@ -8,8 +8,8 @@ const OPENALEX_API_KEY = process.env.OPENALEX_API_KEY || "";
 const INCLUDE_PREPRINTS = process.env.OPENALEX_INCLUDE_PREPRINTS === "true";
 const MAX_PAGES_PER_AUTHOR = Number(process.env.OPENALEX_MAX_PAGES_PER_AUTHOR || 5);
 
-const DATA_DIR = path.join(ROOT_DIR, "data");
-const PUBLIC_DATA_DIR = path.join(ROOT_DIR, "public", "data");
+const DATA_DIR = path.resolve(process.env.SEUG_DATA_DIR || path.join(ROOT_DIR, "data"));
+const PUBLIC_DATA_DIR = path.resolve(process.env.SEUG_PUBLIC_DATA_DIR || path.join(ROOT_DIR, "public", "data"));
 const PEOPLE_DB_PATH = path.join(DATA_DIR, "people-db.json");
 const AUTHOR_DB_PATH = path.join(DATA_DIR, "openalex-authors.json");
 const PUBLICATION_DB_PATH = path.join(DATA_DIR, "publications-db.json");
@@ -38,6 +38,17 @@ const WORK_SELECT_FIELDS = [
   "cited_by_count",
   "is_retracted"
 ].join(",");
+
+const PUBLICATION_EDIT_FIELDS = [
+  "date",
+  "title",
+  "authors",
+  "venue",
+  "link",
+  "type",
+  "doi",
+  "openalexId"
+];
 
 function nowIso() {
   return new Date().toISOString();
@@ -161,6 +172,7 @@ async function fetchPeople() {
   }
 
   return people
+    .filter(person => person.visible !== false)
     .map(person => ({
       name: String(person.name || "").trim(),
       role: String(person.role || "").trim(),
@@ -481,6 +493,111 @@ function publicationKey(publication) {
   return publication.doi ? `doi:${publication.doi}` : `openalex:${publication.openalexId}`;
 }
 
+function publicationIdentityKey(publication) {
+  const openalexId = compactOpenAlexId(publication.openalexId || publication.id);
+  if (openalexId) {
+    return `openalex:${openalexId}`;
+  }
+
+  const doiFromLink = /^https?:\/\/(dx\.)?doi\.org\//i.test(String(publication.link || ""))
+    ? normalizeDoi(publication.link)
+    : "";
+  const doi = normalizeDoi(publication.doi) || doiFromLink;
+  if (doi) {
+    return `doi:${doi}`;
+  }
+
+  const title = normalizeTitle(publication.title);
+  const year = String(publication.date || publication.publication_year || "").trim();
+  return title && year ? `title:${title}:${year}` : "";
+}
+
+function mapPublicationsByIdentity(publications) {
+  const map = new Map();
+  (publications || []).forEach(publication => {
+    const key = publicationIdentityKey(publication);
+    if (key && !map.has(key)) {
+      map.set(key, publication);
+    }
+  });
+  return map;
+}
+
+function sortPublications(publications) {
+  return publications.slice().sort((a, b) => {
+    const yearDiff = Number(b.date || 0) - Number(a.date || 0);
+    return yearDiff || a.title.localeCompare(b.title);
+  });
+}
+
+function mergeManualPublication(syncedPublication, manualPublication) {
+  const merged = {
+    ...syncedPublication,
+    sourceType: syncedPublication.sourceType || manualPublication.sourceType || "",
+    openalexType: syncedPublication.openalexType || manualPublication.openalexType || "",
+    matchedAuthors: mergeArray(syncedPublication.matchedAuthors, manualPublication.matchedAuthors),
+    manual: true,
+    manualEditedAt: manualPublication.manualEditedAt || ""
+  };
+
+  PUBLICATION_EDIT_FIELDS.forEach(field => {
+    if (Object.prototype.hasOwnProperty.call(manualPublication, field)) {
+      merged[field] = manualPublication[field];
+    }
+  });
+
+  return merged;
+}
+
+function mergeSyncedPublicationsWithLocalState(syncedPublications, previousPublications, deletedPublicationKeys) {
+  const previousByKey = mapPublicationsByIdentity(previousPublications);
+  const deletedKeys = new Set(deletedPublicationKeys || []);
+  const syncedKeys = new Set();
+  const publications = [];
+  const stats = {
+    skippedDeletedPublicationCount: 0,
+    preservedManualPublicationCount: 0,
+    carriedManualPublicationCount: 0
+  };
+
+  syncedPublications.forEach(publication => {
+    const key = publicationIdentityKey(publication);
+    if (key) {
+      syncedKeys.add(key);
+    }
+    if (key && deletedKeys.has(key)) {
+      stats.skippedDeletedPublicationCount += 1;
+      return;
+    }
+
+    const previous = key ? previousByKey.get(key) : null;
+    if (previous && previous.manual) {
+      publications.push(mergeManualPublication(publication, previous));
+      stats.preservedManualPublicationCount += 1;
+      return;
+    }
+
+    publications.push({
+      ...publication,
+      manual: false
+    });
+  });
+
+  (previousPublications || []).forEach(publication => {
+    const key = publicationIdentityKey(publication);
+    if (!publication.manual || (key && (syncedKeys.has(key) || deletedKeys.has(key)))) {
+      return;
+    }
+    publications.push(publication);
+    stats.carriedManualPublicationCount += 1;
+  });
+
+  return {
+    publications: sortPublications(publications),
+    stats
+  };
+}
+
 function mergeArray(first, second) {
   return Array.from(new Set([...(first || []), ...(second || [])].filter(Boolean)));
 }
@@ -516,22 +633,25 @@ function normalizeAndDedupeWorks(rawWorks) {
     .map(normalizeWork)
     .forEach(publication => upsertPublication(publications, publication));
 
-  return Array.from(publications.values())
+  return sortPublications(Array.from(publications.values())
     .map(publication => {
       const { _score, ...cleanPublication } = publication;
       return {
         ...cleanPublication,
         matchedAuthors: mergeArray(publication.matchedAuthors)
       };
-    })
-    .sort((a, b) => {
-      const yearDiff = Number(b.date || 0) - Number(a.date || 0);
-      return yearDiff || a.title.localeCompare(b.title);
-    });
+    }));
 }
 
 async function syncPublications(options = {}) {
   const startedAt = nowIso();
+  const previousDb = await readJson(PUBLICATION_DB_PATH, {});
+  const previousPublications = Array.isArray(previousDb.publications)
+    ? previousDb.publications
+    : await readJson(PUBLICATIONS_PATH, []);
+  const deletedPublicationKeys = Array.isArray(previousDb.meta && previousDb.meta.deletedPublicationKeys)
+    ? previousDb.meta.deletedPublicationKeys
+    : [];
   const people = await fetchPeople();
   const { resolved, unresolved } = await resolveAuthors(people, options);
   const rawWorks = [];
@@ -541,10 +661,40 @@ async function syncPublications(options = {}) {
     rawWorks.push(...works);
   }
 
-  const publications = normalizeAndDedupeWorks(rawWorks);
+  const syncedPublications = normalizeAndDedupeWorks(rawWorks);
+  const merged = mergeSyncedPublicationsWithLocalState(
+    syncedPublications,
+    previousPublications,
+    deletedPublicationKeys
+  );
+  const publications = merged.publications;
+  const syncSummary = {
+    generatedAt: nowIso(),
+    startedAt,
+    peopleCount: people.length,
+    resolvedAuthorCount: resolved.length,
+    unresolvedAuthorCount: unresolved.length,
+    rawWorkCount: rawWorks.length,
+    syncedPublicationCount: syncedPublications.length,
+    publicationCount: publications.length,
+    manualPublicationCount: publications.filter(publication => publication.manual).length,
+    skippedDeletedPublicationCount: merged.stats.skippedDeletedPublicationCount,
+    preservedManualPublicationCount: merged.stats.preservedManualPublicationCount,
+    carriedManualPublicationCount: merged.stats.carriedManualPublicationCount,
+    deletedPublicationKeyCount: deletedPublicationKeys.length
+  };
+  const syncHistory = [
+    syncSummary,
+    ...(
+      Array.isArray(previousDb.meta && previousDb.meta.syncHistory)
+        ? previousDb.meta.syncHistory
+        : []
+    )
+  ].slice(0, 10);
+
   const meta = {
     source: "OpenAlex",
-    generatedAt: nowIso(),
+    generatedAt: syncSummary.generatedAt,
     startedAt,
     peopleSource: PEOPLE_DB_PATH,
     institutionRor: TUKE_ROR,
@@ -554,7 +704,14 @@ async function syncPublications(options = {}) {
     resolvedAuthorCount: resolved.length,
     unresolvedAuthorCount: unresolved.length,
     rawWorkCount: rawWorks.length,
+    syncedPublicationCount: syncedPublications.length,
     publicationCount: publications.length,
+    manualPublicationCount: publications.filter(publication => publication.manual).length,
+    deletedPublicationKeys,
+    deletedPublicationKeyCount: deletedPublicationKeys.length,
+    localEditedAt: previousDb.meta && previousDb.meta.localEditedAt ? previousDb.meta.localEditedAt : "",
+    syncHistory,
+    ...merged.stats,
     resolvedAuthors: resolved.map(author => ({
       name: author.name,
       displayName: author.displayName,
@@ -607,6 +764,8 @@ if (require.main === module) {
 
 module.exports = {
   paths: {
+    DATA_DIR,
+    PUBLIC_DATA_DIR,
     PEOPLE_DB_PATH,
     PEOPLE_PATH,
     AUTHOR_DB_PATH,
@@ -614,5 +773,6 @@ module.exports = {
     PUBLICATIONS_PATH,
     PUBLICATIONS_META_PATH
   },
+  publicationIdentityKey,
   syncPublications
 };

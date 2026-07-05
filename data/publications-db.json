@@ -14,14 +14,14 @@
     "publicationCount": 185,
     "resolvedAuthors": [
       {
-        "name": "Jaroslav Poruban",
+        "name": "Jaroslav Porubän",
         "displayName": "Jaroslav Porubän",
         "openalexId": "https://openalex.org/A5007967679",
         "orcid": "https://orcid.org/0000-0001-9706-2897",
         "resolution": "search"
       },
       {
-        "name": "Emília Pietrikova",
+        "name": "Emília Pietriková",
         "displayName": "Emília Pietriková",
         "openalexId": "https://openalex.org/A5042449931",
         "orcid": "https://orcid.org/0000-0002-9790-6874",
@@ -35,42 +35,42 @@
         "resolution": "orcid"
       },
       {
-        "name": "Matus Sulir",
+        "name": "Matúš Sulír",
         "displayName": "Matúš Sulír",
         "openalexId": "https://openalex.org/A5064689256",
         "orcid": "https://orcid.org/0000-0003-2221-9225",
         "resolution": "search"
       },
       {
-        "name": "Michaela Bacikova",
+        "name": "Michaela Bačíková",
         "displayName": "Michaela Bačíková",
         "openalexId": "https://openalex.org/A5034319548",
         "orcid": "https://orcid.org/0000-0002-9436-8425",
         "resolution": "search"
       },
       {
-        "name": "Filip Gurbal",
+        "name": "Filip Gurbáľ",
         "displayName": "Filip Gurbáľ",
         "openalexId": "https://openalex.org/A5015063708",
         "orcid": "https://orcid.org/0000-0001-7691-9273",
         "resolution": "search"
       },
       {
-        "name": "Marek Horvath",
+        "name": "Marek Horváth",
         "displayName": "Marek Horváth",
         "openalexId": "https://openalex.org/A5015785379",
         "orcid": "https://orcid.org/0009-0005-4649-2308",
         "resolution": "orcid"
       },
       {
-        "name": "Tomas Kormanik",
+        "name": "Tomáš Kormaník",
         "displayName": "Tomáš Kormaník",
         "openalexId": "https://openalex.org/A5093471353",
         "orcid": "https://orcid.org/0009-0002-6622-8027",
         "resolution": "search"
       },
       {
-        "name": "Lenka Bubenkova",
+        "name": "Lenka Bubeňková",
         "displayName": "Lenka Bubeňková",
         "openalexId": "https://openalex.org/A5116057275",
         "orcid": "",
@@ -78,7 +78,30 @@
       }
     ],
     "unresolvedAuthors": [],
-    "localEditedAt": "2026-07-02T20:59:16.438Z"
+    "localEditedAt": "2026-07-02T20:59:16.438Z",
+    "manualPublicationCount": 0,
+    "deletedPublicationKeys": [],
+    "deletedPublicationKeyCount": 0,
+    "skippedDeletedPublicationCount": 0,
+    "preservedManualPublicationCount": 0,
+    "carriedManualPublicationCount": 0,
+    "syncHistory": [
+      {
+        "generatedAt": "2026-07-02T10:34:16.989Z",
+        "startedAt": "2026-07-02T10:34:11.663Z",
+        "peopleCount": 9,
+        "resolvedAuthorCount": 9,
+        "unresolvedAuthorCount": 0,
+        "rawWorkCount": 316,
+        "syncedPublicationCount": 185,
+        "publicationCount": 185,
+        "manualPublicationCount": 0,
+        "skippedDeletedPublicationCount": 0,
+        "preservedManualPublicationCount": 0,
+        "carriedManualPublicationCount": 0,
+        "deletedPublicationKeyCount": 0
+      }
+    ]
   },
   "publications": [
     {
@@ -93,8 +116,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -110,8 +133,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -127,7 +150,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -160,7 +183,7 @@
       "openalexType": "article",
       "matchedAuthors": [
         "Sergej Chodarev",
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -176,14 +199,14 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Lenka Bubenkova"
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
     {
       "date": "2025",
       "title": "Code Reuse and Good Clones in Programming Education",
-      "authors": "Lenka Bubeňková; Emília Pietriková; Marek Horvath",
+      "authors": "Lenka Bubeňková; Emília Pietriková; Marek Horváth",
       "venue": "",
       "link": "https://doi.org/10.1109/sami63904.2025.10883291",
       "type": "journal",
@@ -192,8 +215,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Lenka Bubenkova"
+        "Emília Pietriková",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -209,7 +232,7 @@
       "sourceType": "repository",
       "openalexType": "dissertation",
       "matchedAuthors": [
-        "Marek Horvath"
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -225,16 +248,16 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath",
-        "Lenka Bubenkova"
+        "Emília Pietriková",
+        "Marek Horváth",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
     {
       "date": "2025",
       "title": "Detecting Programmer Identity from Source Code with Machine Learning Methods",
-      "authors": "Marek Horváth; Martin Čupalka; Emília Pietriková",
+      "authors": "Marek Horváth; Martin Čupálka; Emília Pietriková",
       "venue": "",
       "link": "https://doi.org/10.1109/iceta67772.2025.11280212",
       "type": "journal",
@@ -243,8 +266,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -260,7 +283,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Marek Horvath"
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -276,9 +299,9 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath",
-        "Lenka Bubenkova"
+        "Emília Pietriková",
+        "Marek Horváth",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -294,7 +317,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -326,9 +349,9 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Filip Gurbal",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Filip Gurbáľ",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -344,7 +367,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -360,9 +383,9 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Marek Horvath",
-        "Tomas Kormanik",
-        "Lenka Bubenkova"
+        "Marek Horváth",
+        "Tomáš Kormaník",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -378,7 +401,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Lenka Bubenkova"
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -394,7 +417,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -410,8 +433,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Tomas Kormanik"
+        "Jaroslav Porubän",
+        "Tomáš Kormaník"
       ],
       "manual": false
     },
@@ -427,8 +450,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -444,8 +467,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Tomas Kormanik"
+        "Jaroslav Porubän",
+        "Tomáš Kormaník"
       ],
       "manual": false
     },
@@ -461,8 +484,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Lenka Bubenkova"
+        "Emília Pietriková",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -478,8 +501,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Filip Gurbal",
-        "Marek Horvath"
+        "Filip Gurbáľ",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -495,7 +518,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Filip Gurbal"
+        "Filip Gurbáľ"
       ],
       "manual": false
     },
@@ -511,14 +534,14 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
     {
       "date": "2024",
       "title": "Improving Software Education with Technical Debt Analysis Tool",
-      "authors": "Marek Horvath; Emília Pietriková; Jakub Sasak",
+      "authors": "Marek Horváth; Emília Pietriková; Jakub Sasak",
       "venue": "",
       "link": "https://doi.org/10.1109/iceta63795.2024.10850816",
       "type": "journal",
@@ -527,7 +550,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -543,7 +566,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -575,8 +598,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Lenka Bubenkova"
+        "Emília Pietriková",
+        "Lenka Bubeňková"
       ],
       "manual": false
     },
@@ -592,9 +615,9 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -626,8 +649,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Tomas Kormanik"
+        "Jaroslav Porubän",
+        "Tomáš Kormaník"
       ],
       "manual": false
     },
@@ -643,8 +666,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Filip Gurbal"
+        "Jaroslav Porubän",
+        "Filip Gurbáľ"
       ],
       "manual": false
     },
@@ -660,7 +683,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -676,8 +699,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Tomas Kormanik"
+        "Jaroslav Porubän",
+        "Tomáš Kormaník"
       ],
       "manual": false
     },
@@ -693,7 +716,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Tomas Kormanik"
+        "Tomáš Kormaník"
       ],
       "manual": false
     },
@@ -709,7 +732,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -725,7 +748,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -741,7 +764,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -773,8 +796,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
-        "Marek Horvath"
+        "Emília Pietriková",
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -790,7 +813,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -806,7 +829,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -822,7 +845,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -838,7 +861,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -854,7 +877,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -870,9 +893,9 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -888,7 +911,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -904,7 +927,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -936,11 +959,11 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Matus Sulir",
-        "Michaela Bacikova",
-        "Filip Gurbal"
+        "Matúš Sulír",
+        "Michaela Bačíková",
+        "Filip Gurbáľ"
       ],
       "manual": false
     },
@@ -956,10 +979,10 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Matus Sulir",
-        "Michaela Bacikova"
+        "Matúš Sulír",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -975,10 +998,10 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Matus Sulir",
-        "Filip Gurbal"
+        "Matúš Sulír",
+        "Filip Gurbáľ"
       ],
       "manual": false
     },
@@ -994,8 +1017,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1011,7 +1034,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1027,7 +1050,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1044,8 +1067,8 @@
       "openalexType": "article",
       "matchedAuthors": [
         "Sergej Chodarev",
-        "Matus Sulir",
-        "Michaela Bacikova"
+        "Matúš Sulír",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1062,8 +1085,8 @@
       "openalexType": "article",
       "matchedAuthors": [
         "Sergej Chodarev",
-        "Matus Sulir",
-        "Michaela Bacikova"
+        "Matúš Sulír",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1079,7 +1102,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1095,7 +1118,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1111,7 +1134,7 @@
       "sourceType": "book series",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1127,7 +1150,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1143,7 +1166,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1160,7 +1183,7 @@
       "openalexType": "article",
       "matchedAuthors": [
         "Sergej Chodarev",
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1176,7 +1199,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1192,8 +1215,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1209,7 +1232,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1225,7 +1248,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1257,7 +1280,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1273,7 +1296,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Marek Horvath"
+        "Marek Horváth"
       ],
       "manual": false
     },
@@ -1289,7 +1312,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1305,7 +1328,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1321,7 +1344,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1337,7 +1360,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1353,7 +1376,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1369,7 +1392,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1385,7 +1408,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1401,7 +1424,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1417,7 +1440,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1433,7 +1456,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1449,7 +1472,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1465,7 +1488,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1481,7 +1504,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1497,7 +1520,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1513,7 +1536,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1529,7 +1552,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -1547,7 +1570,7 @@
       "openalexType": "article",
       "matchedAuthors": [
         "Sergej Chodarev",
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1563,7 +1586,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1579,14 +1602,14 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
     {
       "date": "2017",
       "title": "Exposing Runtime Information through Source Code Annotations",
-      "authors": "MatĂşĹˇ SulĂ­r; Jaroslav Porubän",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
       "venue": "Acta Electrotechnica et Informatica",
       "link": "https://doi.org/10.15546/aeei-2017-0001",
       "type": "journal",
@@ -1595,7 +1618,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1611,8 +1634,8 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1628,8 +1651,8 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1645,7 +1668,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1661,7 +1684,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1677,7 +1700,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1693,8 +1716,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1710,7 +1733,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1742,7 +1765,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1774,7 +1797,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1790,8 +1813,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1807,8 +1830,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1824,8 +1847,8 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -1841,7 +1864,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1857,8 +1880,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1874,8 +1897,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1891,7 +1914,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1907,7 +1930,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1923,7 +1946,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -1939,7 +1962,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -1956,7 +1979,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -1972,8 +1995,8 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -1989,15 +2012,15 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
     {
       "date": "2016",
       "title": "遠隔実験室としてのクラウドベース仮想マシンを用いた第3者構内における実行実験:それらの学校における高校生により制御された実験の事例研究【Powered by NICT】",
-      "authors": "Lakatos Dominik; Jaroslav Porubän; Nosal’ Milan",
+      "authors": "Lakatoš Dominik; Jaroslav Porubän; Nosáľ Milan",
       "venue": "IEEE Conference Proceedings",
       "link": "http://jglobal.jst.go.jp/public/20090422/201702267050871439",
       "type": "conference",
@@ -2006,7 +2029,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2038,7 +2061,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2054,7 +2077,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2070,7 +2093,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2086,9 +2109,9 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2120,7 +2143,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2136,7 +2159,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2153,7 +2176,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2169,7 +2192,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2185,7 +2208,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2202,7 +2225,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2218,7 +2241,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2235,7 +2258,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2251,8 +2274,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2268,7 +2291,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2284,7 +2307,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2300,9 +2323,9 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2318,7 +2341,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2334,8 +2357,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Matus Sulir"
+        "Jaroslav Porubän",
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2351,7 +2374,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2367,7 +2390,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2383,7 +2406,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2399,7 +2422,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2416,7 +2439,7 @@
       "sourceType": "journal",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2432,8 +2455,8 @@
       "sourceType": "book series",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2449,8 +2472,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2466,7 +2489,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2482,7 +2505,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2498,7 +2521,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2514,7 +2537,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2530,7 +2553,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2546,9 +2569,9 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
+        "Jaroslav Porubän",
         "Sergej Chodarev",
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2564,7 +2587,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2580,7 +2603,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Matus Sulir"
+        "Matúš Sulír"
       ],
       "manual": false
     },
@@ -2596,7 +2619,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2612,7 +2635,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2628,7 +2651,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2644,8 +2667,8 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2661,8 +2684,8 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2678,8 +2701,8 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2695,7 +2718,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2712,7 +2735,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2729,7 +2752,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2745,7 +2768,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova"
+        "Emília Pietriková"
       ],
       "manual": false
     },
@@ -2761,7 +2784,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2778,7 +2801,7 @@
       "sourceType": "ebook platform",
       "openalexType": "book-chapter",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2794,8 +2817,8 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban",
-        "Michaela Bacikova"
+        "Jaroslav Porubän",
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2811,7 +2834,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2827,7 +2850,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2843,7 +2866,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2859,7 +2882,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2875,7 +2898,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2891,7 +2914,7 @@
       "sourceType": "conference",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2923,7 +2946,7 @@
       "sourceType": "repository",
       "openalexType": "dissertation",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -2939,7 +2962,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Emília Pietrikova",
+        "Emília Pietriková",
         "Sergej Chodarev"
       ],
       "manual": false
@@ -2956,7 +2979,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2972,7 +2995,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -2988,7 +3011,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3004,7 +3027,7 @@
       "sourceType": "repository",
       "openalexType": "dissertation",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -3020,7 +3043,7 @@
       "sourceType": "repository",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3036,7 +3059,7 @@
       "sourceType": "repository",
       "openalexType": "dissertation",
       "matchedAuthors": [
-        "Michaela Bacikova"
+        "Michaela Bačíková"
       ],
       "manual": false
     },
@@ -3052,7 +3075,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3068,7 +3091,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3084,7 +3107,7 @@
       "sourceType": "journal",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3100,7 +3123,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     },
@@ -3116,7 +3139,7 @@
       "sourceType": "",
       "openalexType": "article",
       "matchedAuthors": [
-        "Jaroslav Poruban"
+        "Jaroslav Porubän"
       ],
       "manual": false
     }

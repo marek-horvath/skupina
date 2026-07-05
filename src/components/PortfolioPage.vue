@@ -10,7 +10,7 @@
         <div class="container">
           <div class="header-top">
             <div class="eyebrow">{{ t("research_group") }}</div>
-            <div class="lang-switch" role="group" aria-label="Language switch">
+            <div class="lang-switch" role="group" :aria-label="t('language_switch')">
               <button type="button" :class="{ active: language === 'sk' }" @click="setLanguage('sk')">SK</button>
               <button type="button" :class="{ active: language === 'en' }" @click="setLanguage('en')">EN</button>
             </div>
@@ -29,25 +29,30 @@
           </div>
           <div class="affiliation">
             <div class="logos">
-              <img :src="getImage('tuke-logo.png')" alt="TUKE Logo" class="logo" />
-              <img :src="getImage('kpi-logo.png')" alt="KPI TUKE Logo" class="logo" />
+              <img :src="getImage('tuke-logo.png')" alt="TUKE Logo" class="logo" decoding="async" />
+              <img :src="getImage('kpi-logo.png')" alt="KPI TUKE Logo" class="logo" decoding="async" />
             </div>
             <p class="affiliation-text">{{ t("affiliation") }}</p>
           </div>
         </div>
       </header>
 
-      <!-- Tabs for switching between People, Publications, and Teaching -->
+      <!-- Tabs for switching between site sections -->
       <TabNav v-model="tabModel" :tabs="localizedTabs" />
 
       <!-- Main content (People or Publications) -->
       <div class="container content">
         <div v-if="selectedPerson" class="person-detail">
+          <button type="button" class="person-back-btn" @click="closePerson">
+            {{ t("back_to_people") }}
+          </button>
           <div class="person-hero">
             <img
               :src="getImage(selectedPerson.image)"
-              alt="Profile Picture"
+              :alt="selectedPerson.name"
               class="person-photo"
+              loading="lazy"
+              decoding="async"
             />
             <div class="person-meta">
               <div class="person-name-row">
@@ -58,12 +63,14 @@
                   target="_blank"
                   class="person-linkedin"
                   @click="trackPersonDetailLink(selectedPerson, 'LinkedIn', personLinkedin(selectedPerson))"
-                  aria-label="LinkedIn profile"
+                  :aria-label="t('linkedin_profile')"
                 >
                   <img
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
                     alt="LinkedIn"
                     class="linkedin-logo"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </a>
                 <a
@@ -72,9 +79,9 @@
                   target="_blank"
                   class="person-linkedin"
                   @click="trackPersonDetailLink(selectedPerson, 'ORCID', personOrcid(selectedPerson))"
-                  aria-label="ORCID profile"
+                  :aria-label="t('orcid_profile')"
                 >
-                  <img :src="getImage('orcid.png')" alt="ORCID" class="profile-social-icon" />
+                  <img :src="getImage('orcid.png')" alt="ORCID" class="profile-social-icon" loading="lazy" decoding="async" />
                 </a>
                 <a
                   v-if="personWeb(selectedPerson)"
@@ -82,11 +89,12 @@
                   target="_blank"
                   class="person-linkedin"
                   @click="trackPersonDetailLink(selectedPerson, 'Web', personWeb(selectedPerson))"
-                  aria-label="Personal website"
+                  :aria-label="t('personal_website')"
                 >
-                  <img :src="getImage('web.png')" alt="Website" class="profile-social-icon" />
+                  <img :src="getImage('web.png')" :alt="t('website')" class="profile-social-icon" loading="lazy" decoding="async" />
                 </a>
               </div>
+              <p v-if="selectedPerson.role" class="person-role">{{ localizedRole(selectedPerson.role) }}</p>
               <p class="person-email">{{ selectedPerson.email }}</p>
               <p class="person-info">{{ personInfo(selectedPerson) }}</p>
             </div>
@@ -126,13 +134,13 @@
                 </div>
               </div>
             </div>
-            <div v-if="hasMoreSelectedPublications" ref="personLoadMore" class="person-load-more">Loading more…</div>
+            <div v-if="hasMoreSelectedPublications" ref="personLoadMore" class="person-load-more">{{ language === "sk" ? "Načítavam..." : "Loading more..." }}</div>
           </div>
         </div>
         <template v-else>
           <PeopleTab
             v-if="activeTab === 'people'"
-            :people="people"
+            :people="visiblePeople"
             :language="language"
             :getImage="getImage"
             @select="openPerson"
@@ -145,18 +153,22 @@
             @analytics="handleAnalytics"
           />
           <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" :language="language" />
+          <EventsTab
+            v-else-if="activeTab === 'events'"
+            :events="eventsContent"
+            :language="language"
+            @analytics="handleAnalytics"
+          />
         </template>
       </div> <!-- .content -->
 
-      <!-- Footer with logos -->
       <footer class="footer">
-        <div class="footer-content">
-          <div class="logos">
-            <img :src="getImage('tuke-logo.png')" alt="TÚ KE Logo" class="logo" />
-            <img :src="getImage('kpi-logo.png')" alt="KPI TÚ Logo" class="logo" />
-          </div>
-          <p class="footer-text">{{ t("footer_text") }}</p>
-        </div>
+        <span v-if="lastUpdatedDate">{{ t("last_updated") }}: {{ lastUpdatedDate }}</span>
+        <span v-if="lastUpdatedDate" class="footer-separator" aria-hidden="true">/</span>
+        <span>
+          {{ t("developed_by") }}
+          <a href="https://marek-horvath.github.io/portfolio/seug" target="_blank" rel="noopener">Marek Horváth</a>
+        </span>
       </footer>
     </div> <!-- .portfolio-content -->
   </div> <!-- .portfolio-wrapper -->
@@ -168,14 +180,39 @@ import TabNav from "./TabNav.vue";
 import PeopleTab from "./PeopleTab.vue";
 import PublicationsTab from "./PublicationsTab.vue";
 import TeachingTab from "./TeachingTab.vue";
+import EventsTab from "./EventsTab.vue";
 /* global particlesJS */
+
+const API_BASE_URL = process.env.VUE_APP_API_BASE_URL ||
+  (process.env.NODE_ENV === "production" ? "https://seug-api.167.233.132.16.sslip.io" : "");
+const SITE_URL = (process.env.VUE_APP_SITE_URL || "https://marek-horvath.github.io/skupina").replace(/\/+$/, "");
+const imageAssets = require.context("../assets", false, /\.(png|jpe?g)$/);
+
+const defaultContent = () => ({
+  tabs: [
+    { id: "people", visible: true },
+    { id: "publications", visible: true },
+    { id: "teaching", visible: true },
+    { id: "events", visible: true }
+  ],
+  events: {
+    intro: "",
+    introSK: "",
+    pressLinkLabel: "KPI events",
+    pressLinkLabelSK: "Udalosti KPI",
+    pressLinkUrl: "",
+    items: []
+  }
+});
+
 export default {
   name: "ResearchGroup",
   components: {
     TabNav,
     PeopleTab,
     PublicationsTab,
-    TeachingTab
+    TeachingTab,
+    EventsTab
   },
   data() {
     return {
@@ -189,8 +226,10 @@ export default {
         exMembers: [],
         students: []
       },
+      content: defaultContent(),
       teachingSubjects: [],
       publications: [],
+      contentMeta: {},
       currentSlug: "",
       suppressRouteSync: false,
       personVisibleCount: 10,
@@ -200,40 +239,75 @@ export default {
   },
   watch: {
     activeTab() {
-      if (this.suppressRouteSync || this.selectedPerson) {
-        return;
+      if (!this.suppressRouteSync && !this.selectedPerson) {
+        const nextPath = this.activeTab === "people" ? "/" : `/${this.activeTab}`;
+        window.history.pushState({}, "", nextPath);
       }
-      const nextPath = this.activeTab === "people" ? "/" : `/${this.activeTab}`;
-      window.history.pushState({}, "", nextPath);
       this.$nextTick(() => {
         window.dispatchEvent(new Event("resize"));
+        this.updateSeoMeta();
+      });
+    },
+    language() {
+      this.$nextTick(() => {
+        this.updateSeoMeta();
       });
     },
     selectedPerson() {
       this.personVisibleCount = 10;
       this.$nextTick(() => {
         this.setupPersonObserver();
+        this.updateSeoMeta();
       });
     }
   },
   computed: {
     localizedTabs() {
-      return [
-        { id: "people", label: this.t("people") },
-        { id: "publications", label: this.t("publications") },
-        { id: "teaching", label: this.t("teaching") }
-      ];
+      return this.content.tabs
+        .filter(tab => tab.visible !== false)
+        .map(tab => ({
+          id: tab.id,
+          label: this.t(tab.id)
+        }));
+    },
+    eventsContent() {
+      return this.content.events || defaultContent().events;
+    },
+    lastUpdatedDate() {
+      const timestamp = this.contentMeta && this.contentMeta.updatedAt;
+      if (!timestamp) {
+        return "";
+      }
+      const date = new Date(timestamp);
+      if (Number.isNaN(date.getTime())) {
+        return "";
+      }
+      return date.toLocaleDateString(this.language === "sk" ? "sk-SK" : "en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+    },
+    visiblePeople() {
+      return {
+        professor: this.visibleList(this.people.professor),
+        associateProfessor: this.visibleList(this.people.associateProfessor),
+        researchAssistants: this.visibleList(this.people.researchAssistants),
+        phdCandidates: this.visibleList(this.people.phdCandidates),
+        exMembers: this.visibleList(this.people.exMembers),
+        students: this.visibleList(this.people.students)
+      };
     },
     groupName() {
       return this.language === "sk"
-        ? "Skupina softveroveho inzinierstva a pouzitelnosti"
+        ? "Skupina softvérového inžinierstva a použiteľnosti"
         : "Software Engineering and Usability Group";
     },
     groupDescription() {
       return this.language === "sk"
-        ? `Zameriavame sa na interakciu medzi clovekom a pocitacom v dvoch rovinach:
-- Tvorba softveru ludmi (Softverove inzinierstvo)
-- Pouzivanie softveru ludmi (Pouzitelnost)`
+        ? `Zameriavame sa na interakciu medzi človekom a počítačom v dvoch rovinách:
+- Tvorba softvéru ľuďmi (Softvérové inžinierstvo)
+- Používanie softvéru ľuďmi (Použiteľnosť)`
         : `We focus on the interaction between humans and computers in two dimensions:
 - Software creation by humans (Software Engineering)
 - Software usage by humans (Usability)`;
@@ -252,10 +326,10 @@ export default {
     },
     totalPeople() {
       return (
-        this.people.professor.length +
-        this.people.associateProfessor.length +
-        this.people.researchAssistants.length +
-        this.people.phdCandidates.length
+        this.visiblePeople.professor.length +
+        this.visiblePeople.associateProfessor.length +
+        this.visiblePeople.researchAssistants.length +
+        this.visiblePeople.phdCandidates.length
       );
     },
     totalPublications() {
@@ -263,10 +337,10 @@ export default {
     },
     allPeople() {
       return [
-        ...this.people.professor,
-        ...this.people.associateProfessor,
-        ...this.people.researchAssistants,
-        ...this.people.phdCandidates
+        ...this.visiblePeople.professor,
+        ...this.visiblePeople.associateProfessor,
+        ...this.visiblePeople.researchAssistants,
+        ...this.visiblePeople.phdCandidates
       ];
     },
     selectedPerson() {
@@ -315,6 +389,77 @@ export default {
     hasMoreSelectedPublications() {
       return this.personVisibleCount < this.flatSelectedPublications.length;
     },
+    seoPath() {
+      if (this.selectedPerson) {
+        return `/${this.currentSlug}`;
+      }
+      return this.activeTab === "people" ? "/" : `/${this.activeTab}`;
+    },
+    seoPageCopy() {
+      const pages = {
+        en: {
+          people: {
+            title: "People",
+            description: "Meet the Software Engineering and Usability Group at KPI FEI TUKE: professors, research assistants, PhD candidates, students, and alumni."
+          },
+          publications: {
+            title: "Publications",
+            description: "Browse SEUG publications by author, year, and type, including OpenAlex-backed research outputs from KPI FEI TUKE."
+          },
+          teaching: {
+            title: "Teaching",
+            description: "Explore teaching subjects connected with software engineering, usability, programming, and applied computer science at KPI FEI TUKE."
+          },
+          events: {
+            title: "Events",
+            description: "See SEUG events and community formats including Live IT Projects, Game Jams, hackathons, Namakaný deň, and KPI press links."
+          }
+        },
+        sk: {
+          people: {
+            title: "Ľudia",
+            description: "Spoznajte Skupinu softvérového inžinierstva a použiteľnosti na KPI FEI TUKE: profesorov, odborných asistentov, doktorandov, študentov a bývalých členov."
+          },
+          publications: {
+            title: "Publikácie",
+            description: "Prehľad publikácií SEUG podľa autora, roku a typu vrátane výstupov synchronizovaných cez OpenAlex."
+          },
+          teaching: {
+            title: "Pedagogika",
+            description: "Predmety a výučba spojené so softvérovým inžinierstvom, použiteľnosťou, programovaním a aplikovanou informatikou na KPI FEI TUKE."
+          },
+          events: {
+            title: "Udalosti",
+            description: "Udalosti a komunitné formáty SEUG vrátane Live IT Projects, Game Jamov, hackathonov, Namakaného dňa a tlačových správ KPI."
+          }
+        }
+      };
+      const localePages = pages[this.language] || pages.en;
+      return localePages[this.activeTab] || localePages.people;
+    },
+    seoTitle() {
+      if (this.selectedPerson) {
+        const role = this.localizedRole(this.selectedPerson.role);
+        return role ? `${this.selectedPerson.name} - ${role} | SEUG` : `${this.selectedPerson.name} | SEUG`;
+      }
+      return `${this.seoPageCopy.title} | SEUG`;
+    },
+    seoDescription() {
+      if (this.selectedPerson) {
+        const role = this.localizedRole(this.selectedPerson.role);
+        const info = this.personInfo(this.selectedPerson);
+        if (info) {
+          return role ? `${this.selectedPerson.name}, ${role}. ${info}` : `${this.selectedPerson.name}. ${info}`;
+        }
+        return this.language === "sk"
+          ? `${this.selectedPerson.name} v Skupine softvérového inžinierstva a použiteľnosti.`
+          : `${this.selectedPerson.name} in the Software Engineering and Usability Group.`;
+      }
+      return this.seoPageCopy.description;
+    },
+    canonicalUrl() {
+      return `${SITE_URL}${this.seoPath === "/" ? "/" : this.seoPath}`;
+    },
     tabModel: {
       get() {
         return this.selectedPerson ? "" : this.activeTab;
@@ -334,6 +479,28 @@ export default {
     }
   },
   methods: {
+    localizedRole(role) {
+      const roles = {
+        en: {
+          Professor: "Professor",
+          "Associate Professor": "Associate Professor",
+          "Research Assistant": "Research Assistant",
+          "PhD Candidate": "PhD Candidate",
+          Student: "Student",
+          Ex: "Former member"
+        },
+        sk: {
+          Professor: "Profesor",
+          "Associate Professor": "Docent",
+          "Research Assistant": "Odborný asistent",
+          "PhD Candidate": "Doktorand",
+          Student: "Študent",
+          Ex: "Bývalý člen"
+        }
+      };
+      const localeRoles = roles[this.language] || roles.en;
+      return localeRoles[role] || role || "";
+    },
     t(key) {
       const dictionary = {
         en: {
@@ -341,20 +508,38 @@ export default {
           people: "People",
           publications: "Publications",
           teaching: "Teaching",
+          events: "Events",
           conference: "Conference",
           journal: "Journal",
-          affiliation: "Technical University of Kosice - Faculty of Electrical Engineering and Informatics",
-          footer_text: "We are part of the Technical University of Kosice and the Faculty of Electrical Engineering and Informatics."
+          last_updated: "Last updated",
+          developed_by: "Developed by",
+          language_switch: "Language switch",
+          back_to_people: "Back to people",
+          linkedin_profile: "LinkedIn profile",
+          orcid_profile: "ORCID profile",
+          personal_website: "Personal website",
+          website: "Website",
+          affiliation: "Technical University of Košice - Faculty of Electrical Engineering and Informatics",
+          footer_text: "We are part of the Technical University of Košice and the Faculty of Electrical Engineering and Informatics."
         },
         sk: {
-          research_group: "Vyskumna Skupina",
-          people: "Ludia",
-          publications: "Publikacie",
+          research_group: "Výskumná skupina",
+          people: "Ľudia",
+          publications: "Publikácie",
           teaching: "Pedagogika",
+          events: "Udalosti",
           conference: "Konferencia",
-          journal: "Casopis",
-          affiliation: "Technicka univerzita v Kosiciach - Fakulta elektrotechniky a informatiky",
-          footer_text: "Sme sucastou Technickej univerzity v Kosiciach a Fakulty elektrotechniky a informatiky."
+          journal: "Časopis",
+          last_updated: "Aktualizované",
+          developed_by: "Vytvoril",
+          language_switch: "Prepínač jazyka",
+          back_to_people: "Späť na ľudí",
+          linkedin_profile: "LinkedIn profil",
+          orcid_profile: "ORCID profil",
+          personal_website: "Osobná stránka",
+          website: "Webstránka",
+          affiliation: "Technická univerzita v Košiciach - Fakulta elektrotechniky a informatiky",
+          footer_text: "Sme súčasťou Technickej univerzity v Košiciach a Fakulty elektrotechniky a informatiky."
         }
       };
       return (dictionary[this.language] && dictionary[this.language][key]) || dictionary.en[key] || key;
@@ -376,27 +561,83 @@ export default {
       }
       return person.info || "";
     },
+    visibleList(items) {
+      return Array.isArray(items) ? items.filter(item => item.visible !== false) : [];
+    },
     getImage(filename) {
-      return require(`../assets/${filename}`);
+      if (!filename) {
+        return "";
+      }
+      const normalized = filename.replace(/^\.?\//, "");
+      const originalPath = `./${normalized}`;
+
+      try {
+        return imageAssets(originalPath);
+      } catch (error) {
+        return "";
+      }
+    },
+    setMetaTag(attribute, key, content) {
+      if (!content) {
+        return;
+      }
+      let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    },
+    setCanonicalLink(url) {
+      let element = document.head.querySelector('link[rel="canonical"]');
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", "canonical");
+        document.head.appendChild(element);
+      }
+      element.setAttribute("href", url);
+    },
+    updateSeoMeta() {
+      const description = this.seoDescription.replace(/\s+/g, " ").trim();
+      document.documentElement.lang = this.language === "sk" ? "sk" : "en";
+      document.title = this.seoTitle;
+      this.setMetaTag("name", "description", description);
+      this.setMetaTag("name", "robots", "index,follow");
+      this.setMetaTag("property", "og:title", this.seoTitle);
+      this.setMetaTag("property", "og:description", description);
+      this.setMetaTag("property", "og:type", "website");
+      this.setMetaTag("property", "og:url", this.canonicalUrl);
+      this.setMetaTag("property", "og:locale", this.language === "sk" ? "sk_SK" : "en_GB");
+      this.setMetaTag("property", "og:site_name", "Software Engineering and Usability Group");
+      this.setCanonicalLink(this.canonicalUrl);
     },
     setRouteFromPath() {
       const part = window.location.pathname.replace(/^\/+/, "").split("/")[0];
       this.suppressRouteSync = true;
-      if (part === "publications") {
+      if (["publications", "teaching", "events"].includes(part)) {
         this.currentSlug = "";
-        this.activeTab = "publications";
-      } else if (part === "teaching") {
-        this.currentSlug = "";
-        this.activeTab = "teaching";
+        this.activeTab = part;
       } else if (part) {
         this.currentSlug = part;
       } else {
         this.currentSlug = "";
         this.activeTab = "people";
       }
+      this.ensureActiveTabVisible();
       this.$nextTick(() => {
         this.suppressRouteSync = false;
+        this.updateSeoMeta();
       });
+    },
+    ensureActiveTabVisible() {
+      if (this.currentSlug) {
+        return;
+      }
+      const firstVisible = this.localizedTabs[0];
+      if (!this.localizedTabs.some(tab => tab.id === this.activeTab)) {
+        this.activeTab = firstVisible ? firstVisible.id : "people";
+      }
     },
     slugify(value) {
       return value
@@ -475,7 +716,7 @@ export default {
         path: window.location.pathname
       };
 
-      fetch("/api/analytics/events", {
+      fetch(this.apiUrl("/api/analytics/events"), {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
@@ -504,6 +745,9 @@ export default {
         });
       }
       window.open(url, "_blank");
+    },
+    apiUrl(path) {
+      return `${API_BASE_URL}${path}`;
     },
     publicAssetUrl(path) {
       const base = process.env.BASE_URL || "/";
@@ -551,8 +795,38 @@ export default {
 
       return groups;
     },
+    normalizeContentPayload(payload) {
+      const content = payload && payload.content ? payload.content : payload;
+      const defaults = defaultContent();
+      const incomingTabs = Array.isArray(content && content.tabs) ? content.tabs : [];
+      const tabs = defaults.tabs.map(tab => {
+        const incoming = incomingTabs.find(item => item.id === tab.id);
+        return {
+          ...tab,
+          visible: incoming ? incoming.visible !== false : tab.visible
+        };
+      });
+      const events = content && content.events ? content.events : {};
+      const eventItems = Array.isArray(events.items) ? events.items : [];
+
+      return {
+        tabs,
+        events: {
+          ...defaults.events,
+          ...events,
+          items: eventItems.map(event => ({
+            title: event.title || "",
+            titleSK: event.titleSK || "",
+            description: event.description || "",
+            descriptionSK: event.descriptionSK || "",
+            url: event.url || "",
+            visible: event.visible !== false
+          }))
+        }
+      };
+    },
     loadPeople() {
-      return fetch("/api/people", { cache: "no-store" })
+      return fetch(this.apiUrl("/api/people"), { cache: "no-store" })
         .then(this.ensureOk)
         .then(response => response.json())
         .catch(() => fetch(this.publicAssetUrl("data/people.json"), { cache: "no-store" })
@@ -566,8 +840,26 @@ export default {
           this.people = this.normalizePeoplePayload(null);
         });
     },
+    loadContent() {
+      return fetch(this.apiUrl("/api/content"), { cache: "no-store" })
+        .then(this.ensureOk)
+        .then(response => response.json())
+        .catch(() => fetch(this.publicAssetUrl("data/content.json"), { cache: "no-store" })
+          .then(this.ensureOk)
+          .then(response => response.json()))
+        .then(payload => {
+          this.content = this.normalizeContentPayload(payload);
+          this.contentMeta = payload && payload.meta ? payload.meta : {};
+          this.ensureActiveTabVisible();
+        })
+        .catch(error => {
+          console.error("Error loading content data:", error);
+          this.content = this.normalizeContentPayload(null);
+          this.contentMeta = {};
+        });
+    },
     loadPublications() {
-      return fetch("/api/publications", { cache: "no-store" })
+      return fetch(this.apiUrl("/api/publications"), { cache: "no-store" })
         .then(this.ensureOk)
         .then(response => response.json())
         .catch(() => fetch(this.publicAssetUrl("data/publications.json"), { cache: "no-store" })
@@ -609,11 +901,17 @@ export default {
       });
       window.history.pushState({}, "", `/${slug}`);
       this.currentSlug = slug;
+      this.$nextTick(() => {
+        this.updateSeoMeta();
+      });
     },
     closePerson() {
       window.history.pushState({}, "", "/");
       this.currentSlug = "";
       this.activeTab = "people";
+      this.$nextTick(() => {
+        this.updateSeoMeta();
+      });
     },
     setupPersonObserver() {
       if (!("IntersectionObserver" in window)) {
@@ -644,7 +942,6 @@ export default {
     this.language = "en";
     this.setRouteFromPath();
     window.addEventListener("popstate", this.setRouteFromPath);
-    // Načítanie particles s pôvodnou konfiguráciou
     const particlesConfig = `${process.env.BASE_URL || "/"}particles-config.json`;
     particlesJS.load("particles-js", particlesConfig, () => {
       console.log("Particles.js loaded!");
@@ -656,6 +953,7 @@ export default {
     Promise.all([
       fetch(teachingCSVUrl).then(response => response.text()),
       this.loadPeople(),
+      this.loadContent(),
       this.loadPublications()
     ])
       .then(([teachingCsvText]) => {
@@ -664,6 +962,7 @@ export default {
         // Refresh particles after data changes resize the page.
         this.$nextTick(() => {
           window.dispatchEvent(new Event("resize"));
+          this.updateSeoMeta();
         });
       })
       .catch(error => console.error("Error loading page data:", error));
@@ -927,6 +1226,28 @@ export default {
   gap: 24px;
 }
 
+.person-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  border: 1px solid rgba(15, 118, 110, 0.24);
+  border-radius: 999px;
+  background: #eef6f5;
+  color: var(--accent-2);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 8px 13px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.person-back-btn:hover {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: #ffffff;
+}
+
 .person-publications {
   display: grid;
   gap: 12px;
@@ -1070,12 +1391,14 @@ export default {
   display: grid;
   gap: 8px;
   min-width: 220px;
+  flex: 1 1 260px;
 }
 
 .person-name-row {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .person-linkedin {
@@ -1091,11 +1414,26 @@ export default {
 
 .person-name-row h2 {
   font-size: 1.6rem;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.person-role {
+  width: fit-content;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--accent-2);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 5px 9px;
+  text-transform: uppercase;
 }
 
 .person-email {
   color: var(--accent-2);
   font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 .person-info {
@@ -1281,7 +1619,30 @@ export default {
 
 /* Footer */
 .footer {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 16px;
+  padding: 8px 4px 0;
+  color: rgba(75, 85, 99, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.footer a {
+  color: rgba(15, 118, 110, 0.86);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--accent);
+}
+
+.footer-separator {
+  color: rgba(15, 23, 42, 0.24);
 }
 
 /* Responsive adjustments */
@@ -1311,6 +1672,84 @@ export default {
   }
   .timeline-item {
     padding-left: 15px;
+  }
+
+  .content {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .person-detail {
+    gap: 18px;
+  }
+
+  .person-back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .person-hero {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .person-photo {
+    width: 104px;
+    height: 104px;
+  }
+
+  .person-meta {
+    width: 100%;
+    min-width: 0;
+    justify-items: center;
+  }
+
+  .person-name-row {
+    justify-content: center;
+    gap: 6px 8px;
+  }
+
+  .person-name-row h2 {
+    font-size: 1.35rem;
+  }
+
+  .person-info {
+    font-size: 0.9rem;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .person-publications h2 {
+    text-align: center;
+  }
+
+  .person-timeline-content:hover {
+    transform: none;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+  }
+}
+
+@media (max-width: 420px) {
+  .portfolio-content {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 12px 10px 20px;
+  }
+
+  .header {
+    border-radius: 14px;
+  }
+
+  .person-email {
+    font-size: 0.86rem;
   }
 }
 </style>

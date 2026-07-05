@@ -2,12 +2,18 @@ const fs = require("fs/promises");
 const http = require("http");
 const path = require("path");
 const { URL } = require("url");
-const { paths, syncPublications } = require("./openalex-sync");
+const { paths, publicationIdentityKey, syncPublications } = require("./openalex-sync");
 
 const PORT = Number(process.env.PUBLICATIONS_API_PORT || 5174);
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "marecek";
-const ANALYTICS_DB_PATH = path.resolve(__dirname, "..", "data", "analytics-db.json");
+const HOST = process.env.PUBLICATIONS_API_HOST || "127.0.0.1";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "kronos";
+const ANALYTICS_DB_PATH = path.join(paths.DATA_DIR, "analytics-db.json");
+const AUDIT_DB_PATH = path.join(paths.DATA_DIR, "audit-db.json");
+const CONTENT_DB_PATH = path.join(paths.DATA_DIR, "content-db.json");
+const CONTENT_PATH = path.join(paths.PUBLIC_DATA_DIR, "content.json");
 const MAX_ANALYTICS_EVENTS = Number(process.env.ANALYTICS_MAX_EVENTS || 20000);
+const MAX_AUDIT_EVENTS = Number(process.env.AUDIT_MAX_EVENTS || 1000);
+const MAX_REQUEST_BODY_BYTES = Number(process.env.REQUEST_BODY_LIMIT_BYTES || 10 * 1024 * 1024);
 const PEOPLE_GROUP_KEYS = [
   "professor",
   "associateProfessor",
@@ -16,6 +22,19 @@ const PEOPLE_GROUP_KEYS = [
   "exMembers",
   "students"
 ];
+const TAB_KEYS = ["people", "publications", "teaching", "events"];
+const BACKUP_FILES = {
+  "data/analytics-db.json": ANALYTICS_DB_PATH,
+  "data/audit-db.json": AUDIT_DB_PATH,
+  "data/content-db.json": CONTENT_DB_PATH,
+  "data/openalex-authors.json": paths.AUTHOR_DB_PATH,
+  "data/people-db.json": paths.PEOPLE_DB_PATH,
+  "data/publications-db.json": paths.PUBLICATION_DB_PATH,
+  "public/data/content.json": CONTENT_PATH,
+  "public/data/people.json": paths.PEOPLE_PATH,
+  "public/data/publications.json": paths.PUBLICATIONS_PATH,
+  "public/data/publications-meta.json": paths.PUBLICATIONS_META_PATH
+};
 let activeSync = null;
 
 function countPeople(people) {
@@ -27,7 +46,7 @@ function countPeople(people) {
     ...(people.associateProfessor || []),
     ...(people.researchAssistants || []),
     ...(people.phdCandidates || [])
-  ].length;
+  ].filter(person => person.visible !== false).length;
 }
 
 async function readJson(filePath, fallback) {
@@ -52,7 +71,7 @@ async function readBody(request) {
     let body = "";
     request.on("data", chunk => {
       body += chunk;
-      if (body.length > 1024 * 1024) {
+      if (body.length > MAX_REQUEST_BODY_BYTES) {
         request.destroy();
         reject(new Error("Request body is too large."));
       }
@@ -124,11 +143,69 @@ function normalizePeopleForSave(people) {
         info: cleanText(person.info, 2000),
         infoSK: cleanText(person.infoSK, 2000),
         image: cleanText(person.image, 240),
+        visible: person.visible !== false,
         links: normalizeLinks(person.links)
       }))
       .filter(person => person.name || key === "exMembers" || key === "students");
   });
   return groups;
+}
+
+function defaultContent() {
+  return {
+    tabs: TAB_KEYS.map(id => ({ id, visible: true })),
+    events: {
+      intro: "",
+      introSK: "",
+      pressLinkLabel: "KPI events",
+      pressLinkLabelSK: "Udalosti KPI",
+      pressLinkUrl: "",
+      items: []
+    }
+  };
+}
+
+function normalizeTabs(tabs) {
+  const incoming = Array.isArray(tabs) ? tabs : [];
+  return TAB_KEYS.map(id => {
+    const tab = incoming.find(item => item && item.id === id);
+    return {
+      id,
+      visible: tab ? tab.visible !== false : true
+    };
+  });
+}
+
+function normalizeEventItem(event) {
+  return {
+    title: cleanText(event.title, 160),
+    titleSK: cleanText(event.titleSK, 160),
+    description: cleanText(event.description, 1200),
+    descriptionSK: cleanText(event.descriptionSK, 1200),
+    url: cleanText(event.url, 1000),
+    visible: event.visible !== false
+  };
+}
+
+function normalizeContentForSave(content) {
+  const defaults = defaultContent();
+  const events = content && content.events ? content.events : {};
+  const items = Array.isArray(events.items) ? events.items : [];
+
+  return {
+    tabs: normalizeTabs(content && content.tabs),
+    events: {
+      ...defaults.events,
+      intro: cleanText(events.intro, 2000),
+      introSK: cleanText(events.introSK, 2000),
+      pressLinkLabel: cleanText(events.pressLinkLabel, 160) || defaults.events.pressLinkLabel,
+      pressLinkLabelSK: cleanText(events.pressLinkLabelSK, 160) || defaults.events.pressLinkLabelSK,
+      pressLinkUrl: cleanText(events.pressLinkUrl, 1000),
+      items: items
+        .map(normalizeEventItem)
+        .filter(event => event.title || event.titleSK || event.description || event.descriptionSK || event.url)
+    }
+  };
 }
 
 function normalizePublicationForSave(publication) {
@@ -146,7 +223,8 @@ function normalizePublicationForSave(publication) {
     matchedAuthors: Array.isArray(publication.matchedAuthors)
       ? publication.matchedAuthors.map(author => cleanText(author, 200)).filter(Boolean)
       : [],
-    manual: Boolean(publication.manual)
+    manual: Boolean(publication.manual),
+    manualEditedAt: cleanText(publication.manualEditedAt, 40)
   };
 }
 
@@ -161,6 +239,70 @@ function normalizePublicationsForSave(publications) {
       const yearDiff = Number(b.date || 0) - Number(a.date || 0);
       return yearDiff || a.title.localeCompare(b.title);
     });
+}
+
+function mapPublicationsByIdentity(publications) {
+  const map = new Map();
+  (publications || []).forEach(publication => {
+    const key = publicationIdentityKey(publication);
+    if (key && !map.has(key)) {
+      map.set(key, publication);
+    }
+  });
+  return map;
+}
+
+function editablePublicationSnapshot(publication) {
+  return {
+    date: cleanText(publication.date, 16),
+    title: cleanText(publication.title, 1000),
+    authors: cleanText(publication.authors, 3000),
+    venue: cleanText(publication.venue, 1200),
+    link: cleanText(publication.link, 1000),
+    type: cleanText(publication.type, 40),
+    doi: cleanText(publication.doi, 300),
+    openalexId: cleanText(publication.openalexId, 300)
+  };
+}
+
+function hasEditablePublicationChange(next, previous) {
+  if (!previous) {
+    return false;
+  }
+  return JSON.stringify(editablePublicationSnapshot(next)) !== JSON.stringify(editablePublicationSnapshot(previous));
+}
+
+function applyPublicationManualState(publications, previousPublications, now) {
+  const previousByKey = mapPublicationsByIdentity(previousPublications);
+  return publications.map(publication => {
+    const previous = previousByKey.get(publicationIdentityKey(publication));
+    const changed = hasEditablePublicationChange(publication, previous);
+    const manual = Boolean(publication.manual || (previous && previous.manual) || changed);
+    return {
+      ...publication,
+      manual,
+      manualEditedAt: manual
+        ? (changed ? now : publication.manualEditedAt || (previous && previous.manualEditedAt) || now)
+        : ""
+    };
+  });
+}
+
+function nextDeletedPublicationKeys(previousMeta, previousPublications, nextPublications) {
+  const deleted = new Set(Array.isArray(previousMeta && previousMeta.deletedPublicationKeys)
+    ? previousMeta.deletedPublicationKeys
+    : []);
+  const nextKeys = new Set(nextPublications.map(publicationIdentityKey).filter(Boolean));
+
+  (previousPublications || []).forEach(publication => {
+    const key = publicationIdentityKey(publication);
+    if (key && !nextKeys.has(key)) {
+      deleted.add(key);
+    }
+  });
+
+  nextKeys.forEach(key => deleted.delete(key));
+  return Array.from(deleted).sort();
 }
 
 async function readPeopleData() {
@@ -186,20 +328,105 @@ async function savePeopleData(people) {
   return normalized;
 }
 
+async function readContentData() {
+  const contentDb = await readJson(CONTENT_DB_PATH, null);
+  const fallbackContent = await readJson(CONTENT_PATH, defaultContent());
+  const content = contentDb && contentDb.content ? contentDb.content : fallbackContent;
+  const fallbackMeta = fallbackContent && fallbackContent.meta ? fallbackContent.meta : {};
+  const meta = contentDb && contentDb.meta ? contentDb.meta : fallbackMeta;
+  return {
+    ...normalizeContentForSave(content),
+    meta
+  };
+}
+
+async function saveContentData(content) {
+  const normalized = normalizeContentForSave(content);
+  const previous = await readJson(CONTENT_DB_PATH, {});
+  const now = new Date().toISOString();
+  const nextDb = {
+    meta: {
+      ...(previous.meta || {}),
+      source: "local",
+      updatedAt: now
+    },
+    content: normalized
+  };
+  await writeJson(CONTENT_DB_PATH, nextDb);
+  await writeJson(CONTENT_PATH, { ...normalized, meta: nextDb.meta });
+  return { ...normalized, meta: nextDb.meta };
+}
+
 async function readPublicationsData() {
   return readJson(paths.PUBLICATIONS_PATH, []);
 }
 
+async function readBackupFile(filePath) {
+  return readJson(filePath, null);
+}
+
+async function buildBackupPayload() {
+  const files = {};
+  await Promise.all(Object.entries(BACKUP_FILES).map(async ([label, filePath]) => {
+    files[label] = await readBackupFile(filePath);
+  }));
+
+  return {
+    exportedAt: new Date().toISOString(),
+    files
+  };
+}
+
+function backupFilesFromPayload(payload) {
+  if (payload && payload.files && typeof payload.files === "object") {
+    return payload.files;
+  }
+  if (payload && payload.backup && payload.backup.files && typeof payload.backup.files === "object") {
+    return payload.backup.files;
+  }
+  throw new Error("Backup payload must include a files object.");
+}
+
+async function restoreBackupPayload(payload) {
+  const files = backupFilesFromPayload(payload);
+  const restoredFiles = [];
+
+  for (const [label, filePath] of Object.entries(BACKUP_FILES)) {
+    if (!Object.prototype.hasOwnProperty.call(files, label) || files[label] === null) {
+      continue;
+    }
+    await writeJson(filePath, files[label]);
+    restoredFiles.push(label);
+  }
+
+  if (!restoredFiles.length) {
+    throw new Error("Backup did not contain any supported files.");
+  }
+
+  return restoredFiles;
+}
+
 async function savePublicationsData(publications) {
-  const normalized = normalizePublicationsForSave(publications);
   const now = new Date().toISOString();
   const previousDb = await readJson(paths.PUBLICATION_DB_PATH, {});
+  const previousPublications = Array.isArray(previousDb.publications)
+    ? previousDb.publications
+    : await readJson(paths.PUBLICATIONS_PATH, []);
+  const normalized = applyPublicationManualState(
+    normalizePublicationsForSave(publications),
+    previousPublications,
+    now
+  );
+  const deletedPublicationKeys = nextDeletedPublicationKeys(previousDb.meta || {}, previousPublications, normalized);
   const previousMeta = await readJson(paths.PUBLICATIONS_META_PATH, {});
   const meta = {
     ...(previousDb.meta || previousMeta || {}),
     source: (previousDb.meta && previousDb.meta.source) || previousMeta.source || "local",
     localEditedAt: now,
-    publicationCount: normalized.length
+    publicationCount: normalized.length,
+    manualPublicationCount: normalized.filter(publication => publication.manual).length,
+    deletedPublicationKeys,
+    deletedPublicationKeyCount: deletedPublicationKeys.length
   };
 
   await writeJson(paths.PUBLICATIONS_PATH, normalized);
@@ -220,11 +447,68 @@ function emptyAnalyticsDb() {
   };
 }
 
+function emptyAuditDb() {
+  const now = new Date().toISOString();
+  return {
+    meta: {
+      source: "local",
+      createdAt: now,
+      updatedAt: now
+    },
+    events: []
+  };
+}
+
 function cleanText(value, maxLength = 300) {
   return String(value || "")
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, maxLength);
+}
+
+function sanitizeAuditDetails(details) {
+  if (!details || typeof details !== "object") {
+    return {};
+  }
+  return Object.fromEntries(
+    Object.entries(details)
+      .filter(([, value]) => ["string", "number", "boolean"].includes(typeof value))
+      .map(([key, value]) => [cleanText(key, 80), typeof value === "string" ? cleanText(value, 500) : value])
+  );
+}
+
+async function appendAuditEvent(action, request, details = {}) {
+  const db = await readJson(AUDIT_DB_PATH, emptyAuditDb());
+  const now = new Date().toISOString();
+  db.events = Array.isArray(db.events) ? db.events : [];
+  db.events.push({
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    timestamp: now,
+    action: cleanText(action, 120),
+    details: sanitizeAuditDetails(details),
+    userAgent: cleanText(request.headers["user-agent"], 300),
+    ip: cleanText(request.socket.remoteAddress, 80)
+  });
+  if (db.events.length > MAX_AUDIT_EVENTS) {
+    db.events = db.events.slice(db.events.length - MAX_AUDIT_EVENTS);
+  }
+  db.meta = db.meta || {};
+  db.meta.updatedAt = now;
+  db.meta.totalEvents = db.events.length;
+  await writeJson(AUDIT_DB_PATH, db);
+  return db.events[db.events.length - 1];
+}
+
+async function readAuditEvents(limit = 100) {
+  const db = await readJson(AUDIT_DB_PATH, emptyAuditDb());
+  const events = Array.isArray(db.events) ? db.events : [];
+  return {
+    meta: db.meta || {},
+    events: events
+      .slice()
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+      .slice(0, limit)
+  };
 }
 
 function normalizeAnalyticsEvent(payload, request) {
@@ -414,12 +698,18 @@ async function dashboardHtml() {
     <button id="sync">Sync from OpenAlex</button>
     <pre id="result">GET /api/people
 GET /api/people/meta
+GET /api/content
+GET /api/content/meta
 GET /api/publications
 GET /api/publications/meta
 POST /api/analytics/events
 POST /api/analytics/summary
 POST /api/admin/content
 POST /api/admin/people/save
+POST /api/admin/content/save
+POST /api/admin/backup
+POST /api/admin/backup/restore
+POST /api/admin/audit
 POST /api/admin/publications/save
 POST /api/publications/sync</pre>
   </main>
@@ -427,10 +717,18 @@ POST /api/publications/sync</pre>
     const button = document.getElementById("sync");
     const result = document.getElementById("result");
     button.addEventListener("click", async () => {
+      const password = window.prompt("Admin password");
+      if (!password) {
+        return;
+      }
       button.disabled = true;
       result.textContent = "Syncing from OpenAlex...";
       try {
-        const response = await fetch("/api/publications/sync", { method: "POST" });
+        const response = await fetch("/api/publications/sync", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ password })
+        });
         const json = await response.json();
         result.textContent = JSON.stringify(json, null, 2);
       } catch (error) {
@@ -472,6 +770,17 @@ async function handleRequest(request, response) {
       return;
     }
 
+    if (request.method === "GET" && url.pathname === "/api/content") {
+      sendJson(response, 200, await readContentData());
+      return;
+    }
+
+    if (request.method === "GET" && url.pathname === "/api/content/meta") {
+      const contentDb = await readJson(CONTENT_DB_PATH, null);
+      sendJson(response, 200, contentDb && contentDb.meta ? contentDb.meta : {});
+      return;
+    }
+
     if (request.method === "GET" && url.pathname === "/api/publications") {
       sendJson(response, 200, await readPublicationsData());
       return;
@@ -498,8 +807,22 @@ async function handleRequest(request, response) {
       }
       sendJson(response, 200, {
         people: await readPeopleData(),
-        publications: await readPublicationsData()
+        content: await readContentData(),
+        publications: await readPublicationsData(),
+        publicationMeta: await readJson(paths.PUBLICATIONS_META_PATH, {}),
+        audit: await readAuditEvents(50)
       });
+      return;
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/admin/audit") {
+      const body = await readJsonBody(request);
+      if (!isAuthorized(request, url, body)) {
+        sendError(response, 401, "Unauthorized");
+        return;
+      }
+      const limit = Number(body.limit || url.searchParams.get("limit") || 100);
+      sendJson(response, 200, await readAuditEvents(Number.isFinite(limit) ? limit : 100));
       return;
     }
 
@@ -510,7 +833,54 @@ async function handleRequest(request, response) {
         return;
       }
       const people = await savePeopleData(body.people || {});
+      await appendAuditEvent("people_save", request, {
+        groups: PEOPLE_GROUP_KEYS.length,
+        visibleActivePeople: countPeople(people)
+      });
       sendJson(response, 200, { ok: true, people });
+      return;
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/admin/content/save") {
+      const body = await readJsonBody(request);
+      if (!isAuthorized(request, url, body)) {
+        sendError(response, 401, "Unauthorized");
+        return;
+      }
+      const content = await saveContentData(body.content || {});
+      await appendAuditEvent("content_save", request, {
+        visibleTabs: content.tabs.filter(tab => tab.visible !== false).length,
+        events: content.events.items.length
+      });
+      sendJson(response, 200, { ok: true, content });
+      return;
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/admin/backup/restore") {
+      const body = await readJsonBody(request);
+      if (!isAuthorized(request, url, body)) {
+        sendError(response, 401, "Unauthorized");
+        return;
+      }
+      const restoredFiles = await restoreBackupPayload(body);
+      await appendAuditEvent("backup_restore", request, {
+        restoredFileCount: restoredFiles.length
+      });
+      sendJson(response, 200, { ok: true, restoredFiles });
+      return;
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/admin/backup") {
+      const body = await readJsonBody(request);
+      if (!isAuthorized(request, url, body)) {
+        sendError(response, 401, "Unauthorized");
+        return;
+      }
+      const backup = await buildBackupPayload();
+      await appendAuditEvent("backup_export", request, {
+        fileCount: Object.keys(backup.files || {}).length
+      });
+      sendJson(response, 200, backup);
       return;
     }
 
@@ -521,7 +891,17 @@ async function handleRequest(request, response) {
         return;
       }
       const publications = await savePublicationsData(body.publications || []);
-      sendJson(response, 200, { ok: true, publications });
+      const publicationMeta = await readJson(paths.PUBLICATIONS_META_PATH, {});
+      await appendAuditEvent("publications_save", request, {
+        publicationCount: publications.length,
+        manualPublicationCount: publications.filter(publication => publication.manual).length,
+        deletedPublicationKeyCount: publicationMeta.deletedPublicationKeyCount || 0
+      });
+      sendJson(response, 200, {
+        ok: true,
+        publications,
+        publicationMeta
+      });
       return;
     }
 
@@ -541,17 +921,28 @@ async function handleRequest(request, response) {
     }
 
     if (request.method === "POST" && url.pathname === "/api/publications/sync") {
+      const body = await readJsonBody(request);
+      if (!isAuthorized(request, url, body)) {
+        sendError(response, 401, "Unauthorized");
+        return;
+      }
+
       if (activeSync) {
         sendError(response, 409, "A publication sync is already running.");
         return;
       }
 
-      activeSync = syncPublications({
-        refreshAuthors: url.searchParams.get("refreshAuthors") === "true"
-      });
+      const refreshAuthors = body.refreshAuthors === true || url.searchParams.get("refreshAuthors") === "true";
+      activeSync = syncPublications({ refreshAuthors });
 
       try {
         const result = await activeSync;
+        await appendAuditEvent("publications_sync", request, {
+          refreshAuthors,
+          publicationCount: result.meta && result.meta.publicationCount ? result.meta.publicationCount : 0,
+          preservedManualPublicationCount: result.meta && result.meta.preservedManualPublicationCount ? result.meta.preservedManualPublicationCount : 0,
+          skippedDeletedPublicationCount: result.meta && result.meta.skippedDeletedPublicationCount ? result.meta.skippedDeletedPublicationCount : 0
+        });
         sendJson(response, 200, result);
       } finally {
         activeSync = null;
@@ -569,6 +960,6 @@ const server = http.createServer((request, response) => {
   handleRequest(request, response);
 });
 
-server.listen(PORT, () => {
-  console.log(`Local data API listening on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Local data API listening on http://${HOST}:${PORT}`);
 });

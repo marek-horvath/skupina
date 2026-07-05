@@ -2,11 +2,12 @@
   "professor": [
     {
       "role": "Professor",
-      "name": "Jaroslav Poruban",
+      "name": "Jaroslav Porubän",
       "email": "jaroslav.poruban@tuke.sk",
       "info": "Head of department, domain-specific languages, code structure and design.",
       "infoSK": "Vedúci katedry, doménovo špecifické jazyky, štruktúra a návrh kódu.",
       "image": "jaro.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -26,11 +27,12 @@
   "associateProfessor": [
     {
       "role": "Associate Professor",
-      "name": "Emília Pietrikova",
+      "name": "Emília Pietriková",
       "email": "emilia.pietrikova@tuke.sk",
       "info": "IT education, game development in teaching, curriculum design.",
       "infoSK": "IT vzdelávanie, využitie vývoja hier vo výučbe, návrh kurikula.",
       "image": "ema.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -55,6 +57,7 @@
       "info": "Software architecture, clean code, metaprogramming.",
       "infoSK": "Softvérová architektúra, čistý kód, metaprogramovanie.",
       "image": "sergej.png",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -76,11 +79,12 @@
     },
     {
       "role": "Research Assistant",
-      "name": "Matus Sulir",
+      "name": "Matúš Sulír",
       "email": "matus.sulir@tuke.sk",
       "info": "Empirical software engineering, source code annotations, buildability, code comprehension.",
       "infoSK": "Empirické softvérové inžinierstvo, anotácie zdrojového kódu, zostaviteľnosť softvéru, porozumenie kódu.",
       "image": "matus.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -98,11 +102,12 @@
     },
     {
       "role": "Research Assistant",
-      "name": "Michaela Bacikova",
+      "name": "Michaela Bačíková",
       "email": "michaela.bacikova@tuke.sk",
       "info": "UI/UX design, human-computer interaction.",
       "infoSK": "Návrh UI/UX, interakcia človek - počítač.",
       "image": "miska.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -120,11 +125,12 @@
     },
     {
       "role": "Research Assistant",
-      "name": "Filip Gurbal",
+      "name": "Filip Gurbáľ",
       "email": "filip.gurbal@tuke.sk",
       "info": "Software testing, system architecture, performance and reliability.",
       "infoSK": "Testovanie softvéru, systémová architektúra, výkonnosť a spoľahlivosť.",
       "image": "filip.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -144,11 +150,12 @@
   "phdCandidates": [
     {
       "role": "PhD Candidate",
-      "name": "Marek Horvath",
+      "name": "Marek Horváth",
       "email": "marek.horvath@tuke.sk",
       "info": "Static code analysis, plagiarism detection, programmer identification.",
       "infoSK": "Statická analýza kódu, detekcia plagiátorstva, identifikácia programátora.",
       "image": "marek.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -170,11 +177,12 @@
     },
     {
       "role": "PhD Candidate",
-      "name": "Tomas Kormanik",
+      "name": "Tomáš Kormaník",
       "email": "tomas.kormanik@tuke.sk",
       "info": "DevOps, Internet of Things, deployment automation.",
       "infoSK": "DevOps, internet vecí, automatizácia nasadzovania.",
       "image": "tomas.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -192,11 +200,12 @@
     },
     {
       "role": "PhD Candidate",
-      "name": "Lenka Bubenkova",
+      "name": "Lenka Bubeňková",
       "email": "lenka.bubenkova@tuke.sk",
       "info": "Cybersecurity, phishing prevention, security awareness training.",
       "infoSK": "Kybernetická bezpečnosť, prevencia phishingu, školenia bezpečnostného povedomia.",
       "image": "lenka.jpg",
+      "visible": true,
       "links": [
         {
           "label": "Profile",
@@ -213,6 +222,58 @@
       ]
     }
   ],
-  "exMembers": [],
-  "students": []
+  "exMembers": [
+    {
+      "role": "Ex",
+      "name": "Milan Nosáľ",
+      "email": "",
+      "info": "",
+      "infoSK": "",
+      "image": "",
+      "visible": false,
+      "links": []
+    },
+    {
+      "role": "Ex",
+      "name": "Dominik Lakatoš",
+      "email": "",
+      "info": "",
+      "infoSK": "",
+      "image": "",
+      "visible": false,
+      "links": []
+    },
+    {
+      "role": "Ex",
+      "name": "Tatiana Kuchčáková",
+      "email": "",
+      "info": "",
+      "infoSK": "",
+      "image": "",
+      "visible": false,
+      "links": []
+    }
+  ],
+  "students": [
+    {
+      "role": "Student",
+      "name": "Martin Čupálka",
+      "email": "",
+      "info": "",
+      "infoSK": "",
+      "image": "",
+      "visible": false,
+      "links": []
+    },
+    {
+      "role": "Student",
+      "name": "Serhii Yemets",
+      "email": "",
+      "info": "",
+      "infoSK": "",
+      "image": "",
+      "visible": false,
+      "links": []
+    }
+  ]
 }

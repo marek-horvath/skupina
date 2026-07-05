@@ -1,6 +1,6 @@
 <template>
   <div class="publications-section">
-    <h2>{{ language === "sk" ? "Casova os publikacii" : "Publications Timeline" }}</h2>
+    <h2>{{ language === "sk" ? "Časová os publikácií" : "Publications Timeline" }}</h2>
     <div class="legend">
       <span class="legend-item">
         <span class="legend-swatch conference"></span>
@@ -8,10 +8,28 @@
       </span>
       <span class="legend-item">
         <span class="legend-swatch journal"></span>
-        {{ language === "sk" ? "Casopis" : "Journal" }}
+        {{ language === "sk" ? "Časopis" : "Journal" }}
       </span>
     </div>
-    <div class="timeline">
+    <div class="publication-filters">
+      <input
+        v-model="searchQuery"
+        type="search"
+        :placeholder="language === 'sk' ? 'Názov, autor, miesto...' : 'Title, author, venue...'"
+      />
+      <select v-model="yearFilter">
+        <option value="">{{ language === "sk" ? "Všetky roky" : "All years" }}</option>
+        <option v-for="year in yearOptions" :key="year" :value="year">{{ year }}</option>
+      </select>
+      <select v-model="typeFilter">
+        <option value="">{{ language === "sk" ? "Všetky typy" : "All types" }}</option>
+        <option value="conference">{{ language === "sk" ? "Konferencia" : "Conference" }}</option>
+        <option value="journal">{{ language === "sk" ? "Časopis" : "Journal" }}</option>
+        <option value="book">{{ language === "sk" ? "Kniha" : "Book" }}</option>
+        <option value="other">{{ language === "sk" ? "Iné" : "Other" }}</option>
+      </select>
+    </div>
+    <div v-if="visibleGroups.length" class="timeline">
       <div class="year-group" v-for="group in visibleGroups" :key="group.year">
         <div class="year-label">{{ group.year }}</div>
         <div
@@ -38,7 +56,8 @@
         </div>
       </div>
     </div>
-    <div v-if="hasMore" ref="loadMore" class="load-more">Loading more…</div>
+    <p v-else class="publication-empty">{{ language === "sk" ? "Nenašli sa žiadne publikácie." : "No publications found." }}</p>
+    <div v-if="hasMore" ref="loadMore" class="load-more">{{ language === "sk" ? "Načítavam..." : "Loading more..." }}</div>
   </div>
 </template>
 
@@ -60,7 +79,10 @@ export default {
     return {
       visibleCount: 10,
       pageSize: 10,
-      observer: null
+      observer: null,
+      searchQuery: "",
+      yearFilter: "",
+      typeFilter: ""
     };
   },
   computed: {
@@ -73,9 +95,30 @@ export default {
       });
       return items;
     },
+    filteredFlatItems() {
+      const query = this.searchQuery.toLowerCase().trim();
+      return this.flatItems.filter(item => {
+        const pub = item.pub;
+        const type = this.normalizedType(pub.type);
+        const normalizedFilterType = this.typeFilter === "other" ? "" : this.typeFilter;
+        const matchesQuery = !query || [
+          pub.title,
+          pub.authors,
+          pub.venue,
+          pub.date,
+          pub.type
+        ].join(" ").toLowerCase().includes(query);
+        const matchesYear = !this.yearFilter || item.year === this.yearFilter;
+        const matchesType = !this.typeFilter || type === normalizedFilterType;
+        return matchesQuery && matchesYear && matchesType;
+      });
+    },
+    yearOptions() {
+      return Array.from(new Set(this.flatItems.map(item => item.year))).sort((a, b) => Number(b) - Number(a));
+    },
     visibleGroups() {
       const groups = {};
-      this.flatItems.slice(0, this.visibleCount).forEach(item => {
+      this.filteredFlatItems.slice(0, this.visibleCount).forEach(item => {
         if (!groups[item.year]) {
           groups[item.year] = [];
         }
@@ -86,7 +129,7 @@ export default {
         .map(year => ({ year, items: groups[year] }));
     },
     hasMore() {
-      return this.visibleCount < this.flatItems.length;
+      return this.visibleCount < this.filteredFlatItems.length;
     }
   },
   watch: {
@@ -95,14 +138,23 @@ export default {
       this.$nextTick(() => {
         this.setupObserver();
       });
+    },
+    searchQuery() {
+      this.resetVisibleItems();
+    },
+    yearFilter() {
+      this.resetVisibleItems();
+    },
+    typeFilter() {
+      this.resetVisibleItems();
     }
   },
   methods: {
+    normalizedType(value) {
+      return value ? value.toString().trim().toLowerCase() : "";
+    },
     typeClass(value) {
-      if (!value) {
-        return "";
-      }
-      const normalized = value.toString().trim().toLowerCase();
+      const normalized = this.normalizedType(value);
       if (normalized === "conference") {
         return "type-conference";
       }
@@ -120,6 +172,12 @@ export default {
         return list.join("; ");
       }
       return `${list.slice(0, 3).join("; ")}; et al.`;
+    },
+    resetVisibleItems() {
+      this.visibleCount = 10;
+      this.$nextTick(() => {
+        this.setupObserver();
+      });
     },
     setupObserver() {
       if (!("IntersectionObserver" in window)) {
@@ -207,6 +265,31 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.publication-filters {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(120px, 0.35fr) minmax(140px, 0.4fr);
+  gap: 10px;
+}
+
+.publication-filters input,
+.publication-filters select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink, #0f172a);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 10px 12px;
+}
+
+.publication-filters input:focus,
+.publication-filters select:focus {
+  outline: 2px solid rgba(15, 118, 110, 0.3);
+  outline-offset: 1px;
 }
 
 .legend-swatch {
@@ -347,6 +430,13 @@ export default {
   padding: 6px 0 2px;
 }
 
+.publication-empty {
+  color: var(--muted, #4b5563);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
 @keyframes riseIn {
   from {
     opacity: 0;
@@ -395,6 +485,10 @@ export default {
 
   .legend {
     flex-wrap: wrap;
+  }
+
+  .publication-filters {
+    grid-template-columns: 1fr;
   }
 }
 </style>

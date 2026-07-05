@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+VPS_OTHER_APPS.md
+data/audit-db.json
 
 
 # local env files

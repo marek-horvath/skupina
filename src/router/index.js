@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PortfolioPage from '../components/PortfolioPage.vue'
-import AdminPage from '../components/AdminPage.vue'
+
+const AdminPage = () => import('../components/AdminPage.vue')
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

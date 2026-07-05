@@ -13,14 +13,14 @@
   "publicationCount": 185,
   "resolvedAuthors": [
     {
-      "name": "Jaroslav Poruban",
+      "name": "Jaroslav Porubän",
       "displayName": "Jaroslav Porubän",
       "openalexId": "https://openalex.org/A5007967679",
       "orcid": "https://orcid.org/0000-0001-9706-2897",
       "resolution": "search"
     },
     {
-      "name": "Emília Pietrikova",
+      "name": "Emília Pietriková",
       "displayName": "Emília Pietriková",
       "openalexId": "https://openalex.org/A5042449931",
       "orcid": "https://orcid.org/0000-0002-9790-6874",
@@ -34,42 +34,42 @@
       "resolution": "orcid"
     },
     {
-      "name": "Matus Sulir",
+      "name": "Matúš Sulír",
       "displayName": "Matúš Sulír",
       "openalexId": "https://openalex.org/A5064689256",
       "orcid": "https://orcid.org/0000-0003-2221-9225",
       "resolution": "search"
     },
     {
-      "name": "Michaela Bacikova",
+      "name": "Michaela Bačíková",
       "displayName": "Michaela Bačíková",
       "openalexId": "https://openalex.org/A5034319548",
       "orcid": "https://orcid.org/0000-0002-9436-8425",
       "resolution": "search"
     },
     {
-      "name": "Filip Gurbal",
+      "name": "Filip Gurbáľ",
       "displayName": "Filip Gurbáľ",
       "openalexId": "https://openalex.org/A5015063708",
       "orcid": "https://orcid.org/0000-0001-7691-9273",
       "resolution": "search"
     },
     {
-      "name": "Marek Horvath",
+      "name": "Marek Horváth",
       "displayName": "Marek Horváth",
       "openalexId": "https://openalex.org/A5015785379",
       "orcid": "https://orcid.org/0009-0005-4649-2308",
       "resolution": "orcid"
     },
     {
-      "name": "Tomas Kormanik",
+      "name": "Tomáš Kormaník",
       "displayName": "Tomáš Kormaník",
       "openalexId": "https://openalex.org/A5093471353",
       "orcid": "https://orcid.org/0009-0002-6622-8027",
       "resolution": "search"
     },
     {
-      "name": "Lenka Bubenkova",
+      "name": "Lenka Bubeňková",
       "displayName": "Lenka Bubeňková",
       "openalexId": "https://openalex.org/A5116057275",
       "orcid": "",
@@ -77,5 +77,28 @@
     }
   ],
   "unresolvedAuthors": [],
-  "localEditedAt": "2026-07-02T20:59:16.438Z"
+  "localEditedAt": "2026-07-02T20:59:16.438Z",
+  "manualPublicationCount": 0,
+  "deletedPublicationKeys": [],
+  "deletedPublicationKeyCount": 0,
+  "skippedDeletedPublicationCount": 0,
+  "preservedManualPublicationCount": 0,
+  "carriedManualPublicationCount": 0,
+  "syncHistory": [
+    {
+      "generatedAt": "2026-07-02T10:34:16.989Z",
+      "startedAt": "2026-07-02T10:34:11.663Z",
+      "peopleCount": 9,
+      "resolvedAuthorCount": 9,
+      "unresolvedAuthorCount": 0,
+      "rawWorkCount": 316,
+      "syncedPublicationCount": 185,
+      "publicationCount": 185,
+      "manualPublicationCount": 0,
+      "skippedDeletedPublicationCount": 0,
+      "preservedManualPublicationCount": 0,
+      "carriedManualPublicationCount": 0,
+      "deletedPublicationKeyCount": 0
+    }
+  ]
 }

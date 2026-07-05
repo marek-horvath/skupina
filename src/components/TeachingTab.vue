@@ -15,7 +15,7 @@
         <h3>{{ subjectName(subject) }}</h3>
         <p v-if="subjectDescription(subject)" class="subject-desc">{{ subjectDescription(subject) }}</p>
         <a v-if="subject.link" :href="subject.link" target="_blank" class="subject-link-btn" @click.stop>
-          {{ language === "sk" ? "Otvorit link" : "Open Link" }}
+          {{ language === "sk" ? "Otvoriť link" : "Open link" }}
         </a>
       </article>
     </div>

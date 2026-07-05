@@ -2,117 +2,116 @@
 
 ## Project Overview
 
-This is a Vue CLI / Vue 3 research group website.
+This is the Software Engineering and Usability Group website for KPI FEI TUKE.
+The frontend is a Vue CLI / Vue 3 app intended to stay deployable as a static
+GitHub Pages site. Dynamic editing, analytics, backups, and OpenAlex publication
+sync are handled by a small Node HTTP API.
+
+Production shape:
+- Frontend: GitHub Pages/static build from `dist/`.
+- API: `https://seug-api.167.233.132.16.sslip.io`
+- VPS service: `seug-api`
+- Internal API bind: `127.0.0.1:3004`
+- Persistent DB: `/var/lib/seug/data`
+- Public snapshots: `/var/lib/seug/public-data`
 
 Main frontend entry points:
-- `src/components/PortfolioPage.vue` - top-level page, routing state, data loading, person detail view.
-- `src/components/AdminPage.vue` - password-gated local analytics dashboard at `/admin`.
-- `src/components/PublicationsTab.vue` - publication timeline rendering.
-- `src/components/PeopleTab.vue` - people cards and person selection.
+- `src/components/PortfolioPage.vue` - top-level page, routing state, data loading, footer, person detail, and SEO meta updates.
+- `src/components/PeopleTab.vue` - active member cards plus compact ex-member/student section.
+- `src/components/PublicationsTab.vue` - publication timeline with search/year/type filters.
+- `src/components/EventsTab.vue` - editable Events tab/page.
+- `src/components/AdminPage.vue` - password-gated admin UI at `/admin`.
 - `src/router/index.js` - catch-all route into `PortfolioPage.vue`.
+  The `/admin` route is lazy-loaded.
 
-Historical publication tooling is in `clan/`. The old Excel/RTF flow is still present there, but the website no longer reads publication data from `clan/pub.xlsx`.
+Server entry points:
+- `server/publications-api.js` - API, admin saves, analytics, backup export, sync trigger.
+- `server/openalex-sync.js` - OpenAlex publication sync with manual edit/delete protection.
+- `server/export-people.js` - exports `data/people-db.json` to `public/data/people.json`.
 
-## What Was Changed
+Historical Excel/RTF publication tooling still exists in `clan/`, but the live
+site no longer reads publication data from that flow.
 
-People were moved from Google Sheets CSV to a local JSON database. Publications were moved from the Google Sheets/Excel-style CSV source to a local OpenAlex-backed snapshot flow.
+## Current Behavior
 
-Current behavior:
-- People load from `/api/people` when the local API is running.
-- If the API is not running, people fall back to `public/data/people.json`.
-- Teaching still loads from the existing public Google Sheets CSV.
-- Publications load from `/api/publications` when the local API is running.
-- If the API is not running, publications fall back to `public/data/publications.json`.
+Data loading:
+- In local development, `/api/*` calls are proxied to `http://127.0.0.1:5174`.
+- In production, the frontend uses `VUE_APP_API_BASE_URL` if set, otherwise
+  `https://seug-api.167.233.132.16.sslip.io`.
+- If API reads fail, the public site falls back to JSON files in `public/data/`.
 
-This keeps the deployed site static-friendly while allowing local refreshes from OpenAlex.
+Editable data:
+- People: `data/people-db.json` and `public/data/people.json`.
+- Content/tabs/events/footer meta: `data/content-db.json` and `public/data/content.json`.
+- Publications: `data/publications-db.json`, `public/data/publications.json`, and `public/data/publications-meta.json`.
+- Analytics: `data/analytics-db.json`.
+- Audit log: `data/audit-db.json`.
 
-## New Files
+Admin:
+- Default password is `kronos` unless `ADMIN_PASSWORD` is set.
+- Admin can edit people, tab visibility, Events, and publications.
+- People, tabs, and events support visibility toggles.
+- People admin shows one flat list of all people on the left; the selected person's Role dropdown moves that person between the underlying people groups.
+- Delete actions for people, events, and publications show a named confirmation and remind the admin to click Save to persist the deletion.
+- Admin has an `Export backup` button that downloads all DB and public snapshot JSON files.
+- Admin has a `Restore backup` button that imports an exported backup JSON.
+- Admin can trigger OpenAlex publication sync and author refresh from the Publications section.
+- Admin shows OpenAlex sync metadata and recent sync history, including preserved manual items and skipped deleted publications.
+- Admin has an Audit tab for recent saves, syncs, backup exports, and restores.
 
-- `server/openalex-sync.js`
-  - Resolves current people to OpenAlex authors.
-  - Reads current people from `data/people-db.json` first, with `public/data/people.json` as fallback.
-  - Fetches their OpenAlex works.
-  - Deduplicates by normalized `title + year`.
-  - Filters out non-publication-like OpenAlex types: `dataset`, `software`, `preprint`, `other`, `paratext`, `erratum`, `editorial`, `letter`.
-  - Writes both local DB/cache and public static snapshot files.
+OpenAlex sync:
+- Only visible active people are used for OpenAlex author syncing.
+- Admin-saved publication edits are preserved on later syncs.
+- Admin-deleted publications are tracked in `meta.deletedPublicationKeys`, so later syncs do not re-add them.
+- Manual publications are carried across syncs.
+- `syncHistory` is kept in publication metadata with recent count summaries.
+- `POST /api/publications/sync` now requires admin auth.
 
-- `server/publications-api.js`
-  - Small Node HTTP server.
-  - Serves:
-    - `GET /api/people`
-    - `GET /api/people/meta`
-    - `GET /api/publications`
-    - `GET /api/publications/meta`
-    - `POST /api/analytics/events`
-    - `POST /api/analytics/summary`
-    - `POST /api/admin/content`
-    - `POST /api/admin/people/save`
-    - `POST /api/admin/publications/save`
-    - `POST /api/publications/sync`
-  - Root page `http://localhost:5174/` is a minimal local data dashboard with a sync button.
+Public site:
+- People tab shows active members as cards.
+- Ex members and students are shown as compact name pills so they do not take the same space as active members.
+- Publications tab has search plus year and type filters.
+- Events tab is visible by default and contains Live IT Projects, Game Jams, Hackathons, and Namakaný deň.
+- Footer "Last updated" is formatted from content DB metadata, not hardcoded in the component.
+- Footer contains a small `Developed by Marek Horváth` link to `https://marek-horvath.github.io/portfolio/seug`.
+- Member photos are loaded from the original filenames stored in the people data, for example `marek.jpg`.
+- `public/index.html`, `public/sitemap.xml`, and `public/robots.txt` contain baseline SEO for GitHub Pages. Runtime title, description, canonical, Open Graph tags, locale, and document language are updated by `PortfolioPage.vue` for each tab/person route.
+- Public UI copy follows the selected SK/EN language, including small labels such as copy/open/back buttons and social link accessibility labels. Admin UI remains English except fields that explicitly edit EN/SK content.
 
-- `server/export-people.js`
-  - Copies the `people` object from `data/people-db.json` into `public/data/people.json`.
-  - Use after editing the local people database.
+Recent cleanup:
+- Removed the old public helper text from the people section.
+- Removed unnecessary explanatory admin text about API paths and local file paths.
+- Fixed visible Slovak diacritics in data and key UI labels.
+- Compressed `src/assets/ema.jpg` from about 2.32 MiB to about 73 KiB.
+- Added mobile card-style table rendering in admin for narrow screens.
+- Restored member photo loading to the original JPG/PNG asset filenames and removed generated AVIF/WebP variants after Marek's photo failed to render in the browser.
+- Changed the local Vue dev proxy default to `http://127.0.0.1:5174`; using `localhost:5174` caused admin API proxy failures on Windows.
+- Improved the mobile person detail layout with a back button, localized role badge, centered mobile hero, and safer text wrapping.
 
-- `data/people-db.json`
-  - Local editable people database.
-  - This is the primary local source for people and author matching.
+## API Endpoints
 
-- `public/data/people.json`
-  - Static people snapshot consumed by frontend fallback and static deploys.
+Public:
+- `GET /api/people`
+- `GET /api/people/meta`
+- `GET /api/content`
+- `GET /api/content/meta`
+- `GET /api/publications`
+- `GET /api/publications/meta`
+- `POST /api/analytics/events`
 
-- `data/openalex-authors.json`
-  - Local cache mapping website people to OpenAlex author IDs.
-  - If author matching is wrong, fix this file or rerun sync with `--refresh-authors`.
+Admin/authenticated:
+- `POST /api/analytics/summary`
+- `POST /api/admin/content`
+- `POST /api/admin/people/save`
+- `POST /api/admin/content/save`
+- `POST /api/admin/publications/save`
+- `POST /api/admin/backup`
+- `POST /api/admin/backup/restore`
+- `POST /api/admin/audit`
+- `POST /api/publications/sync`
 
-- `data/publications-db.json`
-  - Local generated DB containing metadata plus normalized publications.
-
-- `data/analytics-db.json`
-  - Local click/event database for admin analytics.
-  - Written by `POST /api/analytics/events`.
-
-- `public/data/publications.json`
-  - Static publication snapshot consumed by the frontend fallback and by static deploys.
-
-- `public/data/publications-meta.json`
-  - Sync metadata: counts, generated time, resolved/unresolved authors.
-
-## Changed Files
-
-- `src/components/PortfolioPage.vue`
-  - Removed people CSV loading from Google Sheets.
-  - Removed publication CSV loading from Google Sheets.
-  - Added `loadPeople()`.
-  - Added `loadPublications()`.
-  - Added event tracking for people, tabs, languages, publication clicks, and detail links.
-  - Added API-first/static-fallback people loading.
-  - Added API-first/static-fallback publication loading.
-  - Teaching still uses the existing CSV parser.
-
-- `src/components/AdminPage.vue`
-  - New `/admin` UI.
-  - Password-gated with default local password `marecek`.
-  - Has internal sections: `Stats`, `Ludia`, `Publikacie`.
-  - Fetches analytics from `POST /api/analytics/summary`.
-  - Loads editable content from `POST /api/admin/content`.
-  - Saves people through `POST /api/admin/people/save`.
-  - Saves publications through `POST /api/admin/publications/save`.
-  - Visual style is intentionally aligned with `PortfolioPage.vue`: same Fraunces/Space Grotesk fonts, paper/mist background, dark teal header, orange/teal accents.
-
-- `package.json`
-  - Added:
-    - `npm run sync:publications`
-    - `npm run serve:api`
-    - `npm run export:people`
-
-- `vue.config.js`
-  - Added dev proxy from `/api` to `http://localhost:5174`.
-  - Added `historyApiFallback: true` so direct routes such as `/publications` work in dev.
-
-- `README.md`
-  - Added short publication data instructions.
+Admin password can be sent in JSON body as `password` or in the
+`X-Admin-Password` header.
 
 ## Commands
 
@@ -122,44 +121,25 @@ Install dependencies:
 npm install
 ```
 
+Run local API:
+
+```bash
+npm run serve:api
+```
+
 Run Vue dev server:
 
 ```bash
 npm run serve
 ```
 
-Run local publications API/dashboard:
+Local admin:
 
-```bash
-npm run serve:api
-```
-
-Run admin analytics:
-
-```bash
-npm run serve:api
-npm run serve
-```
-
-Then open:
-
-```bash
+```text
 http://localhost:8080/admin
 ```
 
-Default local admin password:
-
-```bash
-marecek
-```
-
-Edit people locally in:
-
-```bash
-data/people-db.json
-```
-
-For static fallback/deploys, regenerate `public/data/people.json` with:
+Refresh people static snapshot:
 
 ```bash
 npm run export:people
@@ -171,7 +151,7 @@ Refresh publications from OpenAlex:
 npm run sync:publications
 ```
 
-Refresh author matching too:
+Refresh OpenAlex author matching too:
 
 ```bash
 node server/openalex-sync.js --refresh-authors
@@ -184,28 +164,75 @@ npm run lint
 npm run build
 ```
 
-## OpenAlex Notes
+## Useful Env Vars
 
-OpenAlex now uses API keys for normal usage. Small local tests worked without a key, but regular updates should set:
-
-```bash
-$env:OPENALEX_API_KEY="your-key"
-npm run sync:publications
-```
-
-Useful optional env vars:
-- `OPENALEX_API_KEY` - API key for OpenAlex.
+- `VUE_APP_API_BASE_URL` - production/frontend API override.
+- `VUE_APP_SITE_URL` - frontend canonical/SEO base URL, defaults to `https://marek-horvath.github.io/skupina`.
+- `PUBLICATIONS_API_HOST` - defaults to `127.0.0.1`.
+- `PUBLICATIONS_API_PORT` - defaults to `5174` locally, `3004` on VPS.
+- `PUBLICATIONS_API_PROXY` - Vue dev proxy target, defaults to `http://127.0.0.1:5174`.
+- `SEUG_DATA_DIR` - persistent DB directory, `/var/lib/seug/data` on VPS.
+- `SEUG_PUBLIC_DATA_DIR` - public snapshot directory, `/var/lib/seug/public-data` on VPS.
+- `ADMIN_PASSWORD` - defaults to `kronos`.
+- `ANALYTICS_MAX_EVENTS` - defaults to `20000`.
+- `AUDIT_MAX_EVENTS` - defaults to `1000`.
+- `REQUEST_BODY_LIMIT_BYTES` - defaults to `10485760` for backup restore payloads.
+- `OPENALEX_API_KEY` - recommended for regular OpenAlex syncs.
 - `OPENALEX_INSTITUTION_ROR` - defaults to TUKE ROR `https://ror.org/05xm08015`.
 - `OPENALEX_INCLUDE_PREPRINTS=true` - include preprints if desired.
 - `OPENALEX_MAX_PAGES_PER_AUTHOR` - defaults to `5`.
-- `PUBLICATIONS_API_PORT` - defaults to `5174` for the local data API.
-- `PUBLICATIONS_API_PROXY` - Vue dev proxy target, defaults to `http://localhost:5174`.
-- `ADMIN_PASSWORD` - defaults to `marecek`.
-- `ANALYTICS_MAX_EVENTS` - defaults to `20000`.
+
+## VPS Notes
+
+Server:
+- IP: `167.233.132.16`
+- SSH user: `root`
+- SSH key on this PC: `C:\Users\marek\.ssh\hetzner_ms_hockey`
+
+SEUG API:
+- Service: `seug-api`
+- Code: `/opt/seug-api`
+- Env: `/opt/seug-api/.env.production`
+- Node runtime: `/opt/node-v22.12.0/bin/node`
+- Data: `/var/lib/seug/data`
+- Public data: `/var/lib/seug/public-data`
+- Backups directory: `/var/backups/seug`
+- Caddy host: `seug-api.167.233.132.16.sslip.io`
+- Caddy reverse proxy: `127.0.0.1:3004`
+
+Existing apps were left untouched:
+- `ms-hockey` on `3000`
+- `krajcirstvo` on `3001`
+- `portfolio-scholar` on `3002`
+- `athena-api` on `3003`
+
+VPS checks:
+
+```bash
+systemctl status seug-api --no-pager -l
+journalctl -u seug-api -n 100 --no-pager
+curl -fsS http://127.0.0.1:3004/api/content
+curl -fsS https://seug-api.167.233.132.16.sslip.io/api/content
+```
+
+To update API code manually from this workstation:
+
+```powershell
+scp -i $env:USERPROFILE\.ssh\hetzner_ms_hockey server\publications-api.js server\openalex-sync.js root@167.233.132.16:/opt/seug-api/server/
+ssh -i $env:USERPROFILE\.ssh\hetzner_ms_hockey root@167.233.132.16 "chown -R seug:seug /opt/seug-api && systemctl restart seug-api"
+```
+
+To update VPS data snapshots manually:
+
+```powershell
+scp -i $env:USERPROFILE\.ssh\hetzner_ms_hockey data\people-db.json data\content-db.json data\publications-db.json data\openalex-authors.json data\analytics-db.json data\audit-db.json root@167.233.132.16:/var/lib/seug/data/
+scp -i $env:USERPROFILE\.ssh\hetzner_ms_hockey public\data\people.json public\data\content.json public\data\publications.json public\data\publications-meta.json root@167.233.132.16:/var/lib/seug/public-data/
+ssh -i $env:USERPROFILE\.ssh\hetzner_ms_hockey root@167.233.132.16 "chown -R seug:seug /var/lib/seug && systemctl restart seug-api"
+```
 
 ## Data Shape
 
-The frontend expects people in grouped form:
+People:
 
 ```json
 {
@@ -218,9 +245,33 @@ The frontend expects people in grouped form:
 }
 ```
 
-Active people should include `role`, `name`, `email`, `info`, `infoSK`, `image`, and `links`. ORCID can be stored as a link with label `ORCID`; OpenAlex sync reads it from there.
+People can include `visible`; missing `visible` is treated as visible.
 
-The frontend expects each publication to have:
+Content:
+
+```json
+{
+  "tabs": [
+    { "id": "people", "visible": true },
+    { "id": "publications", "visible": true },
+    { "id": "teaching", "visible": true },
+    { "id": "events", "visible": true }
+  ],
+  "events": {
+    "intro": "English intro",
+    "introSK": "Slovak intro",
+    "pressLinkLabel": "KPI events and press releases",
+    "pressLinkLabelSK": "Udalosti a tlačové správy KPI",
+    "pressLinkUrl": "https://kpi.fei.tuke.sk/sk/udalosti",
+    "items": []
+  },
+  "meta": {
+    "updatedAt": "2026-07-05T00:00:00.000Z"
+  }
+}
+```
+
+Publication:
 
 ```json
 {
@@ -233,45 +284,20 @@ The frontend expects each publication to have:
 }
 ```
 
-`type` is used only for timeline styling. Expected values are mainly `journal` and `conference`; empty string is allowed.
+Expected `type` values are mainly `journal`, `conference`, `book`, or empty.
 
-Extra fields such as `doi`, `openalexId`, `sourceType`, `openalexType`, and `matchedAuthors` are kept in the generated snapshot for debugging and future improvements.
+## Current Verification
 
-## Current Generated State
-
-Last verified state after sync:
-- People load from local `data/people-db.json` / `/api/people`.
-- ORCID links are present in `data/people-db.json` and exported to `public/data/people.json` for Jaroslav Poruban, Emilia Pietrikova, Matus Sulir, Michaela Bacikova, Filip Gurbal, Tomas Kormanik, and Lenka Bubenkova.
-- 9 active people resolved to OpenAlex authors.
-- 0 unresolved authors.
-- 185 publications generated after filtering and deduplication.
+Verified on 2026-07-05:
 - `npm run lint` passes.
 - `npm run build` passes.
-
-Build warnings are existing/non-blocking:
-- old Browserslist data warning.
-- webpack performance warning for large `src/assets/ema.jpg`.
-
-## Important Behavior
-
-New publications are not pulled on every website page load.
-
-They appear after one of these happens:
-- run `npm run sync:publications`,
-- click sync in the local dashboard at `http://localhost:5174/`,
-- or add a future automation such as GitHub Actions cron.
-
-For static deployment, run sync before build/deploy and commit the updated `public/data/publications.json`.
-
-Analytics are local-only. They are recorded only when the local API server is running. The frontend sends events to `/api/analytics/events`; if that request fails, the site ignores it and continues normally.
-
-Admin content editing is local-only too. People edits update both `data/people-db.json` and `public/data/people.json`. Publication edits update both `data/publications-db.json` and `public/data/publications.json`. Running `npm run sync:publications` can regenerate the publication snapshot from OpenAlex, so manual publication curation should generally happen after syncing.
-
-## Known Limitations
-
-OpenAlex metadata can be imperfect:
-- Some venues are missing.
-- Some conference proceedings may be classified as journal articles by OpenAlex.
-- Author matching is heuristic for people without ORCID, biased toward TUKE via ROR.
-
-If a person is matched incorrectly, edit `data/openalex-authors.json` or improve the matching logic in `server/openalex-sync.js`.
+- Build still warns that `caniuse-lite` is old and the app entrypoint is 309 KiB.
+  Admin is split into a lazy-loaded chunk.
+- Local API tested at `http://127.0.0.1:5174`.
+- Local frontend is running at `http://localhost:8080`.
+- VPS API service is active and listening on `127.0.0.1:3004`.
+- Public API `https://seug-api.167.233.132.16.sslip.io/api/content` returns content.
+- Public admin backup export and restore endpoints work with password `kronos`.
+- Old password `marecek` returns `401`.
+- Unauthenticated public sync returns `401`.
+- CORS preflight returns `Access-Control-Allow-Origin: *`.

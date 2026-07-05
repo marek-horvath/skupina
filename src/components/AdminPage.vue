@@ -14,25 +14,25 @@
         <h1>Admin</h1>
         <div class="header-actions">
           <button type="button" class="ghost-btn" @click="logout">Log out</button>
+          <button type="button" class="ghost-btn" @click="exportBackup" :disabled="loading">Export backup</button>
+          <button type="button" class="ghost-btn" @click="triggerRestoreBackup" :disabled="loading">Restore backup</button>
           <button type="button" @click="refresh" :disabled="loading">Refresh</button>
+          <input ref="backupInput" class="file-input-hidden" type="file" accept="application/json,.json" @change="restoreBackup" />
         </div>
       </header>
 
       <nav class="section-tabs" aria-label="Admin sections">
         <button type="button" :class="{ active: activeSection === 'stats' }" @click="selectSection('stats')">Stats</button>
         <button type="button" :class="{ active: activeSection === 'people' }" @click="selectSection('people')">People</button>
+        <button type="button" :class="{ active: activeSection === 'content' }" @click="selectSection('content')">Content</button>
         <button type="button" :class="{ active: activeSection === 'publications' }" @click="selectSection('publications')">Publications</button>
+        <button type="button" :class="{ active: activeSection === 'audit' }" @click="selectSection('audit')">Audit</button>
       </nav>
 
       <p v-if="message" class="message">{{ message }}</p>
       <p v-if="error" class="error">{{ error }}</p>
 
       <section v-if="activeSection === 'stats'" class="admin-section">
-        <div class="api-row">
-          <span>API:</span>
-          <code>/api/analytics/summary</code>
-        </div>
-
         <div class="metrics">
           <article class="metric-card">
             <span>Total clicks</span>
@@ -100,11 +100,11 @@
               </thead>
               <tbody>
                 <tr v-for="event in summary.recentEvents" :key="event.id">
-                  <td>{{ formatTime(event.timestamp) }}</td>
-                  <td>{{ event.action }}</td>
-                  <td>{{ event.label }}</td>
-                  <td>{{ event.language }}</td>
-                  <td>{{ event.target }}</td>
+                  <td data-label="Time">{{ formatTime(event.timestamp) }}</td>
+                  <td data-label="Action">{{ event.action }}</td>
+                  <td data-label="Label">{{ event.label }}</td>
+                  <td data-label="Language">{{ event.language }}</td>
+                  <td data-label="Target">{{ event.target }}</td>
                 </tr>
                 <tr v-if="!summary.recentEvents || !summary.recentEvents.length">
                   <td colspan="5">No clicks have been recorded yet.</td>
@@ -119,7 +119,6 @@
         <div class="editor-toolbar">
           <div>
             <h2>Edit people</h2>
-            <p>Data is saved to <code>data/people-db.json</code> and <code>public/data/people.json</code>.</p>
           </div>
           <div class="toolbar-actions">
             <button type="button" class="ghost-btn" @click="addPerson">Add person</button>
@@ -129,24 +128,22 @@
 
         <div class="editor-grid">
           <aside class="editor-list">
-            <label>
-              Group
-              <select v-model="selectedGroup" @change="selectedPersonIndex = 0">
-                <option v-for="group in groupOptions" :key="group.key" :value="group.key">{{ group.label }}</option>
-              </select>
-            </label>
+            <div class="list-summary">
+              <span>All people</span>
+              <strong>{{ allPeople.length }}</strong>
+            </div>
             <button
-              v-for="(person, index) in selectedPeople"
-              :key="`${person.name}-${index}`"
+              v-for="item in allPeople"
+              :key="`${item.groupKey}-${item.index}`"
               type="button"
               class="list-item"
-              :class="{ active: selectedPersonIndex === index }"
-              @click="selectedPersonIndex = index"
+              :class="{ active: selectedGroup === item.groupKey && selectedPersonIndex === item.index }"
+              @click="setSelectedPerson(item.groupKey, item.index)"
             >
-              <strong>{{ person.name || "Unnamed" }}</strong>
-              <span>{{ person.role }}</span>
+              <strong>{{ item.person.name || "Unnamed" }}</strong>
+              <span>{{ item.person.role || item.roleLabel }}{{ item.person.visible === false ? " - hidden" : "" }}</span>
             </button>
-            <p v-if="!selectedPeople.length" class="empty">There are no people in this group yet.</p>
+            <p v-if="!allPeople.length" class="empty">There are no people yet.</p>
           </aside>
 
           <form v-if="selectedPerson" class="edit-form" @submit.prevent="savePeople">
@@ -156,9 +153,15 @@
             </div>
             <div class="form-grid">
               <label>Name<input v-model="selectedPerson.name" /></label>
-              <label>Role<input v-model="selectedPerson.role" /></label>
+              <label>
+                Role
+                <select :value="selectedGroup" @change="changeSelectedPersonGroup($event.target.value)">
+                  <option v-for="group in groupOptions" :key="group.key" :value="group.key">{{ group.role }}</option>
+                </select>
+              </label>
               <label>Email<input v-model="selectedPerson.email" /></label>
               <label>Image<input v-model="selectedPerson.image" placeholder="marek.jpg" /></label>
+              <label class="check-row"><input v-model="selectedPerson.visible" type="checkbox" /> Visible</label>
             </div>
             <label>Info EN<textarea v-model="selectedPerson.info" rows="4"></textarea></label>
             <label>Info SK<textarea v-model="selectedPerson.infoSK" rows="4"></textarea></label>
@@ -172,17 +175,121 @@
         </div>
       </section>
 
+      <section v-if="activeSection === 'content'" class="admin-section">
+        <div class="editor-toolbar">
+          <div>
+            <h2>Edit tabs and events</h2>
+          </div>
+          <div class="toolbar-actions">
+            <button type="button" class="ghost-btn" @click="addEvent">Add event</button>
+            <button type="button" @click="saveContent" :disabled="loading">Save content</button>
+          </div>
+        </div>
+
+        <section class="settings-card">
+          <h3>Visible tabs</h3>
+          <div class="toggle-grid">
+            <label v-for="tab in content.tabs" :key="tab.id" class="check-row">
+              <input v-model="tab.visible" type="checkbox" />
+              {{ tabLabel(tab.id) }}
+            </label>
+          </div>
+        </section>
+
+        <section class="settings-card">
+          <h3>Events page intro</h3>
+          <div class="form-grid">
+            <label>Intro EN<textarea v-model="content.events.intro" rows="4"></textarea></label>
+            <label>Intro SK<textarea v-model="content.events.introSK" rows="4"></textarea></label>
+            <label>Press link label EN<input v-model="content.events.pressLinkLabel" /></label>
+            <label>Press link label SK<input v-model="content.events.pressLinkLabelSK" /></label>
+          </div>
+          <label>Press link URL<input v-model="content.events.pressLinkUrl" /></label>
+        </section>
+
+        <div class="editor-grid">
+          <aside class="editor-list">
+            <button
+              v-for="(event, index) in content.events.items"
+              :key="`${event.title}-${index}`"
+              type="button"
+              class="list-item"
+              :class="{ active: selectedEventIndex === index }"
+              @click="selectedEventIndex = index"
+            >
+              <strong>{{ event.title || event.titleSK || "Unnamed event" }}</strong>
+              <span>{{ event.visible === false ? "hidden" : "visible" }}</span>
+            </button>
+            <p v-if="!content.events.items.length" class="empty">There are no events yet.</p>
+          </aside>
+
+          <form v-if="selectedEvent" class="edit-form" @submit.prevent="saveContent">
+            <div class="form-actions">
+              <h3>{{ selectedEvent.title || selectedEvent.titleSK || "New event" }}</h3>
+              <button type="button" class="danger-btn" @click="deleteEvent">Delete</button>
+            </div>
+            <div class="form-grid">
+              <label>Title EN<input v-model="selectedEvent.title" /></label>
+              <label>Title SK<input v-model="selectedEvent.titleSK" /></label>
+            </div>
+            <label>Description EN<textarea v-model="selectedEvent.description" rows="4"></textarea></label>
+            <label>Description SK<textarea v-model="selectedEvent.descriptionSK" rows="4"></textarea></label>
+            <div class="form-grid">
+              <label>URL<input v-model="selectedEvent.url" /></label>
+              <label class="check-row"><input v-model="selectedEvent.visible" type="checkbox" /> Visible</label>
+            </div>
+          </form>
+        </div>
+      </section>
+
       <section v-if="activeSection === 'publications'" class="admin-section">
         <div class="editor-toolbar">
           <div>
             <h2>Edit publications</h2>
-            <p>Data is saved to the local snapshot. A new OpenAlex sync can overwrite manual publication edits.</p>
           </div>
           <div class="toolbar-actions">
+            <button type="button" class="ghost-btn" @click="syncPublications(false)" :disabled="loading">Sync OpenAlex</button>
+            <button type="button" class="ghost-btn" @click="syncPublications(true)" :disabled="loading">Refresh authors</button>
             <button type="button" class="ghost-btn" @click="addPublication">Add publication</button>
             <button type="button" @click="savePublications" :disabled="loading">Save publications</button>
           </div>
         </div>
+
+        <section class="sync-card" v-if="publicationMeta.generatedAt || syncHistory.length">
+          <div class="sync-heading">
+            <h3>OpenAlex sync</h3>
+            <span v-if="publicationMeta.generatedAt">{{ formatFullTime(publicationMeta.generatedAt) }}</span>
+          </div>
+          <div class="sync-metrics">
+            <article>
+              <span>Publications</span>
+              <strong>{{ publicationMeta.publicationCount || publications.length }}</strong>
+            </article>
+            <article>
+              <span>Manual</span>
+              <strong>{{ publicationMeta.manualPublicationCount || 0 }}</strong>
+            </article>
+            <article>
+              <span>Preserved</span>
+              <strong>{{ publicationMeta.preservedManualPublicationCount || 0 }}</strong>
+            </article>
+            <article>
+              <span>Skipped deleted</span>
+              <strong>{{ publicationMeta.skippedDeletedPublicationCount || 0 }}</strong>
+            </article>
+            <article>
+              <span>Deleted keys</span>
+              <strong>{{ publicationMeta.deletedPublicationKeyCount || 0 }}</strong>
+            </article>
+          </div>
+          <div v-if="syncHistory.length" class="sync-history">
+            <div v-for="item in syncHistory.slice(0, 5)" :key="`${item.generatedAt}-${item.publicationCount}`" class="sync-row">
+              <span>{{ formatFullTime(item.generatedAt) }}</span>
+              <strong>{{ item.publicationCount || 0 }}</strong>
+              <small>preserved {{ item.preservedManualPublicationCount || 0 }} / skipped {{ item.skippedDeletedPublicationCount || 0 }}</small>
+            </div>
+          </div>
+        </section>
 
         <div class="editor-grid publications-editor">
           <aside class="editor-list">
@@ -230,12 +337,55 @@
           </form>
         </div>
       </section>
+
+      <section v-if="activeSection === 'audit'" class="admin-section">
+        <div class="editor-toolbar">
+          <div>
+            <h2>Audit log</h2>
+          </div>
+          <div class="toolbar-actions">
+            <button type="button" @click="fetchAudit" :disabled="loading">Refresh audit</button>
+          </div>
+        </div>
+
+        <section class="recent-card">
+          <div class="audit-meta" v-if="auditMeta.updatedAt">
+            Last audit update: {{ formatFullTime(auditMeta.updatedAt) }}
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Action</th>
+                  <th>Details</th>
+                  <th>IP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="event in auditEvents" :key="event.id">
+                  <td data-label="Time">{{ formatFullTime(event.timestamp) }}</td>
+                  <td data-label="Action">{{ event.action }}</td>
+                  <td data-label="Details">{{ formatDetails(event.details) }}</td>
+                  <td data-label="IP">{{ event.ip }}</td>
+                </tr>
+                <tr v-if="!auditEvents.length">
+                  <td colspan="4">No admin actions recorded yet.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
     </section>
   </main>
 </template>
 
 <script>
 import { h } from "vue";
+
+const API_BASE_URL = process.env.VUE_APP_API_BASE_URL ||
+  (process.env.NODE_ENV === "production" ? "https://seug-api.167.233.132.16.sslip.io" : "");
 
 const emptyPeople = () => ({
   professor: [],
@@ -244,6 +394,23 @@ const emptyPeople = () => ({
   phdCandidates: [],
   exMembers: [],
   students: []
+});
+
+const emptyContent = () => ({
+  tabs: [
+    { id: "people", visible: true },
+    { id: "publications", visible: true },
+    { id: "teaching", visible: true },
+    { id: "events", visible: true }
+  ],
+  events: {
+    intro: "",
+    introSK: "",
+    pressLinkLabel: "KPI events",
+    pressLinkLabelSK: "Udalosti KPI",
+    pressLinkUrl: "",
+    items: []
+  }
 });
 
 const emptySummary = () => ({
@@ -295,10 +462,15 @@ export default {
       message: "",
       activeSection: "stats",
       summary: emptySummary(),
+      auditEvents: [],
+      auditMeta: {},
       people: emptyPeople(),
+      content: emptyContent(),
       publications: [],
+      publicationMeta: {},
       selectedGroup: "professor",
       selectedPersonIndex: 0,
+      selectedEventIndex: 0,
       selectedPublicationIndex: 0,
       publicationFilter: "",
       linkLabels: ["Profile", "LinkedIn", "ORCID", "Web"],
@@ -313,14 +485,30 @@ export default {
     };
   },
   computed: {
+    allPeople() {
+      return this.groupOptions.flatMap(group => (
+        Array.isArray(this.people[group.key]) ? this.people[group.key] : []
+      ).map((person, index) => ({
+        groupKey: group.key,
+        roleLabel: group.role,
+        index,
+        person
+      })));
+    },
     selectedPeople() {
       return this.people[this.selectedGroup] || [];
     },
     selectedPerson() {
       return this.selectedPeople[this.selectedPersonIndex] || null;
     },
+    selectedEvent() {
+      return this.content.events.items[this.selectedEventIndex] || null;
+    },
     selectedPublication() {
       return this.publications[this.selectedPublicationIndex] || null;
+    },
+    syncHistory() {
+      return Array.isArray(this.publicationMeta.syncHistory) ? this.publicationMeta.syncHistory : [];
     },
     filteredPublications() {
       const needle = this.publicationFilter.toLowerCase().trim();
@@ -365,21 +553,28 @@ export default {
     const saved = window.localStorage.getItem("adminPassword");
     if (saved) {
       this.password = saved;
-      this.login();
+      this.login(true);
     }
   },
   methods: {
-    login() {
+    login(fromSavedPassword = false) {
+      const usingSavedPassword = fromSavedPassword === true;
       this.loading = true;
       this.error = "";
-      Promise.all([this.fetchSummary(), this.fetchContent()])
+      Promise.all([this.fetchSummary(), this.fetchContent(), this.fetchAudit()])
         .then(() => {
           this.authenticated = true;
           window.localStorage.setItem("adminPassword", this.password);
         })
         .catch(error => {
           this.authenticated = false;
-          this.error = error.message;
+          if (usingSavedPassword) {
+            window.localStorage.removeItem("adminPassword");
+            this.password = "";
+            this.error = "Saved admin password is no longer valid. Enter the password again.";
+          } else {
+            this.error = error.message;
+          }
         })
         .finally(() => {
           this.loading = false;
@@ -399,7 +594,11 @@ export default {
     refresh() {
       this.loading = true;
       this.error = "";
-      const request = this.activeSection === "stats" ? this.fetchSummary() : this.fetchContent();
+      const request = this.activeSection === "stats"
+        ? this.fetchSummary()
+        : this.activeSection === "audit"
+          ? this.fetchAudit()
+          : this.fetchContent();
       request
         .catch(error => {
           this.error = error.message;
@@ -408,27 +607,105 @@ export default {
           this.loading = false;
         });
     },
+    apiUrl(path) {
+      return `${API_BASE_URL}${path}`;
+    },
     adminPost(path, payload = {}) {
-      return fetch(path, {
+      return fetch(this.apiUrl(path), {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ password: this.password, ...payload })
-      }).then(response => {
+      }).then(async response => {
         if (!response.ok) {
-          throw new Error("Wrong password or unavailable API.");
+          let message = "Wrong password or unavailable API.";
+          try {
+            const payload = await response.json();
+            message = payload.error || message;
+          } catch (error) {
+            // Keep the generic message if the API did not return JSON.
+          }
+          throw new Error(message);
         }
         return response.json();
       });
+    },
+    exportBackup() {
+      this.loading = true;
+      this.error = "";
+      this.adminPost("/api/admin/backup")
+        .then(backup => {
+          const exportedAt = backup.exportedAt || new Date().toISOString();
+          const blob = new Blob([`${JSON.stringify(backup, null, 2)}\n`], { type: "application/json" });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = `seug-backup-${exportedAt.replace(/[:.]/g, "-")}.json`;
+          document.body.appendChild(link);
+          link.click();
+          window.URL.revokeObjectURL(link.href);
+          document.body.removeChild(link);
+          this.message = "Backup was exported.";
+          this.fetchAudit();
+        })
+        .catch(error => {
+          this.error = error.message;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+    triggerRestoreBackup() {
+      if (this.$refs.backupInput) {
+        this.$refs.backupInput.click();
+      }
+    },
+    restoreBackup(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) {
+        return;
+      }
+      if (!window.confirm("Restore this backup and overwrite current data?")) {
+        event.target.value = "";
+        return;
+      }
+
+      this.loading = true;
+      this.error = "";
+      file.text()
+        .then(raw => JSON.parse(raw))
+        .then(backup => this.adminPost("/api/admin/backup/restore", { backup }))
+        .then(response => {
+          this.message = `Backup restored (${response.restoredFiles.length} files).`;
+          return Promise.all([this.fetchSummary(), this.fetchContent(), this.fetchAudit()]);
+        })
+        .catch(error => {
+          this.error = error.message;
+        })
+        .finally(() => {
+          event.target.value = "";
+          this.loading = false;
+        });
     },
     fetchSummary() {
       return this.adminPost("/api/analytics/summary").then(summary => {
         this.summary = summary;
       });
     },
+    fetchAudit() {
+      return this.adminPost("/api/admin/audit", { limit: 100 }).then(audit => {
+        this.auditEvents = Array.isArray(audit.events) ? audit.events : [];
+        this.auditMeta = audit.meta || {};
+      });
+    },
     fetchContent() {
       return this.adminPost("/api/admin/content").then(content => {
         this.people = this.normalizePeople(content.people);
+        this.content = this.normalizeContent(content.content);
         this.publications = Array.isArray(content.publications) ? content.publications : [];
+        this.publicationMeta = content.publicationMeta || {};
+        if (content.audit) {
+          this.auditEvents = Array.isArray(content.audit.events) ? content.audit.events : this.auditEvents;
+          this.auditMeta = content.audit.meta || this.auditMeta;
+        }
         this.clampSelections();
       });
     },
@@ -438,9 +715,51 @@ export default {
         ...(people || {})
       };
     },
+    normalizeContent(content) {
+      const defaults = emptyContent();
+      const incomingTabs = Array.isArray(content && content.tabs) ? content.tabs : [];
+      const tabs = defaults.tabs.map(tab => {
+        const incoming = incomingTabs.find(item => item.id === tab.id);
+        return {
+          ...tab,
+          visible: incoming ? incoming.visible !== false : tab.visible
+        };
+      });
+      const events = content && content.events ? content.events : {};
+      return {
+        tabs,
+        events: {
+          ...defaults.events,
+          ...events,
+          items: Array.isArray(events.items)
+            ? events.items.map(event => ({
+              title: event.title || "",
+              titleSK: event.titleSK || "",
+              description: event.description || "",
+              descriptionSK: event.descriptionSK || "",
+              url: event.url || "",
+              visible: event.visible !== false
+            }))
+            : []
+        }
+      };
+    },
     clampSelections() {
-      this.selectedPersonIndex = Math.min(this.selectedPersonIndex, Math.max(this.selectedPeople.length - 1, 0));
+      if (!Array.isArray(this.people[this.selectedGroup])) {
+        this.selectedGroup = this.groupOptions[0].key;
+      }
+      if (!this.selectedPeople.length && this.allPeople.length) {
+        this.selectedGroup = this.allPeople[0].groupKey;
+        this.selectedPersonIndex = this.allPeople[0].index;
+      } else {
+        this.selectedPersonIndex = Math.min(this.selectedPersonIndex, Math.max(this.selectedPeople.length - 1, 0));
+      }
+      this.selectedEventIndex = Math.min(this.selectedEventIndex, Math.max(this.content.events.items.length - 1, 0));
       this.selectedPublicationIndex = Math.min(this.selectedPublicationIndex, Math.max(this.publications.length - 1, 0));
+    },
+    setSelectedPerson(groupKey, index) {
+      this.selectedGroup = groupKey;
+      this.selectedPersonIndex = index;
     },
     addPerson() {
       const option = this.groupOptions.find(group => group.key === this.selectedGroup);
@@ -451,17 +770,76 @@ export default {
         info: "",
         infoSK: "",
         image: "",
+        visible: true,
         links: []
       };
       this.people[this.selectedGroup].push(person);
       this.selectedPersonIndex = this.people[this.selectedGroup].length - 1;
     },
+    changeSelectedPersonGroup(groupKey) {
+      if (!groupKey || groupKey === this.selectedGroup || !this.selectedPerson) {
+        return;
+      }
+      const option = this.groupOptions.find(group => group.key === groupKey);
+      if (!option) {
+        return;
+      }
+      const person = this.selectedPerson;
+      this.people[this.selectedGroup].splice(this.selectedPersonIndex, 1);
+      if (!Array.isArray(this.people[groupKey])) {
+        this.people[groupKey] = [];
+      }
+      person.role = option.role;
+      this.people[groupKey].push(person);
+      this.selectedGroup = groupKey;
+      this.selectedPersonIndex = this.people[groupKey].length - 1;
+    },
+    confirmDelete(itemType, itemName) {
+      const label = (itemName || `Untitled ${itemType}`).toString().trim();
+      return window.confirm([
+        `Delete this ${itemType}?`,
+        "",
+        label,
+        "",
+        "This removes it from the editor. Click Save to persist the change."
+      ].join("\n"));
+    },
     deletePerson() {
-      if (!this.selectedPerson || !window.confirm("Delete this person?")) {
+      if (!this.selectedPerson || !this.confirmDelete("person", this.selectedPerson.name)) {
         return;
       }
       this.people[this.selectedGroup].splice(this.selectedPersonIndex, 1);
       this.clampSelections();
+      this.message = "Person removed from the editor. Click Save people to keep the change.";
+    },
+    tabLabel(id) {
+      const labels = {
+        people: "People",
+        publications: "Publications",
+        teaching: "Teaching",
+        events: "Events"
+      };
+      return labels[id] || id;
+    },
+    addEvent() {
+      this.content.events.items.push({
+        title: "",
+        titleSK: "",
+        description: "",
+        descriptionSK: "",
+        url: "",
+        visible: true
+      });
+      this.selectedEventIndex = this.content.events.items.length - 1;
+    },
+    deleteEvent() {
+      const title = this.selectedEvent && (this.selectedEvent.title || this.selectedEvent.titleSK);
+      if (!this.selectedEvent || !this.confirmDelete("event", title)) {
+        return;
+      }
+      this.content.events.items.splice(this.selectedEventIndex, 1);
+      this.clampSelections();
+      this.message = "Event removed from the editor. Click Save content to keep the change.";
     },
     linkValue(person, label) {
       const link = (person.links || []).find(item => item.label === label);
@@ -490,6 +868,24 @@ export default {
         .then(response => {
           this.people = this.normalizePeople(response.people);
           this.message = "People were saved.";
+          this.fetchAudit();
+        })
+        .catch(error => {
+          this.error = error.message;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+    saveContent() {
+      this.loading = true;
+      this.error = "";
+      this.adminPost("/api/admin/content/save", { content: this.content })
+        .then(response => {
+          this.content = this.normalizeContent(response.content);
+          this.clampSelections();
+          this.message = "Content was saved.";
+          this.fetchAudit();
         })
         .catch(error => {
           this.error = error.message;
@@ -517,11 +913,12 @@ export default {
       this.publicationFilter = "";
     },
     deletePublication() {
-      if (!this.selectedPublication || !window.confirm("Delete this publication?")) {
+      if (!this.selectedPublication || !this.confirmDelete("publication", this.selectedPublication.title)) {
         return;
       }
       this.publications.splice(this.selectedPublicationIndex, 1);
       this.clampSelections();
+      this.message = "Publication removed from the editor. Click Save publications to keep the change.";
     },
     savePublications() {
       this.loading = true;
@@ -529,8 +926,33 @@ export default {
       this.adminPost("/api/admin/publications/save", { publications: this.publications })
         .then(response => {
           this.publications = response.publications || [];
+          this.publicationMeta = response.publicationMeta || this.publicationMeta;
           this.clampSelections();
           this.message = "Publications were saved.";
+          this.fetchAudit();
+        })
+        .catch(error => {
+          this.error = error.message;
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+    },
+    syncPublications(refreshAuthors) {
+      const label = refreshAuthors ? "refresh OpenAlex author matching and sync publications" : "sync publications from OpenAlex";
+      if (!window.confirm(`Start ${label}?`)) {
+        return;
+      }
+      this.loading = true;
+      this.error = "";
+      this.message = "OpenAlex sync is running...";
+      this.adminPost("/api/publications/sync", { refreshAuthors })
+        .then(response => {
+          this.publications = Array.isArray(response.publications) ? response.publications : this.publications;
+          this.publicationMeta = response.meta || this.publicationMeta;
+          this.clampSelections();
+          this.message = `OpenAlex sync finished with ${this.publications.length} publications.`;
+          return this.fetchAudit();
         })
         .catch(error => {
           this.error = error.message;
@@ -550,6 +972,27 @@ export default {
         hour: "2-digit",
         minute: "2-digit"
       });
+    },
+    formatFullTime(timestamp) {
+      if (!timestamp) {
+        return "";
+      }
+      const date = new Date(timestamp);
+      return date.toLocaleString("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    },
+    formatDetails(details) {
+      if (!details || typeof details !== "object") {
+        return "";
+      }
+      return Object.entries(details)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(", ");
     }
   }
 };
@@ -682,6 +1125,10 @@ h3 {
 
 .form-actions {
   justify-content: space-between;
+}
+
+.file-input-hidden {
+  display: none;
 }
 
 button {
@@ -829,6 +1276,8 @@ label {
 .chart-card,
 .panel,
 .recent-card,
+.settings-card,
+.sync-card,
 .editor-list,
 .edit-form {
   border: 1px solid var(--line);
@@ -857,13 +1306,17 @@ label {
 .chart-card,
 .recent-card,
 .panel,
+.settings-card,
+.sync-card,
 .editor-list,
 .edit-form {
   padding: 18px;
 }
 
 .chart-card,
-.recent-card {
+.recent-card,
+.settings-card,
+.sync-card {
   margin-top: 16px;
 }
 
@@ -945,6 +1398,25 @@ label {
   overflow: auto;
 }
 
+.list-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.list-summary strong {
+  min-width: 30px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--ink);
+  padding: 4px 8px;
+  text-align: center;
+}
+
 .list-item {
   border-radius: 8px;
   background: #ffffff;
@@ -977,6 +1449,99 @@ label {
   gap: 12px;
 }
 
+.toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sync-card {
+  display: grid;
+  gap: 14px;
+}
+
+.sync-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.sync-heading h3 {
+  margin: 0;
+}
+
+.sync-heading span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.sync-metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sync-metrics article {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 11px;
+  display: grid;
+  gap: 6px;
+}
+
+.sync-metrics span,
+.sync-row small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.sync-metrics strong {
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+
+.sync-history {
+  display: grid;
+  gap: 6px;
+}
+
+.sync-row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.9fr) 60px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  padding-top: 7px;
+}
+
+.sync-row span,
+.sync-row strong {
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.check-row {
+  display: inline-flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 9px 12px;
+}
+
+.check-row input {
+  width: auto;
+  min-width: 16px;
+}
+
 .count-list {
   display: grid;
 }
@@ -1004,6 +1569,13 @@ label {
 .empty {
   color: var(--muted);
   font-weight: 700;
+}
+
+.audit-meta {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+  margin-bottom: 12px;
 }
 
 :deep(.panel h2) {
@@ -1098,8 +1670,72 @@ td:last-child {
 
   .metrics,
   .panels,
+  .sync-metrics,
+  .toggle-grid,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sync-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .section-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 14px;
+    width: 100%;
+  }
+
+  .section-tabs button {
+    border-radius: 10px;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  table,
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  tbody tr {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 8px;
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+  }
+
+  td {
+    border-bottom: 0;
+    display: grid;
+    grid-template-columns: minmax(90px, 0.38fr) minmax(0, 1fr);
+    gap: 10px;
+    padding: 7px 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  td::before {
+    content: attr(data-label);
+    color: var(--ink);
+    font-weight: 800;
+  }
+
+  td:last-child {
+    max-width: none;
+    white-space: normal;
   }
 }
 </style>

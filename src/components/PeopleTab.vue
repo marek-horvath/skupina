@@ -9,7 +9,7 @@
           :key="'prof-' + index"
           :style="{ '--i': index }"
         >
-          <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
+          <img :src="getImage(person.image)" :alt="person.name" class="profile-pic" loading="lazy" decoding="async" />
           <div class="name-row">
             <h3>{{ person.name }}</h3>
             <a
@@ -18,12 +18,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
-              aria-label="LinkedIn profile"
+              :aria-label="ui('linkedin_profile')"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
                 alt="LinkedIn"
                 class="linkedin-logo"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -32,9 +34,9 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
-              aria-label="ORCID profile"
+              :aria-label="ui('orcid_profile')"
             >
-              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" loading="lazy" decoding="async" />
             </a>
             <a
               v-if="webUrl(person)"
@@ -42,14 +44,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
-              aria-label="Personal website"
+              :aria-label="ui('personal_website')"
             >
-              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
+              <img :src="getImage('web.png')" :alt="ui('website')" class="social-icon" loading="lazy" decoding="async" />
             </a>
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">{{ ui("copy") }}</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -65,7 +67,7 @@
           :key="'assoc-' + index"
           :style="{ '--i': index }"
         >
-          <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
+          <img :src="getImage(person.image)" :alt="person.name" class="profile-pic" loading="lazy" decoding="async" />
           <div class="name-row">
             <h3>{{ person.name }}</h3>
             <a
@@ -74,12 +76,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
-              aria-label="LinkedIn profile"
+              :aria-label="ui('linkedin_profile')"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
                 alt="LinkedIn"
                 class="linkedin-logo"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -88,9 +92,9 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
-              aria-label="ORCID profile"
+              :aria-label="ui('orcid_profile')"
             >
-              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" loading="lazy" decoding="async" />
             </a>
             <a
               v-if="webUrl(person)"
@@ -98,14 +102,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
-              aria-label="Personal website"
+              :aria-label="ui('personal_website')"
             >
-              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
+              <img :src="getImage('web.png')" :alt="ui('website')" class="social-icon" loading="lazy" decoding="async" />
             </a>
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">{{ ui("copy") }}</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -121,7 +125,7 @@
           :key="'ra-' + index"
           :style="{ '--i': index }"
         >
-          <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
+          <img :src="getImage(person.image)" :alt="person.name" class="profile-pic" loading="lazy" decoding="async" />
           <div class="name-row">
             <h3>{{ person.name }}</h3>
             <a
@@ -130,12 +134,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
-              aria-label="LinkedIn profile"
+              :aria-label="ui('linkedin_profile')"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
                 alt="LinkedIn"
                 class="linkedin-logo"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -144,9 +150,9 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
-              aria-label="ORCID profile"
+              :aria-label="ui('orcid_profile')"
             >
-              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" loading="lazy" decoding="async" />
             </a>
             <a
               v-if="webUrl(person)"
@@ -154,14 +160,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
-              aria-label="Personal website"
+              :aria-label="ui('personal_website')"
             >
-              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
+              <img :src="getImage('web.png')" :alt="ui('website')" class="social-icon" loading="lazy" decoding="async" />
             </a>
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">{{ ui("copy") }}</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -177,7 +183,7 @@
           :key="'phd-' + index"
           :style="{ '--i': index }"
         >
-          <img :src="getImage(person.image)" alt="Profile Picture" class="profile-pic" />
+          <img :src="getImage(person.image)" :alt="person.name" class="profile-pic" loading="lazy" decoding="async" />
           <div class="name-row">
             <h3>{{ person.name }}</h3>
             <a
@@ -186,12 +192,14 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
-              aria-label="LinkedIn profile"
+              :aria-label="ui('linkedin_profile')"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ04ydawRAAa5H68SNWFnch3O6DQEx9dsRxQ&s"
                 alt="LinkedIn"
                 class="linkedin-logo"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <a
@@ -200,9 +208,9 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
-              aria-label="ORCID profile"
+              :aria-label="ui('orcid_profile')"
             >
-              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
+              <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" loading="lazy" decoding="async" />
             </a>
             <a
               v-if="webUrl(person)"
@@ -210,35 +218,41 @@
               target="_blank"
               class="social-link"
               @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
-              aria-label="Personal website"
+              :aria-label="ui('personal_website')"
             >
-              <img :src="getImage('web.png')" alt="Website" class="social-icon" />
+              <img :src="getImage('web.png')" :alt="ui('website')" class="social-icon" loading="lazy" decoding="async" />
             </a>
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">{{ ui("copy") }}</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
       </div>
     </section>
-    <section
-      class="people-group names-grid"
-      v-if="(people.exMembers && people.exMembers.length) || (people.students && people.students.length)"
-    >
-      <div class="names-col" v-if="people.exMembers && people.exMembers.length">
-        <h2>{{ sectionLabel("ex") }}</h2>
-        <ul class="names-list">
-          <li v-for="(person, index) in people.exMembers" :key="'ex-' + index">{{ person.name }}</li>
-        </ul>
+    <section class="people-group extended-people" v-if="hasExtendedPeople">
+      <div class="extended-heading">
+        <h2>{{ sectionLabel("extended") }}</h2>
       </div>
+      <div class="extended-grid">
+        <div class="extended-col" v-if="people.exMembers && people.exMembers.length">
+          <h3>{{ sectionLabel("ex") }}</h3>
+          <div class="name-pills">
+            <span v-for="(person, index) in people.exMembers" :key="'ex-' + index" class="name-pill">
+              {{ person.name }}
+            </span>
+          </div>
+        </div>
 
-      <div class="names-col" v-if="people.students && people.students.length">
-        <h2>{{ sectionLabel("students") }}</h2>
-        <ul class="names-list">
-          <li v-for="(person, index) in people.students" :key="'student-' + index">{{ person.name }}</li>
-        </ul>
+        <div class="extended-col" v-if="people.students && people.students.length">
+          <h3>{{ sectionLabel("students") }}</h3>
+          <div class="name-pills">
+            <span v-for="(person, index) in people.students" :key="'student-' + index" class="name-pill student">
+              {{ person.name }}
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -262,7 +276,34 @@ export default {
       default: "en"
     }
   },
+  computed: {
+    hasExtendedPeople() {
+      return Boolean(
+        (this.people.exMembers && this.people.exMembers.length) ||
+        (this.people.students && this.people.students.length)
+      );
+    }
+  },
   methods: {
+    ui(key) {
+      const dictionary = {
+        en: {
+          copy: "Copy",
+          linkedin_profile: "LinkedIn profile",
+          orcid_profile: "ORCID profile",
+          personal_website: "Personal website",
+          website: "Website"
+        },
+        sk: {
+          copy: "Kopírovať",
+          linkedin_profile: "LinkedIn profil",
+          orcid_profile: "ORCID profil",
+          personal_website: "Osobná stránka",
+          website: "Webstránka"
+        }
+      };
+      return (dictionary[this.language] && dictionary[this.language][key]) || dictionary.en[key] || key;
+    },
     socialUrl(person, label) {
       if (!person.links || !person.links.length) {
         return "";
@@ -294,10 +335,11 @@ export default {
         ? {
             professor: "Profesor",
             associate: "Docent",
-            assistants: "Odborni asistenti",
+            assistants: "Odborní asistenti",
             phd: "Doktorandi",
-            ex: "Byvali clenovia",
-            students: "Studenti"
+            ex: "Bývalí členovia",
+            students: "Študenti",
+            extended: "Ďalší členovia komunity"
           }
         : {
             professor: "Professor",
@@ -305,7 +347,8 @@ export default {
             assistants: "Research Assistants",
             phd: "PhD Candidates",
             ex: "Ex Members",
-            students: "Students"
+            students: "Students",
+            extended: "Extended Group Network"
           };
       return labels[key] || key;
     },
@@ -424,34 +467,65 @@ export default {
 }
 
 
-.names-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-  gap: 28px;
-  margin-top: 12px;
+.extended-people {
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+  padding-top: 22px;
 }
 
-.names-col h2 {
-  margin-bottom: 12px;
+.extended-heading h2 {
+  margin-bottom: 0;
+  margin-bottom: 14px;
 }
 
-.names-list {
-  list-style: disc;
-  padding-left: 22px;
+.extended-grid {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.extended-col {
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 8px;
+  background: #fbfaf7;
+  padding: 14px;
+}
+
+.extended-col h3 {
+  color: var(--ink);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.name-pills {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-.names-list li {
-  font-size: 1.04rem;
-  line-height: 1.4;
+.name-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 999px;
+  background: #ffffff;
   color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 7px 11px;
+}
+
+.name-pill.student {
+  border-color: rgba(15, 118, 110, 0.18);
+  color: #0f766e;
 }
 
 @media (max-width: 900px) {
-  .names-grid {
+  .extended-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 }
 
