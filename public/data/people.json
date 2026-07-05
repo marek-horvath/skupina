@@ -1,0 +1,218 @@
+{
+  "professor": [
+    {
+      "role": "Professor",
+      "name": "Jaroslav Poruban",
+      "email": "jaroslav.poruban@tuke.sk",
+      "info": "Head of department, domain-specific languages, code structure and design.",
+      "infoSK": "Vedúci katedry, doménovo špecifické jazyky, štruktúra a návrh kódu.",
+      "image": "jaro.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/jaro"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/jaroslav-porub%C3%A4n-93997b5b/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0001-9706-2897"
+        }
+      ]
+    }
+  ],
+  "associateProfessor": [
+    {
+      "role": "Associate Professor",
+      "name": "Emília Pietrikova",
+      "email": "emilia.pietrikova@tuke.sk",
+      "info": "IT education, game development in teaching, curriculum design.",
+      "infoSK": "IT vzdelávanie, využitie vývoja hier vo výučbe, návrh kurikula.",
+      "image": "ema.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/ema"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/emilia-pietrikova-a7b219202/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0002-9790-6874"
+        }
+      ]
+    }
+  ],
+  "researchAssistants": [
+    {
+      "role": "Research Assistant",
+      "name": "Sergej Chodarev",
+      "email": "sergej.chodarev@tuke.sk",
+      "info": "Software architecture, clean code, metaprogramming.",
+      "infoSK": "Softvérová architektúra, čistý kód, metaprogramovanie.",
+      "image": "sergej.png",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/sergej"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/sergej-chodarev/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0002-9293-0859"
+        },
+        {
+          "label": "Web",
+          "url": "https://sergejx.net/"
+        }
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "name": "Matus Sulir",
+      "email": "matus.sulir@tuke.sk",
+      "info": "Empirical software engineering, source code annotations, buildability, code comprehension.",
+      "infoSK": "Empirické softvérové inžinierstvo, anotácie zdrojového kódu, zostaviteľnosť softvéru, porozumenie kódu.",
+      "image": "matus.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/matus"
+        },
+        {
+          "label": "Web",
+          "url": "https://sulir.github.io/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0003-2221-9225"
+        }
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "name": "Michaela Bacikova",
+      "email": "michaela.bacikova@tuke.sk",
+      "info": "UI/UX design, human-computer interaction.",
+      "infoSK": "Návrh UI/UX, interakcia človek - počítač.",
+      "image": "miska.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/miska"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/michaela-ba%C4%8D%C3%ADkov%C3%A1-08690869/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0002-9436-8425"
+        }
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "name": "Filip Gurbal",
+      "email": "filip.gurbal@tuke.sk",
+      "info": "Software testing, system architecture, performance and reliability.",
+      "infoSK": "Testovanie softvéru, systémová architektúra, výkonnosť a spoľahlivosť.",
+      "image": "filip.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/filip"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/filip-gurbal/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0000-0001-7691-9273"
+        }
+      ]
+    }
+  ],
+  "phdCandidates": [
+    {
+      "role": "PhD Candidate",
+      "name": "Marek Horvath",
+      "email": "marek.horvath@tuke.sk",
+      "info": "Static code analysis, plagiarism detection, programmer identification.",
+      "infoSK": "Statická analýza kódu, detekcia plagiátorstva, identifikácia programátora.",
+      "image": "marek.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/marek"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/horvathmar/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0009-0005-4649-2308"
+        },
+        {
+          "label": "Web",
+          "url": "https://marek-horvath.github.io/portfolio/"
+        }
+      ]
+    },
+    {
+      "role": "PhD Candidate",
+      "name": "Tomas Kormanik",
+      "email": "tomas.kormanik@tuke.sk",
+      "info": "DevOps, Internet of Things, deployment automation.",
+      "infoSK": "DevOps, internet vecí, automatizácia nasadzovania.",
+      "image": "tomas.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/tomas"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/tom%C3%A1%C5%A1-korman%C3%ADk/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0009-0002-6622-8027"
+        }
+      ]
+    },
+    {
+      "role": "PhD Candidate",
+      "name": "Lenka Bubenkova",
+      "email": "lenka.bubenkova@tuke.sk",
+      "info": "Cybersecurity, phishing prevention, security awareness training.",
+      "infoSK": "Kybernetická bezpečnosť, prevencia phishingu, školenia bezpečnostného povedomia.",
+      "image": "lenka.jpg",
+      "links": [
+        {
+          "label": "Profile",
+          "url": "https://example.com/profile/lenka"
+        },
+        {
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/lenka-bubenkova-10368a1a1/"
+        },
+        {
+          "label": "ORCID",
+          "url": "https://orcid.org/0009-0008-1192-8935"
+        }
+      ]
+    }
+  ],
+  "exMembers": [],
+  "students": []
+}

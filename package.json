@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:api": "node server/publications-api.js",
+    "export:people": "node server/export-people.js",
+    "sync:publications": "node server/openalex-sync.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "gh-pages -d dist"

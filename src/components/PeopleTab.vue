@@ -16,7 +16,8 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
               aria-label="LinkedIn profile"
             >
               <img
@@ -29,7 +30,8 @@
               v-if="orcidUrl(person)"
               :href="orcidUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
               aria-label="ORCID profile"
             >
               <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
@@ -38,7 +40,8 @@
               v-if="webUrl(person)"
               :href="webUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
               aria-label="Personal website"
             >
               <img :src="getImage('web.png')" alt="Website" class="social-icon" />
@@ -46,7 +49,7 @@
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -69,7 +72,8 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
               aria-label="LinkedIn profile"
             >
               <img
@@ -82,7 +86,8 @@
               v-if="orcidUrl(person)"
               :href="orcidUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
               aria-label="ORCID profile"
             >
               <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
@@ -91,7 +96,8 @@
               v-if="webUrl(person)"
               :href="webUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
               aria-label="Personal website"
             >
               <img :src="getImage('web.png')" alt="Website" class="social-icon" />
@@ -99,7 +105,7 @@
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -122,7 +128,8 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
               aria-label="LinkedIn profile"
             >
               <img
@@ -135,7 +142,8 @@
               v-if="orcidUrl(person)"
               :href="orcidUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
               aria-label="ORCID profile"
             >
               <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
@@ -144,7 +152,8 @@
               v-if="webUrl(person)"
               :href="webUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
               aria-label="Personal website"
             >
               <img :src="getImage('web.png')" alt="Website" class="social-icon" />
@@ -152,7 +161,7 @@
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -175,7 +184,8 @@
               v-if="linkedinUrl(person)"
               :href="linkedinUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'LinkedIn', linkedinUrl(person)))"
               aria-label="LinkedIn profile"
             >
               <img
@@ -188,7 +198,8 @@
               v-if="orcidUrl(person)"
               :href="orcidUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'ORCID', orcidUrl(person)))"
               aria-label="ORCID profile"
             >
               <img :src="getImage('orcid.png')" alt="ORCID" class="social-icon" />
@@ -197,7 +208,8 @@
               v-if="webUrl(person)"
               :href="webUrl(person)"
               target="_blank"
-              class="social-link" @click.stop
+              class="social-link"
+              @click.stop="$emit('analytics', linkEvent(person, 'Web', webUrl(person)))"
               aria-label="Personal website"
             >
               <img :src="getImage('web.png')" alt="Website" class="social-icon" />
@@ -205,7 +217,7 @@
           </div>
           <div class="email-row">
             <p class="email">{{ person.email }}</p>
-            <button class="copy-btn" @click.stop="copyEmail(person.email)">Copy</button>
+            <button class="copy-btn" @click.stop="copyEmail(person)">Copy</button>
           </div>
           <p>{{ personInfo(person) }}</p>
         </div>
@@ -235,7 +247,7 @@
 <script>
 export default {
   name: "PeopleTab",
-  emits: ["select"],
+  emits: ["select", "analytics"],
   props: {
     people: {
       type: Object,
@@ -297,10 +309,25 @@ export default {
           };
       return labels[key] || key;
     },
-    copyEmail(email) {
+    linkEvent(person, linkType, url) {
+      return {
+        action: "person_link_open",
+        label: person.name,
+        target: url,
+        metadata: { linkType }
+      };
+    },
+    copyEmail(person) {
+      const email = person && person.email;
       if (!email) {
         return;
       }
+      this.$emit("analytics", {
+        action: "email_copy",
+        label: person.name,
+        target: email,
+        metadata: { linkType: "Email / Copy" }
+      });
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email);
         return;

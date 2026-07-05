@@ -57,6 +57,7 @@
                   :href="personLinkedin(selectedPerson)"
                   target="_blank"
                   class="person-linkedin"
+                  @click="trackPersonDetailLink(selectedPerson, 'LinkedIn', personLinkedin(selectedPerson))"
                   aria-label="LinkedIn profile"
                 >
                   <img
@@ -70,6 +71,7 @@
                   :href="personOrcid(selectedPerson)"
                   target="_blank"
                   class="person-linkedin"
+                  @click="trackPersonDetailLink(selectedPerson, 'ORCID', personOrcid(selectedPerson))"
                   aria-label="ORCID profile"
                 >
                   <img :src="getImage('orcid.png')" alt="ORCID" class="profile-social-icon" />
@@ -79,6 +81,7 @@
                   :href="personWeb(selectedPerson)"
                   target="_blank"
                   class="person-linkedin"
+                  @click="trackPersonDetailLink(selectedPerson, 'Web', personWeb(selectedPerson))"
                   aria-label="Personal website"
                 >
                   <img :src="getImage('web.png')" alt="Website" class="profile-social-icon" />
@@ -111,8 +114,8 @@
                     :class="publicationTypeClass(pub.type)"
                     role="button"
                     tabindex="0"
-                    @click="openPublication(pub.link)"
-                    @keydown.enter="openPublication(pub.link)"
+                    @click="openPublication(pub)"
+                    @keydown.enter="openPublication(pub)"
                   >
                     <small class="pub-authors">{{ formatAuthors(pub.authors) }}</small>
                     <div class="pub-title">{{ pub.title }}</div>
@@ -133,8 +136,14 @@
             :language="language"
             :getImage="getImage"
             @select="openPerson"
+            @analytics="handleAnalytics"
           />
-          <PublicationsTab v-else-if="activeTab === 'publications'" :groupedPublications="groupedPublications" :language="language" />
+          <PublicationsTab
+            v-else-if="activeTab === 'publications'"
+            :groupedPublications="groupedPublications"
+            :language="language"
+            @analytics="handleAnalytics"
+          />
           <TeachingTab v-else-if="activeTab === 'teaching'" :subjects="teachingSubjects" :language="language" />
         </template>
       </div> <!-- .content -->
@@ -172,7 +181,6 @@ export default {
     return {
       activeTab: "people",
       language: "en",
-      // People and publications budú načítané dynamicky z CSV endpointov.
       people: {
         professor: [],
         associateProfessor: [],
@@ -313,6 +321,14 @@ export default {
       },
       set(value) {
         this.currentSlug = "";
+        if (value && value !== this.activeTab) {
+          const tab = this.localizedTabs.find(item => item.id === value);
+          this.trackEvent({
+            action: "tab_select",
+            label: tab ? tab.label : value,
+            target: value
+          });
+        }
         this.activeTab = value || "people";
       }
     }
@@ -345,6 +361,11 @@ export default {
     },
     setLanguage(lang) {
       this.language = lang;
+      this.trackEvent({
+        action: "language_switch",
+        label: lang.toUpperCase(),
+        target: lang
+      });
     },
     personInfo(person) {
       if (!person) {
@@ -441,11 +462,136 @@ export default {
       }
       return `${list.slice(0, 3).join("; ")}; et al.`;
     },
-    openPublication(url) {
+    handleAnalytics(event) {
+      this.trackEvent(event);
+    },
+    trackEvent(event) {
+      const payload = {
+        action: event.action || "unknown",
+        label: event.label || "",
+        target: event.target || "",
+        metadata: event.metadata || {},
+        language: this.language,
+        path: window.location.pathname
+      };
+
+      fetch("/api/analytics/events", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).catch(() => {});
+    },
+    trackPersonDetailLink(person, linkType, url) {
+      this.trackEvent({
+        action: "person_detail_link_open",
+        label: person.name,
+        target: url,
+        metadata: { linkType }
+      });
+    },
+    openPublication(publication) {
+      const url = typeof publication === "string" ? publication : publication.link;
       if (!url) {
         return;
       }
+      if (typeof publication !== "string") {
+        this.trackEvent({
+          action: "publication_open",
+          label: publication.title,
+          target: url,
+          metadata: { venue: publication.venue || "" }
+        });
+      }
       window.open(url, "_blank");
+    },
+    publicAssetUrl(path) {
+      const base = process.env.BASE_URL || "/";
+      return `${base.replace(/\/?$/, "/")}${path.replace(/^\/+/, "")}`;
+    },
+    ensureOk(response) {
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      return response;
+    },
+    normalizePublicationsPayload(payload) {
+      const rows = Array.isArray(payload) ? payload : (payload.publications || []);
+      return rows
+        .filter(row => row && row.date && row.title)
+        .map(row => ({
+          date: String(row.date || ""),
+          title: row.title || "",
+          authors: row.authors || "",
+          venue: row.venue || "",
+          link: row.link || row.doi || row.openalexId || "",
+          type: row.type || "",
+          doi: row.doi || "",
+          openalexId: row.openalexId || ""
+        }));
+    },
+    normalizePeoplePayload(payload) {
+      const people = payload && payload.people ? payload.people : payload;
+      const groups = {
+        professor: [],
+        associateProfessor: [],
+        researchAssistants: [],
+        phdCandidates: [],
+        exMembers: [],
+        students: []
+      };
+
+      if (!people || Array.isArray(people)) {
+        return groups;
+      }
+
+      Object.keys(groups).forEach(key => {
+        groups[key] = Array.isArray(people[key]) ? people[key] : [];
+      });
+
+      return groups;
+    },
+    loadPeople() {
+      return fetch("/api/people", { cache: "no-store" })
+        .then(this.ensureOk)
+        .then(response => response.json())
+        .catch(() => fetch(this.publicAssetUrl("data/people.json"), { cache: "no-store" })
+          .then(this.ensureOk)
+          .then(response => response.json()))
+        .then(payload => {
+          this.people = this.normalizePeoplePayload(payload);
+        })
+        .catch(error => {
+          console.error("Error loading people data:", error);
+          this.people = this.normalizePeoplePayload(null);
+        });
+    },
+    loadPublications() {
+      return fetch("/api/publications", { cache: "no-store" })
+        .then(this.ensureOk)
+        .then(response => response.json())
+        .catch(() => fetch(this.publicAssetUrl("data/publications.json"), { cache: "no-store" })
+          .then(this.ensureOk)
+          .then(response => response.json()))
+        .then(payload => {
+          this.publications = this.normalizePublicationsPayload(payload);
+        })
+        .catch(error => {
+          console.error("Error loading publications data:", error);
+          this.publications = [];
+        });
+    },
+    applyTeachingCsv(teachingCsvText) {
+      const parsedTeaching = Papa.parse(teachingCsvText, { header: true, skipEmptyLines: true });
+      this.teachingSubjects = parsedTeaching.data
+        .filter(row => row.Name)
+        .map(row => ({
+          name: row.Name,
+          nameSK: row.NameSK || "",
+          description: row.Description || "",
+          descriptionSK: row.DescriptionSK || "",
+          link: row.Link || ""
+        }));
     },
     isAuthorMatch(pub, person) {
       const authors = this.normalizeText(pub.authors || "");
@@ -455,6 +601,12 @@ export default {
     },
     openPerson(person) {
       const slug = this.personSlug(person);
+      this.trackEvent({
+        action: "person_open",
+        label: person.name,
+        target: `/${slug}`,
+        metadata: { role: person.role || "" }
+      });
       window.history.pushState({}, "", `/${slug}`);
       this.currentSlug = slug;
     },
@@ -498,91 +650,23 @@ export default {
       console.log("Particles.js loaded!");
     });
 
-    const peopleCSVUrl =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?gid=1186507161&single=true&output=csv";
-    const publicationsCSVUrl =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?output=csv";
     const teachingCSVUrl =
       "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0yU5qib1xjuPlctizfGQFSpPsQ_TLgWFA59b7b3oFPxITDT8j3cV04p_O3yJtBKOBZa6ZarzRsKLi/pub?gid=1202110167&single=true&output=csv";
 
     Promise.all([
-      fetch(peopleCSVUrl).then(response => response.text()),
-      fetch(publicationsCSVUrl).then(response => response.text()),
-      fetch(teachingCSVUrl).then(response => response.text())
+      fetch(teachingCSVUrl).then(response => response.text()),
+      this.loadPeople(),
+      this.loadPublications()
     ])
-      .then(([peopleCsvText, publicationsCsvText, teachingCsvText]) => {
-        // Spracovanie CSV pre ľudí
-        const parsedPeople = Papa.parse(peopleCsvText, { header: true, skipEmptyLines: true });
-        const peopleObj = {
-          professor: [],
-          associateProfessor: [],
-          researchAssistants: [],
-          phdCandidates: [],
-          exMembers: [],
-          students: []
-        };
-        parsedPeople.data.forEach(row => {
-          const role = row.role.trim().toLowerCase();
-          const person = {
-            name: row.name,
-            email: row.email,
-            info: row.info,
-            infoSK: row.infoSK || "",
-            image: row.image, // napr. "jaro.jpg"
-            links: []
-          };
-          if (row.profile) {
-            person.links.push({ label: "Profile", url: row.profile });
-          }
-          if (row.linkedin) {
-            person.links.push({ label: "LinkedIn", url: row.linkedin });
-          }
-          if (row.github) {
-            person.links.push({ label: "GitHub", url: row.github });
-          }
-          if (row.orcid) {
-            person.links.push({ label: "ORCID", url: row.orcid });
-          }
-          if (row.web) {
-            person.links.push({ label: "Web", url: row.web });
-          }
-          if (role === "professor") {
-            peopleObj.professor.push(person);
-          } else if (role === "associate professor") {
-            peopleObj.associateProfessor.push(person);
-          } else if (role === "research assistant") {
-            peopleObj.researchAssistants.push(person);
-          } else if (role === "phd candidate") {
-            peopleObj.phdCandidates.push(person);
-          } else if (role === "ex" && person.name) {
-            peopleObj.exMembers.push({ name: person.name });
-          } else if (role === "student" && person.name) {
-            peopleObj.students.push({ name: person.name });
-          }
-        });
-        this.people = peopleObj;
+      .then(([teachingCsvText]) => {
+        this.applyTeachingCsv(teachingCsvText);
 
-        // Spracovanie CSV pre publikácie
-        const parsedPublications = Papa.parse(publicationsCsvText, { header: true, skipEmptyLines: true });
-        this.publications = parsedPublications.data.filter(row => row.date && row.title);
-
-        const parsedTeaching = Papa.parse(teachingCsvText, { header: true, skipEmptyLines: true });
-        this.teachingSubjects = parsedTeaching.data
-          .filter(row => row.Name)
-          .map(row => ({
-            name: row.Name,
-            nameSK: row.NameSK || "",
-            description: row.Description || "",
-            descriptionSK: row.DescriptionSK || "",
-            link: row.Link || ""
-          }));
-
-        // Po načítaní dát vyvoláme resize event pre opravu renderovania particles
+        // Refresh particles after data changes resize the page.
         this.$nextTick(() => {
           window.dispatchEvent(new Event("resize"));
         });
       })
-      .catch(error => console.error("Error loading CSV data:", error));
+      .catch(error => console.error("Error loading page data:", error));
   },
   beforeUnmount() {
     window.removeEventListener("popstate", this.setRouteFromPath);

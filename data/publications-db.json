@@ -1,0 +1,3124 @@
+{
+  "meta": {
+    "source": "OpenAlex",
+    "generatedAt": "2026-07-02T10:34:16.989Z",
+    "startedAt": "2026-07-02T10:34:11.663Z",
+    "peopleSource": "C:\\Users\\marek\\OneDrive\\Počítač\\skupina\\data\\people-db.json",
+    "institutionRor": "https://ror.org/05xm08015",
+    "usedApiKey": false,
+    "includePreprints": false,
+    "peopleCount": 9,
+    "resolvedAuthorCount": 9,
+    "unresolvedAuthorCount": 0,
+    "rawWorkCount": 316,
+    "publicationCount": 185,
+    "resolvedAuthors": [
+      {
+        "name": "Jaroslav Poruban",
+        "displayName": "Jaroslav Porubän",
+        "openalexId": "https://openalex.org/A5007967679",
+        "orcid": "https://orcid.org/0000-0001-9706-2897",
+        "resolution": "search"
+      },
+      {
+        "name": "Emília Pietrikova",
+        "displayName": "Emília Pietriková",
+        "openalexId": "https://openalex.org/A5042449931",
+        "orcid": "https://orcid.org/0000-0002-9790-6874",
+        "resolution": "search"
+      },
+      {
+        "name": "Sergej Chodarev",
+        "displayName": "Sergej Chodarev",
+        "openalexId": "https://openalex.org/A5025287145",
+        "orcid": "https://orcid.org/0000-0002-9293-0859",
+        "resolution": "orcid"
+      },
+      {
+        "name": "Matus Sulir",
+        "displayName": "Matúš Sulír",
+        "openalexId": "https://openalex.org/A5064689256",
+        "orcid": "https://orcid.org/0000-0003-2221-9225",
+        "resolution": "search"
+      },
+      {
+        "name": "Michaela Bacikova",
+        "displayName": "Michaela Bačíková",
+        "openalexId": "https://openalex.org/A5034319548",
+        "orcid": "https://orcid.org/0000-0002-9436-8425",
+        "resolution": "search"
+      },
+      {
+        "name": "Filip Gurbal",
+        "displayName": "Filip Gurbáľ",
+        "openalexId": "https://openalex.org/A5015063708",
+        "orcid": "https://orcid.org/0000-0001-7691-9273",
+        "resolution": "search"
+      },
+      {
+        "name": "Marek Horvath",
+        "displayName": "Marek Horváth",
+        "openalexId": "https://openalex.org/A5015785379",
+        "orcid": "https://orcid.org/0009-0005-4649-2308",
+        "resolution": "orcid"
+      },
+      {
+        "name": "Tomas Kormanik",
+        "displayName": "Tomáš Kormaník",
+        "openalexId": "https://openalex.org/A5093471353",
+        "orcid": "https://orcid.org/0009-0002-6622-8027",
+        "resolution": "search"
+      },
+      {
+        "name": "Lenka Bubenkova",
+        "displayName": "Lenka Bubeňková",
+        "openalexId": "https://openalex.org/A5116057275",
+        "orcid": "",
+        "resolution": "search"
+      }
+    ],
+    "unresolvedAuthors": [],
+    "localEditedAt": "2026-07-02T20:59:16.438Z"
+  },
+  "publications": [
+    {
+      "date": "2026",
+      "title": "Benchmarking AI Models for Grading CS Assignments Across Multiple Domains",
+      "authors": "Marek Horváth; Lukáš Tomaščík; Nikola Geciová; Norbert Ádám; Emília Pietriková",
+      "venue": "Acta Polytechnica Hungarica",
+      "link": "https://doi.org/10.12700/aph.23.5.2026.5.11",
+      "type": "journal",
+      "doi": "10.12700/aph.23.5.2026.5.11",
+      "openalexId": "https://openalex.org/W7163047098",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2026",
+      "title": "Detection of Programming Style Consistency and Plagiarism through Code Similarity Metrics",
+      "authors": "Marek Horváth; Matúš Motyka; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami68106.2026.11420357",
+      "type": "journal",
+      "doi": "10.1109/sami68106.2026.11420357",
+      "openalexId": "https://openalex.org/W7135015735",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2026",
+      "title": "Diffpoints",
+      "authors": "Filip Čmilňák; Matúš Sulír; Milan Nosáľ",
+      "venue": "Open Science Framework",
+      "link": "https://doi.org/10.17605/osf.io/verkp",
+      "type": "",
+      "doi": "10.17605/osf.io/verkp",
+      "openalexId": "https://openalex.org/W7165872877",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2026",
+      "title": "High-quality versus low-quality unit tests: a controlled experiment on developer performance",
+      "authors": "Patrícia Járosiová; Sergej Chodarev",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.1515/comp-2025-0051",
+      "type": "journal",
+      "doi": "10.1515/comp-2025-0051",
+      "openalexId": "https://openalex.org/W7134963078",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2026",
+      "title": "Local software buildability across Java versions",
+      "authors": "Matúš Sulír; Jaroslav Porubän; Sergej Chodarev",
+      "venue": "Empirical Software Engineering",
+      "link": "https://doi.org/10.1007/s10664-026-10806-6",
+      "type": "journal",
+      "doi": "10.1007/s10664-026-10806-6",
+      "openalexId": "https://openalex.org/W7130402289",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "A Multiplatform Application for Personalized Educational Materials in Special Needs Education",
+      "authors": "Miroslav Murin; Lenka Bubeňková; Branislav Zurian",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta67772.2025.11280150",
+      "type": "journal",
+      "doi": "10.1109/iceta67772.2025.11280150",
+      "openalexId": "https://openalex.org/W4417338481",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Code Reuse and Good Clones in Programming Education",
+      "authors": "Lenka Bubeňková; Emília Pietriková; Marek Horvath",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami63904.2025.10883291",
+      "type": "journal",
+      "doi": "10.1109/sami63904.2025.10883291",
+      "openalexId": "https://openalex.org/W4407737639",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Creation and testing of a training program focused on the development of speed endurance in youth football players",
+      "authors": "Marek Horváth",
+      "venue": "Digital Repository (National Repository of Grey Literature)",
+      "link": "http://www.nusl.cz/ntk/nusl-671033",
+      "type": "",
+      "doi": "",
+      "openalexId": "https://openalex.org/W7135816904",
+      "sourceType": "repository",
+      "openalexType": "dissertation",
+      "matchedAuthors": [
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Detecting AI-Generated Source Code in Student Assignments Using Steganographic Watermarks",
+      "authors": "Marek Horváth; Lenka Bubeňková; Emília Pietriková; Matej Čorba",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta67772.2025.11280274",
+      "type": "journal",
+      "doi": "10.1109/iceta67772.2025.11280274",
+      "openalexId": "https://openalex.org/W4417338113",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Detecting Programmer Identity from Source Code with Machine Learning Methods",
+      "authors": "Marek Horváth; Martin Čupalka; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta67772.2025.11280212",
+      "type": "journal",
+      "doi": "10.1109/iceta67772.2025.11280212",
+      "openalexId": "https://openalex.org/W4417338478",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Development of a MATLAB Application for Simulating the SEIQRD Pandemic Spread Model",
+      "authors": "Nikola Geciová; Lukáš Tomaščík; Marek Horváth",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami63904.2025.10883239",
+      "type": "journal",
+      "doi": "10.1109/sami63904.2025.10883239",
+      "openalexId": "https://openalex.org/W4407737460",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Exploring GPT-Generated Variations in C Programming Assignments",
+      "authors": "Marek Horváth; Lenka Bubeňková; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami63904.2025.10883288",
+      "type": "journal",
+      "doi": "10.1109/sami63904.2025.10883288",
+      "openalexId": "https://openalex.org/W4407737005",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Game-Creative Learning in Programming Courses Over 15 Years",
+      "authors": "Emília Pietriková; Norbert Ádám; Anton Baláž",
+      "venue": "Acta Polytechnica Hungarica",
+      "link": "https://doi.org/10.12700/aph.22.1.2025.1.7",
+      "type": "journal",
+      "doi": "10.12700/aph.22.1.2025.1.7",
+      "openalexId": "https://openalex.org/W4406107567",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "OnlineProver: Experience with a Visualisation Tool for Teaching Formal Proofs",
+      "authors": "Ján Perháč; Samuel Novotný; Sergej Chodarev; Joachim Tilsted Kristensen; Lars Tveito; Oleks Shturmov; Michael Kirkedal Thomsen",
+      "venue": "Electronic Proceedings in Theoretical Computer Science",
+      "link": "https://doi.org/10.4204/eptcs.419.4",
+      "type": "conference",
+      "doi": "10.4204/eptcs.419.4",
+      "openalexId": "https://openalex.org/W4410165286",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Personalized Learning Analytics Through Static Code Analysis in Computer Science Education",
+      "authors": "Marek Horváth; Emília Pietriková; Filip Gurbáľ",
+      "venue": "Acta Informatica Pragensia",
+      "link": "https://doi.org/10.18267/j.aip.283",
+      "type": "journal",
+      "doi": "10.18267/j.aip.283",
+      "openalexId": "https://openalex.org/W4413743337",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Filip Gurbal",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "RuntimeSave: A Graph Database of Runtime Values",
+      "authors": "Matúš Sulír; Antonia Bertolino; Guglielmo De Angelis",
+      "venue": "",
+      "link": "https://doi.org/10.1145/3759548.3763375",
+      "type": "journal",
+      "doi": "10.1145/3759548.3763375",
+      "openalexId": "https://openalex.org/W4415002499",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Simplifying Education of Reactive Programming Concepts Using Comparative Application",
+      "authors": "Tomáš Kormaník; Marek Horváth; Lenka Bubeňková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami63904.2025.10883129",
+      "type": "journal",
+      "doi": "10.1109/sami63904.2025.10883129",
+      "openalexId": "https://openalex.org/W4407737657",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Marek Horvath",
+        "Tomas Kormanik",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Space Exploration as a Learning Tool in an Educational VR Game",
+      "authors": "Lenka Bubeňková; Miroslav Murin; M. Michalko; Laura Libjaková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta67772.2025.11280118",
+      "type": "journal",
+      "doi": "10.1109/iceta67772.2025.11280118",
+      "openalexId": "https://openalex.org/W4417338386",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2025",
+      "title": "Updatable Corpus of Compiled Java Projects with Dependencies",
+      "authors": "Pavol Beskid; Matúš Sulír",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami63904.2025.10883290",
+      "type": "journal",
+      "doi": "10.1109/sami63904.2025.10883290",
+      "openalexId": "https://openalex.org/W4407736991",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "A Personalized Education Chatbot for the Novice Programmers in Action",
+      "authors": "Matej Ondov; Tomáš Kormaník; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics62280.2024.10900922",
+      "type": "journal",
+      "doi": "10.1109/informatics62280.2024.10900922",
+      "openalexId": "https://openalex.org/W4408258301",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Tomas Kormanik"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "An Experimental Comparison of Three Code Similarity Tools on Over 1,000 Student Projects",
+      "authors": "Marek Horváth; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami60510.2024.10432863",
+      "type": "journal",
+      "doi": "10.1109/sami60510.2024.10432863",
+      "openalexId": "https://openalex.org/W4391807809",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Automated Testing of Over 1,000 Student Assignments: Benefits of Kubernetes",
+      "authors": "Tomáš Kormaník; Jaroslav Porubän; Matúš Čávojský",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami60510.2024.10432890",
+      "type": "journal",
+      "doi": "10.1109/sami60510.2024.10432890",
+      "openalexId": "https://openalex.org/W4391807779",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Tomas Kormanik"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Clone Detection Techniques and Tools in Software Engineering",
+      "authors": "Lenka Bubeňková; Emília Pietriková; Marcel Vološin",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics62280.2024.10900850",
+      "type": "journal",
+      "doi": "10.1109/informatics62280.2024.10900850",
+      "openalexId": "https://openalex.org/W4408258587",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Code Clones: A Novel Approach to Detecting Plagiarism in Binary Decomposition of C Programs",
+      "authors": "Marek Horváth; Filip Gurbáľ",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/aei-2024-0006",
+      "type": "journal",
+      "doi": "10.2478/aei-2024-0006",
+      "openalexId": "https://openalex.org/W4400646834",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Filip Gurbal",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Comparison of scalability and performance in Microservices and Monolithic Architectures",
+      "authors": "Marek Horváth; Vladyslav Sakhnenko; Filip Gurbáľ",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics62280.2024.10900892",
+      "type": "journal",
+      "doi": "10.1109/informatics62280.2024.10900892",
+      "openalexId": "https://openalex.org/W4416916449",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Filip Gurbal"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "ICT Security through Games",
+      "authors": "Anton Baláž; Emília Pietriková; Branislav Madoš; Roland Janský",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami60510.2024.10432807",
+      "type": "journal",
+      "doi": "10.1109/sami60510.2024.10432807",
+      "openalexId": "https://openalex.org/W4391807976",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Improving Software Education with Technical Debt Analysis Tool",
+      "authors": "Marek Horvath; Emília Pietriková; Jakub Sasak",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta63795.2024.10850816",
+      "type": "journal",
+      "doi": "10.1109/iceta63795.2024.10850816",
+      "openalexId": "https://openalex.org/W4406893353",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Intelligent Urban Traffic Management Systems – Takeways from Martin City",
+      "authors": "Martin Antl; Emília Pietriková; Peter Poór",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics62280.2024.10900814",
+      "type": "journal",
+      "doi": "10.1109/informatics62280.2024.10900814",
+      "openalexId": "https://openalex.org/W4408258334",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "OnlineProver: First Experience with Teaching Formal Proofs",
+      "authors": "Joachim Tilsted Kristensen; Ján Perháč; Michael Kirkedal Thomsen; Lars Tveito; Oleks Shturmov; Samuel Novotný; Sergej Chodarev",
+      "venue": "Norsk IKT-konferanse for forskning og utdanning",
+      "link": "https://doi.org/10.5324/nikt.6205",
+      "type": "journal",
+      "doi": "10.5324/nikt.6205",
+      "openalexId": "https://openalex.org/W4404828015",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Programming Education Through Game-Based Learning and Quizzes",
+      "authors": "Lenka Bubeňková; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta63795.2024.10850815",
+      "type": "journal",
+      "doi": "10.1109/iceta63795.2024.10850815",
+      "openalexId": "https://openalex.org/W4406893262",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Lenka Bubenkova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Teach Programming Using Task-Driven Case Studies: Pedagogical Approach, Guidelines, and Implementation",
+      "authors": "Jaroslav Porubän; Milan Nosáľ; Matúš Sulír; Sergej Chodarev",
+      "venue": "Computers",
+      "link": "https://doi.org/10.3390/computers13090221",
+      "type": "journal",
+      "doi": "10.3390/computers13090221",
+      "openalexId": "https://openalex.org/W4402275806",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "The Impact of Unit Test Quality on Software Development: Controlled Experiment",
+      "authors": "Patrícia Járosiová; Sergej Chodarev",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics62280.2024.10900819",
+      "type": "journal",
+      "doi": "10.1109/informatics62280.2024.10900819",
+      "openalexId": "https://openalex.org/W4408258118",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2024",
+      "title": "Using Machine Learning Concepts with ControlNet for Educational Advancements",
+      "authors": "Tomáš Kormaník; Michal Gabonai Gabonai; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta63795.2024.10850830",
+      "type": "journal",
+      "doi": "10.1109/iceta63795.2024.10850830",
+      "openalexId": "https://openalex.org/W4406893240",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Tomas Kormanik"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Collecting Code Coverage from UI Testing",
+      "authors": "Filip Gurbáľ; Jaroslav Porubän",
+      "venue": "IPSI Transactions on Internet Research",
+      "link": "https://doi.org/10.58245/ipsi.tir.2301.09",
+      "type": "journal",
+      "doi": "10.58245/ipsi.tir.2301.09",
+      "openalexId": "https://openalex.org/W4327850270",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Filip Gurbal"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Computer Science for Game Development and Game Development for Computer Science [Working Title]",
+      "authors": "Branislav Sobota; Emília Pietriková",
+      "venue": "IntechOpen eBooks",
+      "link": "https://doi.org/10.5772/intechopen.1000364",
+      "type": "",
+      "doi": "10.5772/intechopen.1000364",
+      "openalexId": "https://openalex.org/W4383958951",
+      "sourceType": "ebook platform",
+      "openalexType": "book",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Exploring GitOps: An Approach to Cloud Cluster System Deployment",
+      "authors": "Tomáš Kormaník; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta61311.2023.10344182",
+      "type": "journal",
+      "doi": "10.1109/iceta61311.2023.10344182",
+      "openalexId": "https://openalex.org/W4389610545",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Tomas Kormanik"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Exploring the Capabilities and Possible Applications of Large Language Models for Education",
+      "authors": "Matúš Čávojský; Gabriel Bugár; Tomáš Kormaník; Martin Hasin",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta61311.2023.10344166",
+      "type": "journal",
+      "doi": "10.1109/iceta61311.2023.10344166",
+      "openalexId": "https://openalex.org/W4389606752",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Tomas Kormanik"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Extending Minecraft for Teaching Bitcoin Cryptocurrency",
+      "authors": "Anton Baláž; Branislav Madoš; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami58000.2023.10044510",
+      "type": "journal",
+      "doi": "10.1109/sami58000.2023.10044510",
+      "openalexId": "https://openalex.org/W4321191131",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Introductory chapter: Game Development and Computer Science",
+      "authors": "Branislav Sobota; Emília Pietriková",
+      "venue": "IntechOpen eBooks",
+      "link": "https://doi.org/10.5772/intechopen.1002301",
+      "type": "",
+      "doi": "10.5772/intechopen.1002301",
+      "openalexId": "https://openalex.org/W4388824889",
+      "sourceType": "ebook platform",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "JaMaBuild: Mass Building of Java Projects",
+      "authors": "Matúš Sulír; Milan Nosáľ",
+      "venue": "",
+      "link": "https://doi.org/10.1145/3618305.3623613",
+      "type": "journal",
+      "doi": "10.1145/3618305.3623613",
+      "openalexId": "https://openalex.org/W4387793354",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Metamodel-based Language Definition with Python",
+      "authors": "Sergej Chodarev; Sharoon Ilyas",
+      "venue": "IPSI Transactions on Internet Research",
+      "link": "https://doi.org/10.58245/ipsi.tir.2301.06",
+      "type": "journal",
+      "doi": "10.58245/ipsi.tir.2301.06",
+      "openalexId": "https://openalex.org/W4327850339",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "Puzzle-Driven Learning: Developing and Assessing IT Challenges for Varied Experience Levels",
+      "authors": "Marek Horváth; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta61311.2023.10344036",
+      "type": "journal",
+      "doi": "10.1109/iceta61311.2023.10344036",
+      "openalexId": "https://openalex.org/W4389629552",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "THE POWER OF GAME JAMS UNDER LOCKDOWN",
+      "authors": "Emília Pietriková",
+      "venue": "EDULEARN proceedings",
+      "link": "https://doi.org/10.21125/edulearn.2023.1479",
+      "type": "conference",
+      "doi": "10.21125/edulearn.2023.1479",
+      "openalexId": "https://openalex.org/W4383724385",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "The Role of Game Engines in Game Development and Teaching",
+      "authors": "Branislav Sobota; Emília Pietriková",
+      "venue": "IntechOpen eBooks",
+      "link": "https://doi.org/10.5772/intechopen.1002257",
+      "type": "",
+      "doi": "10.5772/intechopen.1002257",
+      "openalexId": "https://openalex.org/W4386031222",
+      "sourceType": "ebook platform",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2023",
+      "title": "USING LEARNING ANALYTICS TO MOTIVATE PROGRAMMING NOVICES",
+      "authors": "Emília Pietriková",
+      "venue": "EDULEARN proceedings",
+      "link": "https://doi.org/10.21125/edulearn.2023.1849",
+      "type": "conference",
+      "doi": "10.21125/edulearn.2023.1849",
+      "openalexId": "https://openalex.org/W4383724527",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "A fine-grained data set and analysis of tangling in bug fixing commits",
+      "authors": "Steffen Herbold; Alexander Trautsch; Benjamin Ledel; Alireza Aghamohammadi; Taher A. Ghaleb; Kuljit Kaur Chahal; Tim Bossenmaier; Bhaveet Nagaria; Philip Makedonski; Matin Nili Ahmadabadi; Kristóf Szabados; Helge Spieker; Matej Madeja; Nathaniel Hoy; Valentina Lenarduzzi; Shangwen Wang; Gema Rodríguez-Pérez; Ricardo Colomo‐Palacios; Roberto Verdecchia; Paramvir Singh; Yihao Qin; Debasish Chakroborti; Willard Davis; Vijay Walunj; Hongjun Wu; Diego Marcílio; Omar Alam; Abdullah Aldaeej; Idan Amit; Burak Turhan; Simon Eismann; Anna-Katharina Wickert; Ivano Malavolta; Matúš Sulír; Fatemeh H. Fard; Austin Z. Henley; Stratos Kourtzanidis; Eray Tüzün; Christoph Treude; Simin Maleki Shamasbi; Ivan Pashchenko; Marvin Wyrich; James Davis; Alexander Serebrenik; Ella Albrecht; Ethem Utku Aktaş; Daniel Strüber; Johannes Erbel",
+      "venue": "Florence Research (University of Florence)",
+      "link": "https://doi.org/10.1007/s10664-021-10083-5",
+      "type": "",
+      "doi": "10.1007/s10664-021-10083-5",
+      "openalexId": "https://openalex.org/W3206481103",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "Collaborative XR Systems and Computer Games Development",
+      "authors": "Branislav Sobota; Marián Hudák; Emília Pietriková",
+      "venue": "IntechOpen eBooks",
+      "link": "https://doi.org/10.5772/intechopen.105555",
+      "type": "",
+      "doi": "10.5772/intechopen.105555",
+      "openalexId": "https://openalex.org/W4293054018",
+      "sourceType": "ebook platform",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "Experimental Comparison of Editor Types for Domain-Specific Languages",
+      "authors": "Sergej Chodarev; Matúš Sulír; Jaroslav Porubän; Martina Kopčáková",
+      "venue": "Applied Sciences",
+      "link": "https://doi.org/10.3390/app12199893",
+      "type": "journal",
+      "doi": "10.3390/app12199893",
+      "openalexId": "https://openalex.org/W4303578714",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "Game Development and Testing in Education",
+      "authors": "Emília Pietriková; Branislav Sobota",
+      "venue": "IntechOpen eBooks",
+      "link": "https://doi.org/10.5772/intechopen.108529",
+      "type": "",
+      "doi": "10.5772/intechopen.108529",
+      "openalexId": "https://openalex.org/W4310129575",
+      "sourceType": "ebook platform",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "Impact of Virtual Assistant on Programming Novices’ Performance, Behavior and Motivation",
+      "authors": "M. Biňas; Emília Pietriková",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/aei-2022-0005",
+      "type": "journal",
+      "doi": "10.2478/aei-2022-0005",
+      "openalexId": "https://openalex.org/W4389481269",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2022",
+      "title": "Metamodel-based Parser Generator for Python",
+      "authors": "Sergej Chodarev; Sharoon Ilyas",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics57926.2022.10083501",
+      "type": "journal",
+      "doi": "10.1109/informatics57926.2022.10083501",
+      "openalexId": "https://openalex.org/W4362564397",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2021",
+      "title": "Automating Test Case Identification in Java Open Source Projects on GitHub",
+      "authors": "Matej Madeja; Jaroslav Porubän; Michaela Bačíková; Matúš Sulír; Ján Juhár; Sergej Chodarev; Filip Gurbáľ",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.31577/cai_2021_3_575",
+      "type": "journal",
+      "doi": "10.31577/cai_2021_3_575",
+      "openalexId": "https://openalex.org/W3217409757",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Matus Sulir",
+        "Michaela Bacikova",
+        "Filip Gurbal"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2021",
+      "title": "Domain Usability Evaluation",
+      "authors": "Michaela Bačíková; Jaroslav Porubän; Matúš Sulír; Sergej Chodarev; William Steingartner; Matej Madeja",
+      "venue": "Electronics",
+      "link": "https://doi.org/10.3390/electronics10161963",
+      "type": "journal",
+      "doi": "10.3390/electronics10161963",
+      "openalexId": "https://openalex.org/W3196286103",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Matus Sulir",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2021",
+      "title": "Empirical Study of Test Case and Test Framework Presence in Public Projects on GitHub",
+      "authors": "Matej Madeja; Jaroslav Porubän; Sergej Chodarev; Matúš Sulír; Filip Gurbáľ",
+      "venue": "Applied Sciences",
+      "link": "https://doi.org/10.3390/app11167250",
+      "type": "journal",
+      "doi": "10.3390/app11167250",
+      "openalexId": "https://openalex.org/W3188522729",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Matus Sulir",
+        "Filip Gurbal"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2021",
+      "title": "Natural mapping between voice commands and APIs",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.1515/comp-2020-0125",
+      "type": "journal",
+      "doi": "10.1515/comp-2020-0125",
+      "openalexId": "https://openalex.org/W3123578526",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2021",
+      "title": "Towards Program Comprehension: Knowledge Profiles for C Programmers",
+      "authors": "Emília Pietriková",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/aei-2021-0005",
+      "type": "journal",
+      "doi": "10.2478/aei-2021-0005",
+      "openalexId": "https://openalex.org/W4389495687",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "API for Communication between Motion Sensors and Raspberry Pi",
+      "authors": "Ondrej Kováč; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta51985.2020.9379226",
+      "type": "journal",
+      "doi": "10.1109/iceta51985.2020.9379226",
+      "openalexId": "https://openalex.org/W3137923101",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "Build Results Dataset",
+      "authors": "Sergej Chodarev; Michaela Bačíková; Matúš Sulír; Matej Madeja; Ján Juhár",
+      "venue": "OSF Preprints (OSF Preprints)",
+      "link": "https://doi.org/10.17605/osf.io/umk3w",
+      "type": "",
+      "doi": "10.17605/osf.io/umk3w",
+      "openalexId": "https://openalex.org/W3213335138",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev",
+        "Matus Sulir",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "Large-Scale Dataset of Local Java Software Build Results",
+      "authors": "Matúš Sulír; Michaela Bačíková; Matej Madeja; Sergej Chodarev; Ján Juhár",
+      "venue": "Data",
+      "link": "https://doi.org/10.3390/data5030086",
+      "type": "journal",
+      "doi": "10.3390/data5030086",
+      "openalexId": "https://openalex.org/W3087183601",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev",
+        "Matus Sulir",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "Metrics for Student Source Code Analysis",
+      "authors": "Igor Vehec; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta51985.2020.9379264",
+      "type": "journal",
+      "doi": "10.1109/iceta51985.2020.9379264",
+      "openalexId": "https://openalex.org/W3138864033",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "OBSERVATION OF STUDENTS BEHAVIOUR IN PROGRAMMING COURSES WITH AN AUTOMATED TESTING PLATFORM AT DIFFERENTLY GEOLOCATED UNIVERSITIES: A CASE STUDY",
+      "authors": "Matej Madeja; Jaroslav Porubän; Veljko Pejović; Martin Gjoreski",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2020-0018",
+      "type": "journal",
+      "doi": "10.15546/aeei-2020-0018",
+      "openalexId": "https://openalex.org/W3092396183",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "String Representations of Java Objects: An Empirical Study",
+      "authors": "Matúš Sulír",
+      "venue": "Lecture notes in computer science",
+      "link": "https://doi.org/10.1007/978-3-030-38919-2_39",
+      "type": "conference",
+      "doi": "10.1007/978-3-030-38919-2_39",
+      "openalexId": "https://openalex.org/W2999622399",
+      "sourceType": "book series",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "Unit Under Test Identification Using Natural Language Processing Techniques",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.1515/comp-2020-0150",
+      "type": "journal",
+      "doi": "10.1515/comp-2020-0150",
+      "openalexId": "https://openalex.org/W3116606137",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2020",
+      "title": "Wrist Rehabilitation in Carpal Tunnel Syndrome by Gaming using EMG Controller",
+      "authors": "Péter Lukács; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta51985.2020.9379203",
+      "type": "journal",
+      "doi": "10.1109/iceta51985.2020.9379203",
+      "openalexId": "https://openalex.org/W3138220529",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Abstract-Syntax-Driven Development of Oberon-0 Using YAJCo",
+      "authors": "Sergej Chodarev; Michaela Bačíková",
+      "venue": "Journal of information and organizational sciences",
+      "link": "https://doi.org/10.31341/jios.43.2.2",
+      "type": "journal",
+      "doi": "10.31341/jios.43.2.2",
+      "openalexId": "https://openalex.org/W2997253218",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Accuracy of Unit Under Test Identification Using Latent Semantic Analysis and Latent Dirichlet Allocation",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics47936.2019.9119262",
+      "type": "journal",
+      "doi": "10.1109/informatics47936.2019.9119262",
+      "openalexId": "https://openalex.org/W3035944277",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Designing Voice-Controllable APIs",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics47936.2019.9119302",
+      "type": "journal",
+      "doi": "10.1109/informatics47936.2019.9119302",
+      "openalexId": "https://openalex.org/W3036729217",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Draw This Object: A Study of Debugging Representations",
+      "authors": "Matúš Sulír; Ján Juhár",
+      "venue": "arXiv (Cornell University)",
+      "link": "https://doi.org/10.48550/arxiv.1911.04422",
+      "type": "",
+      "doi": "10.48550/arxiv.1911.04422",
+      "openalexId": "https://openalex.org/W2971295193",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Innovative Approaches in C Introductory Programming Courses.",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "",
+      "link": "http://ceur-ws.org/Vol-2403/paper10.pdf",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2982707849",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Interconnecting YAJCo with Xtext: Experience Report",
+      "authors": "Sergej Chodarev; Jan Halama",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics47936.2019.9119305",
+      "type": "journal",
+      "doi": "10.1109/informatics47936.2019.9119305",
+      "openalexId": "https://openalex.org/W3035835011",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Multi-Carrier Steganographic Algorithm Using File Fragmentation of FAT FS",
+      "authors": "Liberios Vokorokos; Branislav Madoš; Norbert Ádám; Anton Baláž; Jaroslav Porubän; Eva Chovancová",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.31577/cai_2019_2_343",
+      "type": "journal",
+      "doi": "10.31577/cai_2019_2_343",
+      "openalexId": "https://openalex.org/W2948107741",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Problems of SMART CITY Programs and Projects Evaluation",
+      "authors": "Marek Horváth; Peter Džupka",
+      "venue": "Journal of Environmental Management and Tourism",
+      "link": "https://doi.org/10.14505//jemt.v10.2(34).12",
+      "type": "journal",
+      "doi": "10.14505//jemt.v10.2(34).12",
+      "openalexId": "https://openalex.org/W2948585158",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Marek Horvath"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2019",
+      "title": "Tracing Naming Semantics in Unit Tests of Popular Github Android Projects",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2019.3",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2019.3",
+      "openalexId": "https://openalex.org/W2964455247",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Audience Response Systems: The Power of Academic Personal Presentation",
+      "authors": "Peter Cech; Emília Pietriková; A. Balaz",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572061",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572061",
+      "openalexId": "https://openalex.org/W2903640803",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Automated testing environment and assessment of assignments for Android MOOC",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.1515/comp-2018-0007",
+      "type": "journal",
+      "doi": "10.1515/comp-2018-0007",
+      "openalexId": "https://openalex.org/W2884211082",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Challenging the Education in the Open Laboratory",
+      "authors": "Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572247",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572247",
+      "openalexId": "https://openalex.org/W2904806078",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Improving the User Experience of Electronic University Enrollment",
+      "authors": "Lukáš Galko; Jaroslav Porubän; Jakub Senko",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572054",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572054",
+      "openalexId": "https://openalex.org/W2905409087",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "ModSecurity IDMEF module",
+      "authors": "Anton Baláž; Norbert Ádám; Emília Pietriková; Branislav Madoš",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami.2018.8323984",
+      "type": "journal",
+      "doi": "10.1109/sami.2018.8323984",
+      "openalexId": "https://openalex.org/W2792253445",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Personal Coaching of Students in Real-Life Programming Theses",
+      "authors": "Tomas Lenger; Emília Pietriková; N. Adam",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572052",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572052",
+      "openalexId": "https://openalex.org/W2905401959",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Potential of Low Cost Motion Sensors Compared to Programming Environments",
+      "authors": "Juraj Mihal'ov; Emília Pietriková; Anton Baláž; Branislav Madoš; Norbert Ádám",
+      "venue": "Acta Polytechnica Hungarica",
+      "link": "https://doi.org/10.12700/aph.15.6.2018.6.9",
+      "type": "journal",
+      "doi": "10.12700/aph.15.6.2018.6.9",
+      "openalexId": "https://openalex.org/W4367024639",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Proto-cluster: A Parallel Computer Architecture Based on Prototyping Boards",
+      "authors": "N. Adam; Michal Hulič; Eva Chovancová; Emília Pietriková; Tobias Gergely",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572044",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572044",
+      "openalexId": "https://openalex.org/W2905473937",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "The design of manual domain usability evaluation techniques",
+      "authors": "Michaela Bačíková; Lukáš Galko",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.1515/comp-2018-0005",
+      "type": "journal",
+      "doi": "10.1515/comp-2018-0005",
+      "openalexId": "https://openalex.org/W2884079476",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "The Raspberry Pi in an Education Process",
+      "authors": "Liberios Vokorokos; Matúš Uchnár; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/saci.2018.8440999",
+      "type": "journal",
+      "doi": "10.1109/saci.2018.8440999",
+      "openalexId": "https://openalex.org/W2888487003",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2018",
+      "title": "Usability of an Open Space Class Location and Schedule Application",
+      "authors": "Tomas Tarkanic; Matej Madeja; Lukáš Galko; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2018.8572087",
+      "type": "journal",
+      "doi": "10.1109/iceta.2018.8572087",
+      "openalexId": "https://openalex.org/W2904131080",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Agent-Based Model of the Spectrum Auctions with Sensing Imperfections in Dynamic Spectrum Access Networks",
+      "authors": "Juraj Gazda; Slavomír Šimoňák; Emília Pietriková; Martin Chovanec; Eva Chovancová; Norbert Ádám; Csaba Szabó; Anton Baláž; Branislav Madoš",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.4149/cai_2017_5_1041",
+      "type": "journal",
+      "doi": "10.4149/cai_2017_5_1041",
+      "openalexId": "https://openalex.org/W2773274224",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Automatic assessment of assignments for Android application programming courses",
+      "authors": "Matej Madeja; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2017.8327252",
+      "type": "journal",
+      "doi": "10.1109/informatics.2017.8327252",
+      "openalexId": "https://openalex.org/W2794765912",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Comparison of Filter Techniques for Two-Step Feature Selection",
+      "authors": "Peter Drotár; Slavomír Šimoňák; Emília Pietriková; Martin Chovanec; Eva Chovancová; Norbert Ádám; Csaba Szabó; Anton Baláž; M. Biňas",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.4149/cai_2017_3_597",
+      "type": "journal",
+      "doi": "10.4149/cai_2017_3_597",
+      "openalexId": "https://openalex.org/W2730078945",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Development of custom notation for XML-based language: A model-driven approach",
+      "authors": "Sergej Chodarev; Jaroslav Porubän",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis170116036c",
+      "type": "journal",
+      "doi": "10.2298/csis170116036c",
+      "openalexId": "https://openalex.org/W2758403053",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Development of Oberon-0 using YAJCo",
+      "authors": "Sergej Chodarev; Michaela Bačíková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2017.8327233",
+      "type": "journal",
+      "doi": "10.1109/informatics.2017.8327233",
+      "openalexId": "https://openalex.org/W2794709500",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Examining truthfulness of informal diagrams more than a year after their creation",
+      "authors": "Milan Jancár; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2017.8327235",
+      "type": "journal",
+      "doi": "10.1109/informatics.2017.8327235",
+      "openalexId": "https://openalex.org/W2795107458",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Experimental Design of Metrics for Domain Usability",
+      "authors": "Michaela Bačíková; Lukáš Galko; Eva Hvizdová",
+      "venue": "",
+      "link": "https://doi.org/10.5220/0006502501180125",
+      "type": "journal",
+      "doi": "10.5220/0006502501180125",
+      "openalexId": "https://openalex.org/W2770710741",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Exposing Runtime Information through Source Code Annotations",
+      "authors": "MatĂşĹˇ SulĂ­r; Jaroslav Porubän",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2017-0001",
+      "type": "journal",
+      "doi": "10.15546/aeei-2017-0001",
+      "openalexId": "https://openalex.org/W2611642508",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Generating Method Documentation Using Concrete Values from Executions",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2017.3",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2017.3",
+      "openalexId": "https://openalex.org/W2775310939",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Labeling Source Code with Metadata: A Survey and Taxonomy",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2017f229",
+      "type": "conference",
+      "doi": "10.15439/2017f229",
+      "openalexId": "https://openalex.org/W2759692074",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Manual techniques for evaluating domain usability",
+      "authors": "Michaela Bačíková; Lukáš Galko; Eva Hvizdová",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2017.8327216",
+      "type": "journal",
+      "doi": "10.1109/informatics.2017.8327216",
+      "openalexId": "https://openalex.org/W2795224887",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "New Approach to Categorical Semantics for Procedural Languages",
+      "authors": "William Steingartner; Valerie Novitzká; Michaela Bačíková; Štefan Korečko",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.4149/cai_2017_6_1385",
+      "type": "journal",
+      "doi": "10.4149/cai_2017_6_1385",
+      "openalexId": "https://openalex.org/W2794205083",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Securing Distributed Computer Systems Using an Advanced Sophisticated Hybrid Honeypot Technology",
+      "authors": "Eva Chovancová; Norbert Ádám; Anton Baláž; Emília Pietriková; Peter Fecil'ak; Slavomír Šimoňák; Martin Chovanec",
+      "venue": "Computing and Informatics",
+      "link": "https://doi.org/10.4149/cai_2017_1_113",
+      "type": "journal",
+      "doi": "10.4149/cai_2017_1_113",
+      "openalexId": "https://openalex.org/W2616743738",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Source Code Documentation Generation Using Program Execution",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "Information",
+      "link": "https://doi.org/10.3390/info8040148",
+      "type": "journal",
+      "doi": "10.3390/info8040148",
+      "openalexId": "https://openalex.org/W2769251207",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2017",
+      "title": "Towards Employing Informal Sketches and Diagrams in Software Development",
+      "authors": "Milan Jancár; Jaroslav Porubän",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2017.4",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2017.4",
+      "openalexId": "https://openalex.org/W2773389976",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Development of Human-friendly Notation for XML-based Languages",
+      "authors": "Sergej Chodarev",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2016f530",
+      "type": "conference",
+      "doi": "10.15439/2016f530",
+      "openalexId": "https://openalex.org/W2526571883",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Experiments with automated evaluation of domain usability",
+      "authors": "Lukáš Galko; Michaela Bačíková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/hsi.2016.7529640",
+      "type": "journal",
+      "doi": "10.1109/hsi.2016.7529640",
+      "openalexId": "https://openalex.org/W2506332992",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Extensible Host Language for Domain-Specific Languages",
+      "authors": "Sergej Chodarev; Ján Kollár",
+      "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+      "link": "https://dblp.uni-trier.de/db/journals/cai/cai35.html#ChodarevK16",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2530266429",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Language composition using source code annotations",
+      "authors": "Milan Nosáľ; Matúš Sulír; Ján Juhár",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis160114024n",
+      "type": "journal",
+      "doi": "10.2298/csis160114024n",
+      "openalexId": "https://openalex.org/W2528180400",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Live IT projects at a university in large-scale",
+      "authors": "Jaroslav Porubän; Michaela Bačíková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802044",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802044",
+      "openalexId": "https://openalex.org/W2563073535",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Live simulation of software processes in programming courses",
+      "authors": "Jaroslav Porubän; Michaela Bačíková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802099",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802099",
+      "openalexId": "https://openalex.org/W2566194978",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Locating User Interface Concepts in Source Code",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2016.6",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2016.6",
+      "openalexId": "https://openalex.org/W2574966916",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Mobile support for learning of foreign languages",
+      "authors": "Annamária Behúnová; Norbert Ádám; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802060",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802060",
+      "openalexId": "https://openalex.org/W2563177616",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Motivating students in Component-Based Programming courses",
+      "authors": "Jaroslav Porubän; Michaela Bačíková; Jana Šťastná",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802045",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802045",
+      "openalexId": "https://openalex.org/W2563680842",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Multi-display work environment in the pharmacy domain",
+      "authors": "Lukáš Galko; Michaela Bačíková; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/hsi.2016.7529641",
+      "type": "journal",
+      "doi": "10.1109/hsi.2016.7529641",
+      "openalexId": "https://openalex.org/W2485954811",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Performing experiments in 3rd party premises using cloud-based virtual machine as remote laboratory: Case study of controlled experiment with high school students in their school",
+      "authors": "Dominik Lakatoš; Jaroslav Porubän; Milan Nosáľ",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802041",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802041",
+      "openalexId": "https://openalex.org/W2565628375",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Preliminary Report on Empirical Study of Repeated Fragments in Internal Documentation",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2016f524",
+      "type": "conference",
+      "doi": "10.15439/2016f524",
+      "openalexId": "https://openalex.org/W2527347043",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Tools Used in Ambient User Interfaces",
+      "authors": "Lukáš Galko; Jaroslav Porubän",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2016-0021",
+      "type": "journal",
+      "doi": "10.15546/aeei-2016-0021",
+      "openalexId": "https://openalex.org/W2557048505",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Towards Programmer Knowledge Profile Generation",
+      "authors": "Emília Pietriková; Sergej Chodarev",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2016-0003",
+      "type": "journal",
+      "doi": "10.15546/aeei-2016-0003",
+      "openalexId": "https://openalex.org/W2520003533",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "Visualization of temperature fields distribution on power module within web interface",
+      "authors": "Tomáš Girašek; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2016.7802062",
+      "type": "journal",
+      "doi": "10.1109/iceta.2016.7802062",
+      "openalexId": "https://openalex.org/W2563057037",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "大規模の大学における生きたITプロジェクト【Powered by NICT】",
+      "authors": "Jaroslav Porubän; Michaela Bačíková",
+      "venue": "IEEE Conference Proceedings",
+      "link": "http://jglobal.jst.go.jp/public/201702229678149850",
+      "type": "conference",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2743527653",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "薬学領域におけるマルチディスプレイ作業環境【Powered by NICT】",
+      "authors": "Lukáš Galko; Michaela Bačíková; Jaroslav Porubän",
+      "venue": "IEEE Conference Proceedings",
+      "link": "http://jglobal.jst.go.jp/public/201602242781305945",
+      "type": "conference",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2751511455",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2016",
+      "title": "遠隔実験室としてのクラウドベース仮想マシンを用いた第3者構内における実行実験:それらの学校における高校生により制御された実験の事例研究【Powered by NICT】",
+      "authors": "Lakatos Dominik; Jaroslav Porubän; Nosal’ Milan",
+      "venue": "IEEE Conference Proceedings",
+      "link": "http://jglobal.jst.go.jp/public/20090422/201702267050871439",
+      "type": "conference",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2744339889",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "A generative framework for development of CRUD-based Linux desktop applications",
+      "authors": "Milan Jancár; Sergej Chodarev",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377821",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377821",
+      "openalexId": "https://openalex.org/W2543591755",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "A new hybrid technique for visualizing unbalanced tree structures",
+      "authors": "Michaela Bačíková; David Surgent",
+      "venue": "",
+      "link": "https://doi.org/10.1109/emes.2015.7158429",
+      "type": "journal",
+      "doi": "10.1109/emes.2015.7158429",
+      "openalexId": "https://openalex.org/W1541442888",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Approaches to human-computer interaction based on observation of a software developer",
+      "authors": "Lukáš Galko; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377816",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377816",
+      "openalexId": "https://openalex.org/W2538565511",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "AUDIENCE RESPONSE SYSTEMS: BENEFITS &amp; UTILIZATION",
+      "authors": "Emília Pietriková",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2015-0028",
+      "type": "journal",
+      "doi": "10.15546/aeei-2015-0028",
+      "openalexId": "https://openalex.org/W2314861584",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Bootstrapping DSLs from user interfaces",
+      "authors": "Michaela Bačíková; Jaroslav Porubän; Sergej Chodarev; Milan Nosáľ",
+      "venue": "",
+      "link": "https://doi.org/10.1145/2695664.2695994",
+      "type": "journal",
+      "doi": "10.1145/2695664.2695994",
+      "openalexId": "https://openalex.org/W2074501677",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Commands composition user interface pattern",
+      "authors": "Sergej Chodarev",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377819",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377819",
+      "openalexId": "https://openalex.org/W2539455400",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Composite annotations with inter-type declarations in aspect-oriented programming",
+      "authors": "Matej Palfi; Milan Nosáľ; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377832",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377832",
+      "openalexId": "https://openalex.org/W2242755053",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Haskell clone detection using pattern comparing algorithm",
+      "authors": "Sergej Chodarev; Emília Pietriková; Ján Kollár",
+      "venue": "",
+      "link": "https://doi.org/10.1109/emes.2015.7158423",
+      "type": "journal",
+      "doi": "10.1109/emes.2015.7158423",
+      "openalexId": "https://openalex.org/W1596612291",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Challenges in Preserving Intent Comprehensibility in Software",
+      "authors": "Valentino Vranić; Jaroslav Porubän; Michal Bystrický; Tomáš Frt'ala; Ivan Polášek; Milan Nosáľ; Ján Lang; M Bakov; J Porubn; D Lakato; J Blik; Valentino Vrani; A Barii; V Amaral; M Goulo; B Barroca; M Bebjak; V Vrani; P Dolog; M Burnett; B Myers; M Bystrick; V Vrani; O Callau; Tanter; K Casey; C Exton; M Conway; K Cooper; C Longstreet; J Coplien; M Desmond; M.-A Storey; C Exton; K Duske; S Erdweg; P Giarrusso; T Rendel; J Fernandes; S Sousa; T Frala; V Vrani; L Gregorovi; I Polek; B Sobota; J Greppel; V Vrani; F Grznr; P Kapec; I Jacobson; P Kajsa; P Nvrat; P Kapec; P Kapec; P Kapec; P Kapec; Michal Paprka; Adam Paitnaj; Vladimr Polk; A Kay; J Kienzle; W Al Abed; F Fleurey; J.-M Jzquel; J Klein; D Knuth; J Kollr; T Latoza; B Myers; T Lynch; P Mcintosh; R Menkyna; V Vrani; K Mens; B Poll; S Gonzlez; M Mernik; J Heering; A Sloane; M Nos; J Porubn; M Nos; J Porubn; M Nos; J Pilgrim; K Duske; R Pipk; I Polek; I Polek; I Polek; P Lka; J Kelemen; J Lang; I Polek; I Ruttkay-Nedeck; P Ruttkay-Nedeck; T Tth; A ernk; P Duek; I Polek",
+      "venue": "Acta Polytechnica Hungarica",
+      "link": "https://doi.org/10.12700/aph.12.7.2015.7.4",
+      "type": "journal",
+      "doi": "10.12700/aph.12.7.2015.7.4",
+      "openalexId": "https://openalex.org/W4231729643",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Iterative domain-specific language development with YAJCo parser generator",
+      "authors": "Jaroslav Porubän; Dominik Lakatoš",
+      "venue": "AIP conference proceedings",
+      "link": "https://doi.org/10.1063/1.4912558",
+      "type": "conference",
+      "doi": "10.1063/1.4912558",
+      "openalexId": "https://openalex.org/W2076614028",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Model-aware language specification with Java",
+      "authors": "Jaroslav Porubän; Sergej Chodarev",
+      "venue": "",
+      "link": "https://doi.org/10.1109/emes.2015.7158424",
+      "type": "journal",
+      "doi": "10.1109/emes.2015.7158424",
+      "openalexId": "https://openalex.org/W1562454726",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Personalized synthetic voices for speaking impaired: website and app",
+      "authors": "Daniel Erro; Inma Hernáez; Agustín Alonso; D. García-Lorenzo; Eva Navas; Jinhua Ye; Haritz Arzelus; Igor Jauk; Neujahr Hy; Carmen Magariños; R. Pérez-Ramón; Matúš Sulír; Xiaohai Tian; Xin Wang",
+      "venue": "",
+      "link": "https://doi.org/10.21437/interspeech.2015-314",
+      "type": "journal",
+      "doi": "10.21437/interspeech.2015-314",
+      "openalexId": "https://openalex.org/W2405755256",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Profile-driven Source Code Exploration",
+      "authors": "Emília Pietriková; Sergej Chodarev",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2015f238",
+      "type": "conference",
+      "doi": "10.15439/2015f238",
+      "openalexId": "https://openalex.org/W1918348315",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Program comprehension with four-layered mental model",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/emes.2015.7158420",
+      "type": "journal",
+      "doi": "10.1109/emes.2015.7158420",
+      "openalexId": "https://openalex.org/W1529563009",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Semi-automatic concern annotation using differential code coverage",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377843",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377843",
+      "openalexId": "https://openalex.org/W2241813887",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Sharing Developers' Mental Models through Source Code Annotations",
+      "authors": "Matúš Sulír; Milan Nosáľ",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2015f301",
+      "type": "conference",
+      "doi": "10.15439/2015f301",
+      "openalexId": "https://openalex.org/W1940770334",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Source Code Annotations as Formal Languages",
+      "authors": "Milan Nosáľ; Matúš Sulír; Ján Juhár",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2015f173",
+      "type": "conference",
+      "doi": "10.15439/2015f173",
+      "openalexId": "https://openalex.org/W1936829477",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Teaching pragmatic model-driven software development",
+      "authors": "Jaroslav Porubän; Michaela Bačíková; Sergej Chodarev; Milan Nosáľ",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis140107022p",
+      "type": "journal",
+      "doi": "10.2298/csis140107022p",
+      "openalexId": "https://openalex.org/W2274849163",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Towards automated assessment in game-creative programming courses",
+      "authors": "Emília Pietriková; Ján Juhár; Jana Šťastná",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2015.7558505",
+      "type": "journal",
+      "doi": "10.1109/iceta.2015.7558505",
+      "openalexId": "https://openalex.org/W2516094730",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Towards automated assessment of students' preliminary thesis submissions",
+      "authors": "Matúš Sulír; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2015.7558513",
+      "type": "journal",
+      "doi": "10.1109/iceta.2015.7558513",
+      "openalexId": "https://openalex.org/W2511257149",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Towards automated evaluation of domain usability",
+      "authors": "Michaela Bačíková; Martin Zbuska",
+      "venue": "",
+      "link": "https://doi.org/10.1109/informatics.2015.7377805",
+      "type": "journal",
+      "doi": "10.1109/informatics.2015.7377805",
+      "openalexId": "https://openalex.org/W2541661440",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2015",
+      "title": "Usability of a Domain-Specific Language for a Gesture-Driven IDE",
+      "authors": "Michaela Bačíková; Martin Maričák; Matej Vančík",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2015f274",
+      "type": "conference",
+      "doi": "10.15439/2015f274",
+      "openalexId": "https://openalex.org/W1935650009",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "A Terse String-Embedded Language for Tree Searching and Replacing",
+      "authors": "Matúš Sulír; Slavomír Šimoňák",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.15546/aeei-2014-0014",
+      "type": "journal",
+      "doi": "10.15546/aeei-2014-0014",
+      "openalexId": "https://openalex.org/W2314911178",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Abstract syntax driven approach for language composition",
+      "authors": "Sergej Chodarev; Dominik Lakatoš; Jaroslav Porubän; Ján Kollár",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-014-0211-8",
+      "type": "journal",
+      "doi": "10.2478/s13537-014-0211-8",
+      "openalexId": "https://openalex.org/W2077342594",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Abstraction of Computer Language Patterns",
+      "authors": "Jaroslav Porubän; Ján Kollár; Miroslav Sabo",
+      "venue": "Computational Linguistics",
+      "link": "https://doi.org/10.4018/978-1-4666-6042-7.ch069",
+      "type": "journal",
+      "doi": "10.4018/978-1-4666-6042-7.ch069",
+      "openalexId": "https://openalex.org/W4235797919",
+      "sourceType": "journal",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Domain Usability, User’s Perception",
+      "authors": "Michaela Bačíková; Jaroslav Porubän",
+      "venue": "Advances in intelligent systems and computing",
+      "link": "https://doi.org/10.1007/978-3-319-08491-6_2",
+      "type": "",
+      "doi": "10.1007/978-3-319-08491-6_2",
+      "openalexId": "https://openalex.org/W1174344464",
+      "sourceType": "book series",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "DSL-driven generation of Graphical User Interfaces",
+      "authors": "Michaela Bačíková; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-014-0210-9",
+      "type": "journal",
+      "doi": "10.2478/s13537-014-0210-9",
+      "openalexId": "https://openalex.org/W1966961115",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Genetic evolution of programs",
+      "authors": "Ján Kollár; Emília Pietriková",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-014-0214-5",
+      "type": "journal",
+      "doi": "10.2478/s13537-014-0214-5",
+      "openalexId": "https://openalex.org/W1992536445",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Learning by game creation in introductory programming course: 5-Year-long study",
+      "authors": "Marek Paralič; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2014.7107617",
+      "type": "journal",
+      "doi": "10.1109/iceta.2014.7107617",
+      "openalexId": "https://openalex.org/W1504654810",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Learning object-oriented paradigm by playing computer games: concepts first approach",
+      "authors": "Jakub Livovský; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-014-0209-2",
+      "type": "journal",
+      "doi": "10.2478/s13537-014-0209-2",
+      "openalexId": "https://openalex.org/W2039356306",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Leveraging Program Comprehension with Concern-oriented Source Code Projections",
+      "authors": "Jaroslav Porubän; Milan Nosáľ",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2014.35",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2014.35",
+      "openalexId": "https://openalex.org/W2240979497",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Practical experience with task-driven case studies",
+      "authors": "Jaroslav Porubän; Milan Nosáľ",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2014.7107613",
+      "type": "journal",
+      "doi": "10.1109/iceta.2014.7107613",
+      "openalexId": "https://openalex.org/W1546018397",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Pragmatic Model-Driven Software Development from the Viewpoint of a Programmer: Teaching Experience",
+      "authors": "Jaroslav Porubän; Michaela Bačíková; Sergej Chodarev; Milan Nosáľ",
+      "venue": "Annals of Computer Science and Information Systems",
+      "link": "https://doi.org/10.15439/2014f266",
+      "type": "conference",
+      "doi": "10.15439/2014f266",
+      "openalexId": "https://openalex.org/W2000650597",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Sergej Chodarev",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Reusable software documentation with phrase annotations",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-014-0208-3",
+      "type": "journal",
+      "doi": "10.2478/s13537-014-0208-3",
+      "openalexId": "https://openalex.org/W2060863951",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "SYSTEM FOR AUTOMATIC TRANSCRIPTION OF AUDIO MEETINGS IN SLOVAK",
+      "authors": "Jozef Juhár; Ján Staš; Peter Viszlay; Martin Lojka; Matúš Sulír; Daniel Zlacký; Matúš Pleva; Stanislav Ondáš; J. Vavrek; Multimedia Communications",
+      "venue": "",
+      "link": "https://nptt.cvtisr.sk/buxus/docs/podujatia%201/prezentacie/konferencia_NITT_SK_2014/panely/3-TUKE_System_na_automaticke_rozpoznavanie_a_prepis_mitingovych_zaznamov.pdf",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2185199207",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Matus Sulir"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "Useful recommendations for successful implementation of programming courses",
+      "authors": "M. Biňas; Emília Pietriková",
+      "venue": "",
+      "link": "https://doi.org/10.1109/iceta.2014.7107618",
+      "type": "journal",
+      "doi": "10.1109/iceta.2014.7107618",
+      "openalexId": "https://openalex.org/W1598073803",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2014",
+      "title": "XML to annotations mapping definition with patterns",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis130920049n",
+      "type": "journal",
+      "doi": "10.2298/csis130920049n",
+      "openalexId": "https://openalex.org/W2066189202",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "Concern-oriented source code projections",
+      "authors": "Matej Nosáľ; Jaroslav Porubän; Milan Nosáľ",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.680.4278",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W1519565588",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "Declarative specification of references in DSLs",
+      "authors": "Dominik Lakatoš; Jaroslav Porubän; Michaela Bačíková",
+      "venue": "Federated Conference on Computer Science and Information Systems",
+      "link": "https://fedcsis.org/proceedings/2013/pliks/342.pdf",
+      "type": "conference",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2125386157",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "Defining Domain Language of Graphical User Interfaces",
+      "authors": "Michaela Bačíková; Jaroslav Porubän; Dominik Lakatoš",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2013.187",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2013.187",
+      "openalexId": "https://openalex.org/W2170429374",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "Ergonomic vs. domain usability of user interfaces",
+      "authors": "Michaela Bačíková; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/hsi.2013.6577817",
+      "type": "journal",
+      "doi": "10.1109/hsi.2013.6577817",
+      "openalexId": "https://openalex.org/W2051176938",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "pLERO: Language for grammar refactoring patterns",
+      "authors": "Ján Kollár; Ivan Halupka; Sergej Chodarev; Emília Pietriková",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.679.6502",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W1506865486",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "Towards Automated Program Abstraction and Language Enrichment",
+      "authors": "Sergej Chodarev; Emília Pietriková; Ján Kollár",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2013.51",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2013.51",
+      "openalexId": "https://openalex.org/W2242960523",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2013",
+      "title": "XML to Annotations Mapping Patterns",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+      "link": "https://doi.org/10.4230/oasics.slate.2013.97",
+      "type": "",
+      "doi": "10.4230/oasics.slate.2013.97",
+      "openalexId": "https://openalex.org/W2242042770",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "A Task-driven Grammar Refactoring Algorithm",
+      "authors": "Ivan Halupka; Ján Kollár; Emília Pietriková",
+      "venue": "Acta Polytechnica",
+      "link": "https://doi.org/10.14311/1636",
+      "type": "journal",
+      "doi": "10.14311/1636",
+      "openalexId": "https://openalex.org/W2561906067",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Abstraction in programming languages according to domain-specific patterns",
+      "authors": "Ján Kollár; Emília Pietriková; Sergej Chodarev",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/v10198-012-0017-3",
+      "type": "journal",
+      "doi": "10.2478/v10198-012-0017-3",
+      "openalexId": "https://openalex.org/W2313440849",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Abstraction of Computer Language Patterns",
+      "authors": "Jaroslav Porubän; Ján Kollár; Miroslav Sabo",
+      "venue": "IGI Global eBooks",
+      "link": "https://doi.org/10.4018/978-1-4666-2092-6.ch013",
+      "type": "",
+      "doi": "10.4018/978-1-4666-2092-6.ch013",
+      "openalexId": "https://openalex.org/W2483415553",
+      "sourceType": "ebook platform",
+      "openalexType": "book-chapter",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Analyzing stereotypes of creating graphical user interfaces",
+      "authors": "Michaela Bačíková; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-012-0020-x",
+      "type": "journal",
+      "doi": "10.2478/s13537-012-0020-x",
+      "openalexId": "https://openalex.org/W2065717829",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban",
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Automatized Generating of GUIs for Domain-Specific Languages.",
+      "authors": "Michaela Bačíková; Dominik Lakatoš; Milan Nosáľ",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.416.8491",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2398257217",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Ontop: A Component for Acquiring Information from OWL Ontologies",
+      "authors": "Ines Čeh; Milan Zorman; Matej Črepinšek; Tomaž Kosar; Marjan Mernik; Jaroslav Porubän",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/v10198-012-0006-6",
+      "type": "journal",
+      "doi": "10.2478/v10198-012-0006-6",
+      "openalexId": "https://openalex.org/W2097270982",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Separating Concerns in Programming: Data, Control and Actions",
+      "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík",
+      "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+      "link": "http://dblp.uni-trier.de/db/journals/cai/cai24.html#KollarPV05",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W189113341",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2012",
+      "title": "Supporting multiple configuration sources using abstraction",
+      "authors": "Milan Nosáľ; Jaroslav Porubän",
+      "venue": "Open Computer Science",
+      "link": "https://doi.org/10.2478/s13537-012-0015-7",
+      "type": "journal",
+      "doi": "10.2478/s13537-012-0015-7",
+      "openalexId": "https://openalex.org/W2064693014",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2011",
+      "title": "Common Abstraction of Configuration from Multiple Sources",
+      "authors": "Jaroslav Porubän; Milan Nosáľ",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/v10198-011-0038-3",
+      "type": "journal",
+      "doi": "10.2478/v10198-011-0038-3",
+      "openalexId": "https://openalex.org/W2315675410",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2011",
+      "title": "Computer language notation specification through program examples",
+      "authors": "Miroslav Sabo; Jaroslav Porubän; Dominik Lakatoš; Michaela Kreutzova",
+      "venue": "Federated Conference on Computer Science and Information Systems",
+      "link": "https://dblp.uni-trier.de/db/conf/fedcsis/fedcsis2011.html#SaboPLK11",
+      "type": "conference",
+      "doi": "",
+      "openalexId": "https://openalex.org/W1733475916",
+      "sourceType": "conference",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2011",
+      "title": "Evolving Metamodels in Aspect-Oriented Manner",
+      "authors": "Michal Vagač; Ján Kollár; Sergej Chodarev",
+      "venue": "Acta Electrotechnica et Informatica",
+      "link": "https://doi.org/10.2478/v10198-011-0025-8",
+      "type": "journal",
+      "doi": "10.2478/v10198-011-0025-8",
+      "openalexId": "https://openalex.org/W2327623314",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2011",
+      "title": "Hodnocení finanční situace podniku a návrhy na její zlepšení",
+      "authors": "Michaela Bačíková",
+      "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
+      "link": "http://hdl.handle.net/11012/4044",
+      "type": "",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2795019982",
+      "sourceType": "repository",
+      "openalexType": "dissertation",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2011",
+      "title": "Identification of patterns through Haskell programs analysis",
+      "authors": "Ján Kollár; Sergej Chodarev; Emília Pietriková; Lrubomir Wassermann",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.231.6465",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W1551673055",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Emília Pietrikova",
+        "Sergej Chodarev"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2010",
+      "title": "Abstract syntax driven language development",
+      "authors": "Jaroslav Porubän; Miroslav Sabo; Ján Kollár; Marjan Mernik",
+      "venue": "",
+      "link": "https://doi.org/10.1145/1943397.1943399",
+      "type": "journal",
+      "doi": "10.1145/1943397.1943399",
+      "openalexId": "https://openalex.org/W1981280281",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2010",
+      "title": "Annotation based parser generator",
+      "authors": "Jaroslav Porubän; Michal Forgáč; Miroslav Sabo; Marek Běhálek",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis1002291p",
+      "type": "journal",
+      "doi": "10.2298/csis1002291p",
+      "openalexId": "https://openalex.org/W2087055545",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2009",
+      "title": "Annotation based parser generator",
+      "authors": "Jaroslav Porubän; Michal Forgáč; Miroslav Sabo",
+      "venue": "",
+      "link": "https://doi.org/10.1109/imcsit.2009.5352763",
+      "type": "journal",
+      "doi": "10.1109/imcsit.2009.5352763",
+      "openalexId": "https://openalex.org/W2023402128",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2009",
+      "title": "Odložená daň z příjmů v obchodní společnosti",
+      "authors": "Michaela Bačíková",
+      "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
+      "link": "http://hdl.handle.net/11012/64100",
+      "type": "",
+      "doi": "",
+      "openalexId": "https://openalex.org/W3185056115",
+      "sourceType": "repository",
+      "openalexType": "dissertation",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2008",
+      "title": "Building Adaptive Language Systems",
+      "authors": "Janós Kollár; Jaroslav Porubän",
+      "venue": "Americanae (AECID Library)",
+      "link": "https://infocomp.dcc.ufla.br/index.php/infocomp/article/view/200",
+      "type": "",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2181552579",
+      "sourceType": "repository",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2008",
+      "title": "Geometry in hobby mathematics for primary pupils",
+      "authors": "Michaela Bačíková",
+      "venue": "Digital Repository (National Repository of Grey Literature)",
+      "link": "http://www.nusl.cz/ntk/nusl-45450",
+      "type": "",
+      "doi": "",
+      "openalexId": "https://openalex.org/W7135721626",
+      "sourceType": "repository",
+      "openalexType": "dissertation",
+      "matchedAuthors": [
+        "Michaela Bacikova"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2008",
+      "title": "Reflection as a Tool for Adaptability of Software Systems",
+      "authors": "Michal Forgáč; Ján Kollár; Jaroslav Porubän",
+      "venue": "",
+      "link": "https://doi.org/10.1109/sami.2008.4469160",
+      "type": "journal",
+      "doi": "10.1109/sami.2008.4469160",
+      "openalexId": "https://openalex.org/W2139222118",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2007",
+      "title": "Functional approach to the adaptation of languages instead of software systems",
+      "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík; Jana Bandáková; Michal Forgáč",
+      "venue": "Computer Science and Information Systems",
+      "link": "https://doi.org/10.2298/csis0702116k",
+      "type": "journal",
+      "doi": "10.2298/csis0702116k",
+      "openalexId": "https://openalex.org/W2085377416",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2006",
+      "title": "From Eager PFL to Lazy Haskell.",
+      "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík",
+      "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+      "link": "https://dblp.uni-trier.de/db/journals/cai/cai25.html#KollarPV06",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W94341436",
+      "sourceType": "journal",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2006",
+      "title": "Time and Memory Profile of a Process Functional Program",
+      "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.96.2373",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W1512712985",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    },
+    {
+      "date": "2006",
+      "title": "TYPE ENVIRONMENTS IN OBJECT ORIENTED PROCESS FUNCTIONAL LANGUAGE",
+      "authors": "Peter Václavík; Jaroslav Porubän",
+      "venue": "",
+      "link": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.399.3262",
+      "type": "journal",
+      "doi": "",
+      "openalexId": "https://openalex.org/W2183098446",
+      "sourceType": "",
+      "openalexType": "article",
+      "matchedAuthors": [
+        "Jaroslav Poruban"
+      ],
+      "manual": false
+    }
+  ]
+}

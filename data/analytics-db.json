@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "source": "local",
+    "createdAt": "2026-07-02T10:45:00.000Z",
+    "updatedAt": "2026-07-02T20:51:16.095Z",
+    "totalEvents": 4
+  },
+  "events": [
+    {
+      "id": "1783025464385-okgnnt",
+      "timestamp": "2026-07-02T20:51:04.385Z",
+      "action": "person_open",
+      "label": "Jaroslav Poruban",
+      "language": "en",
+      "target": "/poruban",
+      "path": "/",
+      "metadata": {
+        "role": "Professor"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0",
+      "ip": "::1"
+    },
+    {
+      "id": "1783025467646-ep8aqy",
+      "timestamp": "2026-07-02T20:51:07.646Z",
+      "action": "person_open",
+      "label": "Jaroslav Poruban",
+      "language": "en",
+      "target": "/poruban",
+      "path": "/",
+      "metadata": {
+        "role": "Professor"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0",
+      "ip": "::1"
+    },
+    {
+      "id": "1783025472226-fxa7j0",
+      "timestamp": "2026-07-02T20:51:12.226Z",
+      "action": "person_open",
+      "label": "Marek Horvath",
+      "language": "en",
+      "target": "/horvath",
+      "path": "/",
+      "metadata": {
+        "role": "PhD Candidate"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0",
+      "ip": "::1"
+    },
+    {
+      "id": "1783025476095-m17557",
+      "timestamp": "2026-07-02T20:51:16.095Z",
+      "action": "person_open",
+      "label": "Lenka Bubenkova",
+      "language": "en",
+      "target": "/bubenkova",
+      "path": "/",
+      "metadata": {
+        "role": "PhD Candidate"
+      },
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0",
+      "ip": "::1"
+    }
+  ]
+}

@@ -26,8 +26,8 @@
             :class="typeClass(pub.type)"
             role="button"
             tabindex="0"
-            @click="openPublication(pub.link)"
-            @keydown.enter="openPublication(pub.link)"
+            @click="openPublication(pub)"
+            @keydown.enter="openPublication(pub)"
           >
             <small class="pub-authors">{{ formatAuthors(pub.authors) }}</small>
             <div class="pub-title">{{ pub.title }}</div>
@@ -45,6 +45,7 @@
 <script>
 export default {
   name: "PublicationsTab",
+  emits: ["analytics"],
   props: {
     groupedPublications: {
       type: Array,
@@ -141,9 +142,18 @@ export default {
       );
       this.observer.observe(target);
     },
-    openPublication(url) {
+    openPublication(publication) {
+      const url = typeof publication === "string" ? publication : publication.link;
       if (!url) {
         return;
+      }
+      if (typeof publication !== "string") {
+        this.$emit("analytics", {
+          action: "publication_open",
+          label: publication.title,
+          target: url,
+          metadata: { venue: publication.venue || "" }
+        });
       }
       window.open(url, "_blank");
     }

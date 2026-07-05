@@ -1,0 +1,81 @@
+{
+  "source": "OpenAlex",
+  "generatedAt": "2026-07-02T10:34:16.989Z",
+  "startedAt": "2026-07-02T10:34:11.663Z",
+  "peopleSource": "C:\\Users\\marek\\OneDrive\\Počítač\\skupina\\data\\people-db.json",
+  "institutionRor": "https://ror.org/05xm08015",
+  "usedApiKey": false,
+  "includePreprints": false,
+  "peopleCount": 9,
+  "resolvedAuthorCount": 9,
+  "unresolvedAuthorCount": 0,
+  "rawWorkCount": 316,
+  "publicationCount": 185,
+  "resolvedAuthors": [
+    {
+      "name": "Jaroslav Poruban",
+      "displayName": "Jaroslav Porubän",
+      "openalexId": "https://openalex.org/A5007967679",
+      "orcid": "https://orcid.org/0000-0001-9706-2897",
+      "resolution": "search"
+    },
+    {
+      "name": "Emília Pietrikova",
+      "displayName": "Emília Pietriková",
+      "openalexId": "https://openalex.org/A5042449931",
+      "orcid": "https://orcid.org/0000-0002-9790-6874",
+      "resolution": "search"
+    },
+    {
+      "name": "Sergej Chodarev",
+      "displayName": "Sergej Chodarev",
+      "openalexId": "https://openalex.org/A5025287145",
+      "orcid": "https://orcid.org/0000-0002-9293-0859",
+      "resolution": "orcid"
+    },
+    {
+      "name": "Matus Sulir",
+      "displayName": "Matúš Sulír",
+      "openalexId": "https://openalex.org/A5064689256",
+      "orcid": "https://orcid.org/0000-0003-2221-9225",
+      "resolution": "search"
+    },
+    {
+      "name": "Michaela Bacikova",
+      "displayName": "Michaela Bačíková",
+      "openalexId": "https://openalex.org/A5034319548",
+      "orcid": "https://orcid.org/0000-0002-9436-8425",
+      "resolution": "search"
+    },
+    {
+      "name": "Filip Gurbal",
+      "displayName": "Filip Gurbáľ",
+      "openalexId": "https://openalex.org/A5015063708",
+      "orcid": "https://orcid.org/0000-0001-7691-9273",
+      "resolution": "search"
+    },
+    {
+      "name": "Marek Horvath",
+      "displayName": "Marek Horváth",
+      "openalexId": "https://openalex.org/A5015785379",
+      "orcid": "https://orcid.org/0009-0005-4649-2308",
+      "resolution": "orcid"
+    },
+    {
+      "name": "Tomas Kormanik",
+      "displayName": "Tomáš Kormaník",
+      "openalexId": "https://openalex.org/A5093471353",
+      "orcid": "https://orcid.org/0009-0002-6622-8027",
+      "resolution": "search"
+    },
+    {
+      "name": "Lenka Bubenkova",
+      "displayName": "Lenka Bubeňková",
+      "openalexId": "https://openalex.org/A5116057275",
+      "orcid": "",
+      "resolution": "search"
+    }
+  ],
+  "unresolvedAuthors": [],
+  "localEditedAt": "2026-07-02T20:59:16.438Z"
+}
