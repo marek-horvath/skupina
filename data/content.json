@@ -1,0 +1,66 @@
+{
+  "tabs": [
+    {
+      "id": "people",
+      "visible": true
+    },
+    {
+      "id": "publications",
+      "visible": true
+    },
+    {
+      "id": "teaching",
+      "visible": true
+    },
+    {
+      "id": "events",
+      "visible": true
+    }
+  ],
+  "events": {
+    "intro": "We connect teaching, research, industry cooperation, and community formats where students can work on real software, games, prototypes, and hackathon challenges.",
+      "introSK": "Prepájame výučbu, výskum, spoluprácu s praxou a komunitné formáty, v ktorých študenti pracujú na reálnom softvéri, hrách, prototypoch a hackathonových výzvach.",
+    "pressLinkLabel": "KPI events and press releases",
+    "pressLinkLabelSK": "Udalosti a tlačové správy KPI",
+    "pressLinkUrl": "https://kpi.fei.tuke.sk/sk/udalosti",
+    "items": [
+      {
+        "title": "Live IT Projects",
+          "titleSK": "Živé IT projekty",
+        "description": "Semester-long cooperation with IT companies where student teams solve real assignments and present working outcomes.",
+          "descriptionSK": "Semestrálna spolupráca s IT firmami, kde študentské tímy riešia reálne zadania a prezentujú funkčné výsledky.",
+        "url": "https://kpi.fei.tuke.sk/sk/content/zive-it-projekty",
+        "visible": true
+      },
+      {
+        "title": "Game Jams",
+        "titleSK": "Game Jamy",
+        "description": "Short intensive game-development events connected with programming, creativity, teamwork, and public presentation of student games.",
+          "descriptionSK": "Krátke intenzívne podujatia zamerané na tvorbu hier, kreativitu, tímovú prácu a verejnú prezentáciu študentských hier.",
+        "url": "https://kpi.fei.tuke.sk/sk/udalosti",
+        "visible": true
+      },
+      {
+        "title": "Hackathons",
+        "titleSK": "Hackathony",
+        "description": "Competitive formats where teams design and implement prototypes for industry, university, and community challenges.",
+          "descriptionSK": "Súťažné formáty, v ktorých tímy navrhujú a implementujú prototypy pre priemyselné, univerzitné a komunitné výzvy.",
+        "url": "https://kpi.fei.tuke.sk/sk/content/t-systems-hackathon",
+        "visible": true
+      },
+      {
+        "title": "Namakaný deň",
+        "titleSK": "Namakaný deň",
+        "description": "Maker-oriented event with talks and workshops around programming, IoT, artificial intelligence, cybersecurity, and hands-on prototypes.",
+          "descriptionSK": "Makerské podujatie s prednáškami a workshopmi o programovaní, IoT, umelej inteligencii, kyberbezpečnosti a praktických prototypoch.",
+        "url": "https://kpi.fei.tuke.sk/sk/namakany-den-2026",
+        "visible": true
+      }
+    ]
+  },
+  "meta": {
+    "source": "local",
+    "updatedAt": "2026-07-05T10:21:51.039Z",
+    "description": "Local editable site content database for tabs and events."
+  }
+}
