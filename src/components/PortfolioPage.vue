@@ -469,6 +469,8 @@ export default {
         return this.selectedPerson ? "" : this.activeTab;
       },
       set(value) {
+        const wasPersonDetail = Boolean(this.currentSlug);
+        const nextTab = value || "people";
         this.currentSlug = "";
         if (value && value !== this.activeTab) {
           const tab = this.localizedTabs.find(item => item.id === value);
@@ -478,7 +480,11 @@ export default {
             target: value
           });
         }
-        this.activeTab = value || "people";
+        if (wasPersonDetail && nextTab === this.activeTab) {
+          const nextPath = nextTab === "people" ? "/" : `/${nextTab}`;
+          window.history.pushState({}, "", this.appPath(nextPath));
+        }
+        this.activeTab = nextTab;
       }
     }
   },
