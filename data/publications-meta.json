@@ -1,16 +1,73 @@
 {
   "source": "OpenAlex",
-  "generatedAt": "2026-07-02T10:34:16.989Z",
-  "startedAt": "2026-07-02T10:34:11.663Z",
-  "peopleSource": "C:\\Users\\marek\\OneDrive\\Počítač\\skupina\\data\\people-db.json",
+  "generatedAt": "2026-09-18T14:43:23.011Z",
+  "startedAt": "2026-09-18T14:43:17.986Z",
+  "peopleSource": "/var/lib/seug/data/people-db.json",
   "institutionRor": "https://ror.org/05xm08015",
   "usedApiKey": false,
   "includePreprints": false,
-  "peopleCount": 9,
-  "resolvedAuthorCount": 9,
-  "unresolvedAuthorCount": 0,
-  "rawWorkCount": 316,
-  "publicationCount": 185,
+  "peopleCount": 10,
+  "resolvedAuthorCount": 8,
+  "unresolvedAuthorCount": 1,
+  "skippedAuthorCount": 1,
+  "rawWorkCount": 337,
+  "syncedPublicationCount": 194,
+  "publicationCount": 194,
+  "manualPublicationCount": 0,
+  "deletedPublicationKeys": [],
+  "deletedPublicationKeyCount": 0,
+  "localEditedAt": "2026-07-02T20:59:16.438Z",
+  "syncHistory": [
+    {
+      "generatedAt": "2026-09-18T14:43:23.011Z",
+      "startedAt": "2026-09-18T14:43:17.986Z",
+      "peopleCount": 10,
+      "resolvedAuthorCount": 8,
+      "unresolvedAuthorCount": 1,
+      "skippedAuthorCount": 1,
+      "rawWorkCount": 337,
+      "syncedPublicationCount": 194,
+      "publicationCount": 194,
+      "manualPublicationCount": 0,
+      "skippedDeletedPublicationCount": 0,
+      "preservedManualPublicationCount": 0,
+      "carriedManualPublicationCount": 0,
+      "deletedPublicationKeyCount": 0
+    },
+    {
+      "generatedAt": "2026-09-03T16:57:37.693Z",
+      "startedAt": "2026-09-03T16:57:30.092Z",
+      "peopleCount": 10,
+      "resolvedAuthorCount": 10,
+      "unresolvedAuthorCount": 0,
+      "rawWorkCount": 590,
+      "syncedPublicationCount": 421,
+      "publicationCount": 421,
+      "manualPublicationCount": 0,
+      "skippedDeletedPublicationCount": 0,
+      "preservedManualPublicationCount": 0,
+      "carriedManualPublicationCount": 0,
+      "deletedPublicationKeyCount": 0
+    },
+    {
+      "generatedAt": "2026-07-02T10:34:16.989Z",
+      "startedAt": "2026-07-02T10:34:11.663Z",
+      "peopleCount": 9,
+      "resolvedAuthorCount": 9,
+      "unresolvedAuthorCount": 0,
+      "rawWorkCount": 316,
+      "syncedPublicationCount": 185,
+      "publicationCount": 185,
+      "manualPublicationCount": 0,
+      "skippedDeletedPublicationCount": 0,
+      "preservedManualPublicationCount": 0,
+      "carriedManualPublicationCount": 0,
+      "deletedPublicationKeyCount": 0
+    }
+  ],
+  "skippedDeletedPublicationCount": 0,
+  "preservedManualPublicationCount": 0,
+  "carriedManualPublicationCount": 0,
   "resolvedAuthors": [
     {
       "name": "Jaroslav Porubän",
@@ -67,38 +124,17 @@
       "openalexId": "https://openalex.org/A5093471353",
       "orcid": "https://orcid.org/0009-0002-6622-8027",
       "resolution": "search"
-    },
-    {
-      "name": "Lenka Bubeňková",
-      "displayName": "Lenka Bubeňková",
-      "openalexId": "https://openalex.org/A5116057275",
-      "orcid": "",
-      "resolution": "search"
     }
   ],
-  "unresolvedAuthors": [],
-  "localEditedAt": "2026-07-02T20:59:16.438Z",
-  "manualPublicationCount": 0,
-  "deletedPublicationKeys": [],
-  "deletedPublicationKeyCount": 0,
-  "skippedDeletedPublicationCount": 0,
-  "preservedManualPublicationCount": 0,
-  "carriedManualPublicationCount": 0,
-  "syncHistory": [
+  "unresolvedAuthors": [
     {
-      "generatedAt": "2026-07-02T10:34:16.989Z",
-      "startedAt": "2026-07-02T10:34:11.663Z",
-      "peopleCount": 9,
-      "resolvedAuthorCount": 9,
-      "unresolvedAuthorCount": 0,
-      "rawWorkCount": 316,
-      "syncedPublicationCount": 185,
-      "publicationCount": 185,
-      "manualPublicationCount": 0,
-      "skippedDeletedPublicationCount": 0,
-      "preservedManualPublicationCount": 0,
-      "carriedManualPublicationCount": 0,
-      "deletedPublicationKeyCount": 0
+      "name": "Lenka Bubeňková",
+      "role": "PhD Candidate",
+      "orcid": "https://orcid.org/0009-0008-1192-8935",
+      "error": "OpenAlex request failed (404) https://api.openalex.org/authors/https://orcid.org/0009-0008-1192-8935?select=id%2Cdisplay_name%2Cworks_count%2Ccited_by_count%2Clast_known_institutions%2Corcid: <!doctype html>\n<html lang=en>\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>\n"
     }
+  ],
+  "skippedAuthors": [
+    "Gabriel Sás"
   ]
 }
