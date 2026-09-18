@@ -162,6 +162,7 @@
               <label>Email<input v-model="selectedPerson.email" /></label>
               <label>Image<input v-model="selectedPerson.image" placeholder="marek.jpg" /></label>
               <label class="check-row"><input v-model="selectedPerson.visible" type="checkbox" /> Visible</label>
+              <label class="check-row"><input v-model="selectedPerson.syncPublications" type="checkbox" :true-value="true" :false-value="false" /> Sync OpenAlex publications</label>
             </div>
             <label>Info EN<textarea v-model="selectedPerson.info" rows="4"></textarea></label>
             <label>Info SK<textarea v-model="selectedPerson.infoSK" rows="4"></textarea></label>
@@ -710,10 +711,15 @@ export default {
       });
     },
     normalizePeople(people) {
-      return {
+      const groups = {
         ...emptyPeople(),
         ...(people || {})
       };
+      this.groupOptions.forEach(group => {
+        groups[group.key] = (Array.isArray(groups[group.key]) ? groups[group.key] : [])
+          .map(person => ({ ...person, syncPublications: person.syncPublications !== false }));
+      });
+      return groups;
     },
     normalizeContent(content) {
       const defaults = emptyContent();
@@ -771,6 +777,7 @@ export default {
         infoSK: "",
         image: "",
         visible: true,
+        syncPublications: false,
         links: []
       };
       this.people[this.selectedGroup].push(person);

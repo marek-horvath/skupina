@@ -248,6 +248,13 @@ People:
 ```
 
 People can include `visible`; missing `visible` is treated as visible.
+Active people can also include `syncPublications`. Missing means enabled for
+existing records; new people added in admin default to disabled. Disabled
+people are skipped by OpenAlex sync, their cached author match is removed, and
+their non-manual publications disappear on the next sync. Gabriel Sás is
+disabled because the name search matched a civil engineering namesake
+(`A5005287610`, 224 unrelated works in the September 2026 sync). If enabling
+him later, first provide his verified ORCID in the person links.
 
 Content:
 
@@ -289,6 +296,15 @@ Publication:
 Expected `type` values are mainly `journal`, `conference`, `book`, or empty.
 
 ## Current Verification
+
+Verified on 2026-09-18:
+- Gabriel Sás is excluded from OpenAlex sync on the VPS; his incorrect cached
+  match was removed and none of the 194 current publications are attributed to
+  him. The pre-change VPS data backup is
+  `/var/backups/seug/before-gabriel-sync-2026-09-18.tar.gz`.
+- `node --test server/openalex-sync.test.js`, `npm run lint`, and `npm run build`
+  pass. The normal sync also dropped three non-manual records no longer returned
+  by OpenAlex.
 
 Verified on 2026-07-05:
 - `npm run lint` passes.

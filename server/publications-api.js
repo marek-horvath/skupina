@@ -144,6 +144,7 @@ function normalizePeopleForSave(people) {
         infoSK: cleanText(person.infoSK, 2000),
         image: cleanText(person.image, 240),
         visible: person.visible !== false,
+        syncPublications: person.syncPublications !== false,
         links: normalizeLinks(person.links)
       }))
       .filter(person => person.name || key === "exMembers" || key === "students");

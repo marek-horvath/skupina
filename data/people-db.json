@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "local",
-    "updatedAt": "2026-07-05T10:25:52.647Z",
+    "updatedAt": "2026-09-03T16:57:13.783Z",
     "description": "Local editable people database for the research group website."
   },
   "people": {
@@ -151,11 +151,9 @@
             "url": "https://orcid.org/0000-0001-7691-9273"
           }
         ]
-      }
-    ],
-    "phdCandidates": [
+      },
       {
-        "role": "PhD Candidate",
+        "role": "Research Assistant",
         "name": "Marek Horváth",
         "email": "marek.horvath@tuke.sk",
         "info": "Static code analysis, plagiarism detection, programmer identification.",
@@ -180,7 +178,9 @@
             "url": "https://marek-horvath.github.io/portfolio/"
           }
         ]
-      },
+      }
+    ],
+    "phdCandidates": [
       {
         "role": "PhD Candidate",
         "name": "Tomáš Kormaník",
@@ -224,6 +224,26 @@
           {
             "label": "ORCID",
             "url": "https://orcid.org/0009-0008-1192-8935"
+          }
+        ]
+      },
+      {
+        "role": "PhD Candidate",
+        "name": "Gabriel Sás",
+        "email": "gabriel.sas@tuke.sk",
+        "info": "",
+        "infoSK": "",
+        "image": "gabriel.jpg",
+        "visible": true,
+        "syncPublications": false,
+        "links": [
+          {
+            "label": "LinkedIn",
+            "url": "https://www.linkedin.com/in/gabriel-sas-/"
+          },
+          {
+            "label": "Profile",
+            "url": "https://example.com/profile/gabriel"
           }
         ]
       }

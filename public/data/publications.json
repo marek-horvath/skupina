@@ -1,6 +1,55 @@
 [
   {
     "date": "2026",
+    "title": "A Gamified Approach to Visualizing Algorithms Through Everyday Analogies",
+    "authors": "Benedek Feke; Lenka Bubeňková; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661171",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661171",
+    "openalexId": "https://openalex.org/W7204186541",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "Applying Gamification in Educational Marketing for University Recruitment",
+    "authors": "Mikulas Kasinsky; Lenka Bubeňková; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661185",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661185",
+    "openalexId": "https://openalex.org/W7204158244",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "AST-Based Source Code Similarity Visualization Using Clustering and Anomaly Detection",
+    "authors": "Peter Svoboda; Marek Horváth; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661145",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661145",
+    "openalexId": "https://openalex.org/W7204193357",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková",
+      "Marek Horváth"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
     "title": "Benchmarking AI Models for Grading CS Assignments Across Multiple Domains",
     "authors": "Marek Horváth; Lukáš Tomaščík; Nikola Geciová; Norbert Ádám; Emília Pietriková",
     "venue": "Acta Polytechnica Hungarica",
@@ -18,14 +67,14 @@
   },
   {
     "date": "2026",
-    "title": "Detection of Programming Style Consistency and Plagiarism through Code Similarity Metrics",
-    "authors": "Marek Horváth; Matúš Motyka; Emília Pietriková",
-    "venue": "",
-    "link": "https://doi.org/10.1109/sami68106.2026.11420357",
-    "type": "journal",
-    "doi": "10.1109/sami68106.2026.11420357",
-    "openalexId": "https://openalex.org/W7135015735",
-    "sourceType": "",
+    "title": "Bridging Game Development and Virtual Reality Education Through Blender-Based Tutorials",
+    "authors": "Lenka Bubeňková; Ľubomír Urbančík; Emília Pietriková; Marek Horváth",
+    "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+    "link": "https://doi.org/10.4230/oasics.icpec.2026.10",
+    "type": "",
+    "doi": "10.4230/oasics.icpec.2026.10",
+    "openalexId": "https://openalex.org/W7170031763",
+    "sourceType": "repository",
     "openalexType": "article",
     "matchedAuthors": [
       "Emília Pietriková",
@@ -35,17 +84,85 @@
   },
   {
     "date": "2026",
-    "title": "Diffpoints",
-    "authors": "Filip Čmilňák; Matúš Sulír; Milan Nosáľ",
-    "venue": "Open Science Framework",
-    "link": "https://doi.org/10.17605/osf.io/verkp",
+    "title": "Commit Classification for Developer Style Profiling Using Transformer Models and Quantitative Change Metrics",
+    "authors": "Daniel Oišavský; Marek Horváth; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661047",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661047",
+    "openalexId": "https://openalex.org/W7204169532",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková",
+      "Marek Horváth"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "Detection of AI-Generated Source Code in Programming Assignments",
+    "authors": "Jakub Vysocan; Lenka Bubeňková; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661214",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661214",
+    "openalexId": "https://openalex.org/W7204198154",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "Detection of Programming Style Consistency and Plagiarism through Code Similarity Metrics",
+    "authors": "Marek Horváth; Matúš Motyka; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/sami68106.2026.11420357",
+    "type": "conference",
+    "doi": "10.1109/sami68106.2026.11420357",
+    "openalexId": "https://openalex.org/W7135015735",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková",
+      "Marek Horváth"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "From Repositories to Practice: LLM-Based Personalization in Programming Education",
+    "authors": "Marek Horváth; Michaela Ďurkovičová; Lenka Bubeňková; Emília Pietriková",
+    "venue": "DROPS (Schloss Dagstuhl – Leibniz Center for Informatics)",
+    "link": "https://doi.org/10.4230/oasics.icpec.2026.9",
     "type": "",
-    "doi": "10.17605/osf.io/verkp",
-    "openalexId": "https://openalex.org/W7165872877",
+    "doi": "10.4230/oasics.icpec.2026.9",
+    "openalexId": "https://openalex.org/W7170095076",
     "sourceType": "repository",
     "openalexType": "article",
     "matchedAuthors": [
-      "Matúš Sulír"
+      "Emília Pietriková",
+      "Marek Horváth"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "Green Computing through Evaluation of Source Code Energy Consumption Using Static and Dynamic Methods",
+    "authors": "Marek Horváth; Matej Džamba; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661092",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661092",
+    "openalexId": "https://openalex.org/W7204206983",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková",
+      "Marek Horváth"
     ],
     "manual": false
   },
@@ -67,6 +184,23 @@
   },
   {
     "date": "2026",
+    "title": "Identifying Student Programming Styles Using Static Code and Behavioral Repository Data",
+    "authors": "Kristína Klára Mašlanková; Marek Horváth; Emília Pietriková",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ines69513.2026.11661016",
+    "type": "conference",
+    "doi": "10.1109/ines69513.2026.11661016",
+    "openalexId": "https://openalex.org/W7204192778",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Emília Pietriková",
+      "Marek Horváth"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
     "title": "Local software buildability across Java versions",
     "authors": "Matúš Sulír; Jaroslav Porubän; Sergej Chodarev",
     "venue": "Empirical Software Engineering",
@@ -83,35 +217,51 @@
     "manual": false
   },
   {
-    "date": "2025",
-    "title": "A Multiplatform Application for Personalized Educational Materials in Special Needs Education",
-    "authors": "Miroslav Murin; Lenka Bubeňková; Branislav Zurian",
-    "venue": "",
-    "link": "https://doi.org/10.1109/iceta67772.2025.11280150",
+    "date": "2026",
+    "title": "Perspective Chapter: Game-Theoretic Design of Computer Science Teaching",
+    "authors": "Branislav Sobota; Emília Pietriková; Timotej Sobota",
+    "venue": "IntechOpen eBooks",
+    "link": "https://doi.org/10.5772/intechopen.1016304",
+    "type": "",
+    "doi": "10.5772/intechopen.1016304",
+    "openalexId": "https://openalex.org/W7167203933",
+    "sourceType": "ebook platform",
+    "openalexType": "book-chapter",
+    "matchedAuthors": [
+      "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2026",
+    "title": "Profiling programmer proficiency using static analysis",
+    "authors": "Emília Pietriková; Marek Horváth; Anton Baláž",
+    "venue": "PeerJ Computer Science",
+    "link": "https://doi.org/10.7717/peerj-cs.3981",
     "type": "journal",
-    "doi": "10.1109/iceta67772.2025.11280150",
-    "openalexId": "https://openalex.org/W4417338481",
-    "sourceType": "",
+    "doi": "10.7717/peerj-cs.3981",
+    "openalexId": "https://openalex.org/W7168174974",
+    "sourceType": "journal",
     "openalexType": "article",
     "matchedAuthors": [
-      "Lenka Bubeňková"
+      "Emília Pietriková",
+      "Marek Horváth"
     ],
     "manual": false
   },
   {
     "date": "2025",
     "title": "Code Reuse and Good Clones in Programming Education",
-    "authors": "Lenka Bubeňková; Emília Pietriková; Marek Horváth",
+    "authors": "Lenka Bubeňková; Emília Pietriková; Marek Horvath",
     "venue": "",
     "link": "https://doi.org/10.1109/sami63904.2025.10883291",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami63904.2025.10883291",
     "openalexId": "https://openalex.org/W4407737639",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
-      "Emília Pietriková",
-      "Lenka Bubeňková"
+      "Emília Pietriková"
     ],
     "manual": false
   },
@@ -137,29 +287,28 @@
     "authors": "Marek Horváth; Lenka Bubeňková; Emília Pietriková; Matej Čorba",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta67772.2025.11280274",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta67772.2025.11280274",
     "openalexId": "https://openalex.org/W4417338113",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
-      "Marek Horváth",
-      "Lenka Bubeňková"
+      "Marek Horváth"
     ],
     "manual": false
   },
   {
     "date": "2025",
     "title": "Detecting Programmer Identity from Source Code with Machine Learning Methods",
-    "authors": "Marek Horváth; Martin Čupálka; Emília Pietriková",
+    "authors": "Marek Horváth; Martin Čupalka; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta67772.2025.11280212",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta67772.2025.11280212",
     "openalexId": "https://openalex.org/W4417338478",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
       "Marek Horváth"
@@ -172,11 +321,11 @@
     "authors": "Nikola Geciová; Lukáš Tomaščík; Marek Horváth",
     "venue": "",
     "link": "https://doi.org/10.1109/sami63904.2025.10883239",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami63904.2025.10883239",
     "openalexId": "https://openalex.org/W4407737460",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Marek Horváth"
     ],
@@ -188,15 +337,14 @@
     "authors": "Marek Horváth; Lenka Bubeňková; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/sami63904.2025.10883288",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami63904.2025.10883288",
     "openalexId": "https://openalex.org/W4407737005",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
-      "Marek Horváth",
-      "Lenka Bubeňková"
+      "Marek Horváth"
     ],
     "manual": false
   },
@@ -256,11 +404,11 @@
     "authors": "Matúš Sulír; Antonia Bertolino; Guglielmo De Angelis",
     "venue": "",
     "link": "https://doi.org/10.1145/3759548.3763375",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1145/3759548.3763375",
     "openalexId": "https://openalex.org/W4415002499",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -272,31 +420,14 @@
     "authors": "Tomáš Kormaník; Marek Horváth; Lenka Bubeňková",
     "venue": "",
     "link": "https://doi.org/10.1109/sami63904.2025.10883129",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami63904.2025.10883129",
     "openalexId": "https://openalex.org/W4407737657",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Marek Horváth",
-      "Tomáš Kormaník",
-      "Lenka Bubeňková"
-    ],
-    "manual": false
-  },
-  {
-    "date": "2025",
-    "title": "Space Exploration as a Learning Tool in an Educational VR Game",
-    "authors": "Lenka Bubeňková; Miroslav Murin; M. Michalko; Laura Libjaková",
-    "venue": "",
-    "link": "https://doi.org/10.1109/iceta67772.2025.11280118",
-    "type": "journal",
-    "doi": "10.1109/iceta67772.2025.11280118",
-    "openalexId": "https://openalex.org/W4417338386",
-    "sourceType": "",
-    "openalexType": "article",
-    "matchedAuthors": [
-      "Lenka Bubeňková"
+      "Tomáš Kormaník"
     ],
     "manual": false
   },
@@ -306,11 +437,11 @@
     "authors": "Pavol Beskid; Matúš Sulír",
     "venue": "",
     "link": "https://doi.org/10.1109/sami63904.2025.10883290",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami63904.2025.10883290",
     "openalexId": "https://openalex.org/W4407736991",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -322,11 +453,11 @@
     "authors": "Matej Ondov; Tomáš Kormaník; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics62280.2024.10900922",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics62280.2024.10900922",
     "openalexId": "https://openalex.org/W4408258301",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Tomáš Kormaník"
@@ -339,11 +470,11 @@
     "authors": "Marek Horváth; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/sami60510.2024.10432863",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami60510.2024.10432863",
     "openalexId": "https://openalex.org/W4391807809",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
       "Marek Horváth"
@@ -356,11 +487,11 @@
     "authors": "Tomáš Kormaník; Jaroslav Porubän; Matúš Čávojský",
     "venue": "",
     "link": "https://doi.org/10.1109/sami60510.2024.10432890",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami60510.2024.10432890",
     "openalexId": "https://openalex.org/W4391807779",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Tomáš Kormaník"
@@ -373,14 +504,13 @@
     "authors": "Lenka Bubeňková; Emília Pietriková; Marcel Vološin",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics62280.2024.10900850",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics62280.2024.10900850",
     "openalexId": "https://openalex.org/W4408258587",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
-      "Emília Pietriková",
-      "Lenka Bubeňková"
+      "Emília Pietriková"
     ],
     "manual": false
   },
@@ -407,11 +537,11 @@
     "authors": "Marek Horváth; Vladyslav Sakhnenko; Filip Gurbáľ",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics62280.2024.10900892",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics62280.2024.10900892",
     "openalexId": "https://openalex.org/W4416916449",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Filip Gurbáľ"
     ],
@@ -423,11 +553,11 @@
     "authors": "Anton Baláž; Emília Pietriková; Branislav Madoš; Roland Janský",
     "venue": "",
     "link": "https://doi.org/10.1109/sami60510.2024.10432807",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami60510.2024.10432807",
     "openalexId": "https://openalex.org/W4391807976",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -436,14 +566,14 @@
   {
     "date": "2024",
     "title": "Improving Software Education with Technical Debt Analysis Tool",
-    "authors": "Marek Horváth; Emília Pietriková; Jakub Sasak",
+    "authors": "Marek Horvath; Emília Pietriková; Jakub Sasak",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta63795.2024.10850816",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta63795.2024.10850816",
     "openalexId": "https://openalex.org/W4406893353",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -455,11 +585,11 @@
     "authors": "Martin Antl; Emília Pietriková; Peter Poór",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics62280.2024.10900814",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics62280.2024.10900814",
     "openalexId": "https://openalex.org/W4408258334",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -487,14 +617,13 @@
     "authors": "Lenka Bubeňková; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta63795.2024.10850815",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta63795.2024.10850815",
     "openalexId": "https://openalex.org/W4406893262",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
-      "Emília Pietriková",
-      "Lenka Bubeňková"
+      "Emília Pietriková"
     ],
     "manual": false
   },
@@ -522,11 +651,11 @@
     "authors": "Patrícia Járosiová; Sergej Chodarev",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics62280.2024.10900819",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics62280.2024.10900819",
     "openalexId": "https://openalex.org/W4408258118",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
     ],
@@ -538,11 +667,11 @@
     "authors": "Tomáš Kormaník; Michal Gabonai Gabonai; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta63795.2024.10850830",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta63795.2024.10850830",
     "openalexId": "https://openalex.org/W4406893240",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Tomáš Kormaník"
@@ -588,11 +717,11 @@
     "authors": "Tomáš Kormaník; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta61311.2023.10344182",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta61311.2023.10344182",
     "openalexId": "https://openalex.org/W4389610545",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Tomáš Kormaník"
@@ -605,11 +734,11 @@
     "authors": "Matúš Čávojský; Gabriel Bugár; Tomáš Kormaník; Martin Hasin",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta61311.2023.10344166",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta61311.2023.10344166",
     "openalexId": "https://openalex.org/W4389606752",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Tomáš Kormaník"
     ],
@@ -621,11 +750,11 @@
     "authors": "Anton Baláž; Branislav Madoš; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/sami58000.2023.10044510",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami58000.2023.10044510",
     "openalexId": "https://openalex.org/W4321191131",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -653,11 +782,11 @@
     "authors": "Matúš Sulír; Milan Nosáľ",
     "venue": "",
     "link": "https://doi.org/10.1145/3618305.3623613",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1145/3618305.3623613",
     "openalexId": "https://openalex.org/W4387793354",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -681,15 +810,32 @@
   },
   {
     "date": "2023",
+    "title": "Outside the Sandbox: A Study of Input/Output Methods in Java",
+    "authors": "Matúš Sulír; Sergej Chodarev; Milan Nosáľ",
+    "venue": "",
+    "link": "https://doi.org/10.1145/3593434.3593501",
+    "type": "conference",
+    "doi": "10.1145/3593434.3593501",
+    "openalexId": "https://openalex.org/W4380568730",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Sergej Chodarev",
+      "Matúš Sulír"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2023",
     "title": "Puzzle-Driven Learning: Developing and Assessing IT Challenges for Varied Experience Levels",
     "authors": "Marek Horváth; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta61311.2023.10344036",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta61311.2023.10344036",
     "openalexId": "https://openalex.org/W4389629552",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
       "Marek Horváth"
@@ -706,7 +852,7 @@
     "doi": "10.21125/edulearn.2023.1479",
     "openalexId": "https://openalex.org/W4383724385",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -738,7 +884,7 @@
     "doi": "10.21125/edulearn.2023.1849",
     "openalexId": "https://openalex.org/W4383724527",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -747,13 +893,13 @@
   {
     "date": "2022",
     "title": "A fine-grained data set and analysis of tangling in bug fixing commits",
-    "authors": "Steffen Herbold; Alexander Trautsch; Benjamin Ledel; Alireza Aghamohammadi; Taher A. Ghaleb; Kuljit Kaur Chahal; Tim Bossenmaier; Bhaveet Nagaria; Philip Makedonski; Matin Nili Ahmadabadi; Kristóf Szabados; Helge Spieker; Matej Madeja; Nathaniel Hoy; Valentina Lenarduzzi; Shangwen Wang; Gema Rodríguez-Pérez; Ricardo Colomo‐Palacios; Roberto Verdecchia; Paramvir Singh; Yihao Qin; Debasish Chakroborti; Willard Davis; Vijay Walunj; Hongjun Wu; Diego Marcílio; Omar Alam; Abdullah Aldaeej; Idan Amit; Burak Turhan; Simon Eismann; Anna-Katharina Wickert; Ivano Malavolta; Matúš Sulír; Fatemeh H. Fard; Austin Z. Henley; Stratos Kourtzanidis; Eray Tüzün; Christoph Treude; Simin Maleki Shamasbi; Ivan Pashchenko; Marvin Wyrich; James Davis; Alexander Serebrenik; Ella Albrecht; Ethem Utku Aktaş; Daniel Strüber; Johannes Erbel",
-    "venue": "Florence Research (University of Florence)",
+    "authors": "Steffen Herbold; Alexander Trautsch; Benjamin Ledel; Alireza Aghamohammadi; Taher A. Ghaleb; Kuljit Kaur Chahal; Tim Bossenmaier; Bhaveet Nagaria; Philip Makedonski; Matin Nili Ahmadabadi; Kristóf Szabados; Helge Spieker; Matej Madeja; Nathaniel Hoy; Valentina Lenarduzzi; Shangwen Wang; Gema Rodríguez-Pérez; Ricardo Colomo‐Palacios; Roberto Verdecchia; Paramvir Singh; Yihao Qin; Debasish Chakroborti; Willard Davis; Vijay Walunj; Hongjun Wu; Diego Marcílio; Omar Alam; Abdullah Aldaeej; Idan Amit; Burak Turhan; Simon Eismann; Anna-Katharina Wickert; Ivano Malavolta; Matúš Sulír; Fatemeh H. Fard; Austin Z. Henley; Stratos Kourtzanidis; Eray Tüzün; Christoph Treude; Simin Maleki Shamasbi; Ivan Pashchenko; Marvin Wyrich; James C. Davis; Alexander Serebrenik; Ella Albrecht; Ethem Utku Aktaş; Daniel Strüber; Johannes Erbel",
+    "venue": "Empirical Software Engineering",
     "link": "https://doi.org/10.1007/s10664-021-10083-5",
-    "type": "",
+    "type": "journal",
     "doi": "10.1007/s10664-021-10083-5",
-    "openalexId": "https://openalex.org/W3206481103",
-    "sourceType": "repository",
+    "openalexId": "https://openalex.org/W3206397610",
+    "sourceType": "journal",
     "openalexType": "article",
     "matchedAuthors": [
       "Matúš Sulír"
@@ -832,13 +978,29 @@
     "authors": "Sergej Chodarev; Sharoon Ilyas",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics57926.2022.10083501",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics57926.2022.10083501",
     "openalexId": "https://openalex.org/W4362564397",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2022",
+    "title": "Software Engineers' Questions and Answers on Stack Exchange",
+    "authors": "Matúš Sulír; Marcel Regeci",
+    "venue": "",
+    "link": "https://doi.org/10.1109/informatics57926.2022.10083403",
+    "type": "conference",
+    "doi": "10.1109/informatics57926.2022.10083403",
+    "openalexId": "https://openalex.org/W4362564499",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Matúš Sulír"
     ],
     "manual": false
   },
@@ -939,31 +1101,13 @@
     "authors": "Ondrej Kováč; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta51985.2020.9379226",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta51985.2020.9379226",
     "openalexId": "https://openalex.org/W3137923101",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
-    ],
-    "manual": false
-  },
-  {
-    "date": "2020",
-    "title": "Build Results Dataset",
-    "authors": "Sergej Chodarev; Michaela Bačíková; Matúš Sulír; Matej Madeja; Ján Juhár",
-    "venue": "OSF Preprints (OSF Preprints)",
-    "link": "https://doi.org/10.17605/osf.io/umk3w",
-    "type": "",
-    "doi": "10.17605/osf.io/umk3w",
-    "openalexId": "https://openalex.org/W3213335138",
-    "sourceType": "repository",
-    "openalexType": "article",
-    "matchedAuthors": [
-      "Sergej Chodarev",
-      "Matúš Sulír",
-      "Michaela Bačíková"
     ],
     "manual": false
   },
@@ -991,11 +1135,11 @@
     "authors": "Igor Vehec; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta51985.2020.9379264",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta51985.2020.9379264",
     "openalexId": "https://openalex.org/W3138864033",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1027,7 +1171,7 @@
     "doi": "10.1007/978-3-030-38919-2_39",
     "openalexId": "https://openalex.org/W2999622399",
     "sourceType": "book series",
-    "openalexType": "book-chapter",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -1055,11 +1199,11 @@
     "authors": "Péter Lukács; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta51985.2020.9379203",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta51985.2020.9379203",
     "openalexId": "https://openalex.org/W3138220529",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1071,11 +1215,11 @@
     "authors": "Sergej Chodarev; Michaela Bačíková",
     "venue": "Journal of information and organizational sciences",
     "link": "https://doi.org/10.31341/jios.43.2.2",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.31341/jios.43.2.2",
     "openalexId": "https://openalex.org/W2997253218",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Sergej Chodarev",
       "Michaela Bačíková"
@@ -1088,11 +1232,11 @@
     "authors": "Matej Madeja; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics47936.2019.9119262",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics47936.2019.9119262",
     "openalexId": "https://openalex.org/W3035944277",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1104,11 +1248,11 @@
     "authors": "Matúš Sulír; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics47936.2019.9119302",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics47936.2019.9119302",
     "openalexId": "https://openalex.org/W3036729217",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Matúš Sulír"
@@ -1117,15 +1261,15 @@
   },
   {
     "date": "2019",
-    "title": "Draw This Object: A Study of Debugging Representations",
+    "title": "Draw this object",
     "authors": "Matúš Sulír; Ján Juhár",
-    "venue": "arXiv (Cornell University)",
-    "link": "https://doi.org/10.48550/arxiv.1911.04422",
-    "type": "",
-    "doi": "10.48550/arxiv.1911.04422",
-    "openalexId": "https://openalex.org/W2971295193",
-    "sourceType": "repository",
-    "openalexType": "article",
+    "venue": "",
+    "link": "https://doi.org/10.1145/3328433.3328454",
+    "type": "conference",
+    "doi": "10.1145/3328433.3328454",
+    "openalexId": "https://openalex.org/W4288086152",
+    "sourceType": "",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -1153,11 +1297,11 @@
     "authors": "Sergej Chodarev; Jan Halama",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics47936.2019.9119305",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics47936.2019.9119305",
     "openalexId": "https://openalex.org/W3035835011",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
     ],
@@ -1217,13 +1361,30 @@
     "authors": "Peter Cech; Emília Pietriková; A. Balaz",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572061",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572061",
     "openalexId": "https://openalex.org/W2903640803",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2018",
+    "title": "Augmenting source code lines with sample variable values",
+    "authors": "Matúš Sulír; Jaroslav Porubän",
+    "venue": "",
+    "link": "https://doi.org/10.1145/3196321.3196364",
+    "type": "conference",
+    "doi": "10.1145/3196321.3196364",
+    "openalexId": "https://openalex.org/W2809481439",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Jaroslav Porubän",
+      "Matúš Sulír"
     ],
     "manual": false
   },
@@ -1249,11 +1410,11 @@
     "authors": "Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572247",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572247",
     "openalexId": "https://openalex.org/W2904806078",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1265,11 +1426,11 @@
     "authors": "Lukáš Galko; Jaroslav Porubän; Jakub Senko",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572054",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572054",
     "openalexId": "https://openalex.org/W2905409087",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1281,11 +1442,11 @@
     "authors": "Anton Baláž; Norbert Ádám; Emília Pietriková; Branislav Madoš",
     "venue": "",
     "link": "https://doi.org/10.1109/sami.2018.8323984",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami.2018.8323984",
     "openalexId": "https://openalex.org/W2792253445",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1297,11 +1458,11 @@
     "authors": "Tomas Lenger; Emília Pietriková; N. Adam",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572052",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572052",
     "openalexId": "https://openalex.org/W2905401959",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1329,11 +1490,11 @@
     "authors": "N. Adam; Michal Hulič; Eva Chovancová; Emília Pietriková; Tobias Gergely",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572044",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572044",
     "openalexId": "https://openalex.org/W2905473937",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1361,11 +1522,11 @@
     "authors": "Liberios Vokorokos; Matúš Uchnár; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/saci.2018.8440999",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/saci.2018.8440999",
     "openalexId": "https://openalex.org/W2888487003",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1377,11 +1538,11 @@
     "authors": "Tomas Tarkanic; Matej Madeja; Lukáš Galko; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2018.8572087",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2018.8572087",
     "openalexId": "https://openalex.org/W2904131080",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1409,11 +1570,11 @@
     "authors": "Matej Madeja; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2017.8327252",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2017.8327252",
     "openalexId": "https://openalex.org/W2794765912",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1458,11 +1619,11 @@
     "authors": "Sergej Chodarev; Michaela Bačíková",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2017.8327233",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2017.8327233",
     "openalexId": "https://openalex.org/W2794709500",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev",
       "Michaela Bačíková"
@@ -1475,11 +1636,11 @@
     "authors": "Milan Jancár; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2017.8327235",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2017.8327235",
     "openalexId": "https://openalex.org/W2795107458",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1491,11 +1652,11 @@
     "authors": "Michaela Bačíková; Lukáš Galko; Eva Hvizdová",
     "venue": "",
     "link": "https://doi.org/10.5220/0006502501180125",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.5220/0006502501180125",
     "openalexId": "https://openalex.org/W2770710741",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -1504,7 +1665,7 @@
   {
     "date": "2017",
     "title": "Exposing Runtime Information through Source Code Annotations",
-    "authors": "Matúš Sulír; Jaroslav Porubän",
+    "authors": "MatĂşĹˇ SulĂ­r; Jaroslav Porubän",
     "venue": "Acta Electrotechnica et Informatica",
     "link": "https://doi.org/10.15546/aeei-2017-0001",
     "type": "journal",
@@ -1544,7 +1705,7 @@
     "doi": "10.15439/2017f229",
     "openalexId": "https://openalex.org/W2759692074",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Matúš Sulír"
@@ -1557,11 +1718,11 @@
     "authors": "Michaela Bačíková; Lukáš Galko; Eva Hvizdová",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2017.8327216",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2017.8327216",
     "openalexId": "https://openalex.org/W2795224887",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -1580,6 +1741,23 @@
     "openalexType": "article",
     "matchedAuthors": [
       "Michaela Bačíková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2017",
+    "title": "RuntimeSearch: Ctrl+F for a running program",
+    "authors": "Matúš Sulír; Jaroslav Porubän",
+    "venue": "",
+    "link": "https://doi.org/10.1109/ase.2017.8115651",
+    "type": "conference",
+    "doi": "10.1109/ase.2017.8115651",
+    "openalexId": "https://openalex.org/W2767329670",
+    "sourceType": "",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Jaroslav Porubän",
+      "Matúš Sulír"
     ],
     "manual": false
   },
@@ -1642,7 +1820,7 @@
     "doi": "10.15439/2016f530",
     "openalexId": "https://openalex.org/W2526571883",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
     ],
@@ -1654,11 +1832,11 @@
     "authors": "Lukáš Galko; Michaela Bačíková",
     "venue": "",
     "link": "https://doi.org/10.1109/hsi.2016.7529640",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/hsi.2016.7529640",
     "openalexId": "https://openalex.org/W2506332992",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -1668,12 +1846,12 @@
     "date": "2016",
     "title": "Extensible Host Language for Domain-Specific Languages",
     "authors": "Sergej Chodarev; Ján Kollár",
-    "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+    "venue": "",
     "link": "https://dblp.uni-trier.de/db/journals/cai/cai35.html#ChodarevK16",
     "type": "journal",
     "doi": "",
     "openalexId": "https://openalex.org/W2530266429",
-    "sourceType": "journal",
+    "sourceType": "",
     "openalexType": "article",
     "matchedAuthors": [
       "Sergej Chodarev"
@@ -1702,11 +1880,11 @@
     "authors": "Jaroslav Porubän; Michaela Bačíková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802044",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802044",
     "openalexId": "https://openalex.org/W2563073535",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -1719,11 +1897,11 @@
     "authors": "Jaroslav Porubän; Michaela Bačíková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802099",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802099",
     "openalexId": "https://openalex.org/W2566194978",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -1753,11 +1931,11 @@
     "authors": "Annamária Behúnová; Norbert Ádám; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802060",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802060",
     "openalexId": "https://openalex.org/W2563177616",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -1769,11 +1947,11 @@
     "authors": "Jaroslav Porubän; Michaela Bačíková; Jana Šťastná",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802045",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802045",
     "openalexId": "https://openalex.org/W2563680842",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -1786,11 +1964,11 @@
     "authors": "Lukáš Galko; Michaela Bačíková; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/hsi.2016.7529641",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/hsi.2016.7529641",
     "openalexId": "https://openalex.org/W2485954811",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -1803,11 +1981,11 @@
     "authors": "Dominik Lakatoš; Jaroslav Porubän; Milan Nosáľ",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802041",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802041",
     "openalexId": "https://openalex.org/W2565628375",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1823,7 +2001,7 @@
     "doi": "10.15439/2016f524",
     "openalexId": "https://openalex.org/W2527347043",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1868,13 +2046,30 @@
     "authors": "Tomáš Girašek; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2016.7802062",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2016.7802062",
     "openalexId": "https://openalex.org/W2563057037",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
+    ],
+    "manual": false
+  },
+  {
+    "date": "2016",
+    "title": "プログラミングコースにおけるソフトウェアプロセスのシミュレーション【Powered by NICT】",
+    "authors": "Jaroslav Porubän; Michaela Bačíková",
+    "venue": "IEEE Conference Proceedings",
+    "link": "https://jglobal.jst.go.jp/public/201702211802819792",
+    "type": "conference",
+    "doi": "",
+    "openalexId": "https://openalex.org/W2747867316",
+    "sourceType": "conference",
+    "openalexType": "conference-paper",
+    "matchedAuthors": [
+      "Jaroslav Porubän",
+      "Michaela Bačíková"
     ],
     "manual": false
   },
@@ -1888,24 +2083,7 @@
     "doi": "",
     "openalexId": "https://openalex.org/W2743527653",
     "sourceType": "conference",
-    "openalexType": "article",
-    "matchedAuthors": [
-      "Jaroslav Porubän",
-      "Michaela Bačíková"
-    ],
-    "manual": false
-  },
-  {
-    "date": "2016",
-    "title": "薬学領域におけるマルチディスプレイ作業環境【Powered by NICT】",
-    "authors": "Lukáš Galko; Michaela Bačíková; Jaroslav Porubän",
-    "venue": "IEEE Conference Proceedings",
-    "link": "http://jglobal.jst.go.jp/public/201602242781305945",
-    "type": "conference",
-    "doi": "",
-    "openalexId": "https://openalex.org/W2751511455",
-    "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -1915,14 +2093,14 @@
   {
     "date": "2016",
     "title": "遠隔実験室としてのクラウドベース仮想マシンを用いた第3者構内における実行実験:それらの学校における高校生により制御された実験の事例研究【Powered by NICT】",
-    "authors": "Lakatoš Dominik; Jaroslav Porubän; Nosáľ Milan",
+    "authors": "Lakatos Dominik; Jaroslav Porubän; Nosal’ Milan",
     "venue": "IEEE Conference Proceedings",
     "link": "http://jglobal.jst.go.jp/public/20090422/201702267050871439",
     "type": "conference",
     "doi": "",
     "openalexId": "https://openalex.org/W2744339889",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1934,11 +2112,11 @@
     "authors": "Milan Jancár; Sergej Chodarev",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377821",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377821",
     "openalexId": "https://openalex.org/W2543591755",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
     ],
@@ -1950,11 +2128,11 @@
     "authors": "Michaela Bačíková; David Surgent",
     "venue": "",
     "link": "https://doi.org/10.1109/emes.2015.7158429",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/emes.2015.7158429",
     "openalexId": "https://openalex.org/W1541442888",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -1966,11 +2144,11 @@
     "authors": "Lukáš Galko; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377816",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377816",
     "openalexId": "https://openalex.org/W2538565511",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -1978,7 +2156,7 @@
   },
   {
     "date": "2015",
-    "title": "AUDIENCE RESPONSE SYSTEMS: BENEFITS &amp; UTILIZATION",
+    "title": "AUDIENCE RESPONSE SYSTEMS: BENEFITS & UTILIZATION",
     "authors": "Emília Pietriková",
     "venue": "Acta Electrotechnica et Informatica",
     "link": "https://doi.org/10.15546/aeei-2015-0028",
@@ -1998,11 +2176,11 @@
     "authors": "Michaela Bačíková; Jaroslav Porubän; Sergej Chodarev; Milan Nosáľ",
     "venue": "",
     "link": "https://doi.org/10.1145/2695664.2695994",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1145/2695664.2695994",
     "openalexId": "https://openalex.org/W2074501677",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Sergej Chodarev",
@@ -2016,11 +2194,11 @@
     "authors": "Sergej Chodarev",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377819",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377819",
     "openalexId": "https://openalex.org/W2539455400",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Sergej Chodarev"
     ],
@@ -2032,11 +2210,11 @@
     "authors": "Matej Palfi; Milan Nosáľ; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377832",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377832",
     "openalexId": "https://openalex.org/W2242755053",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -2048,30 +2226,14 @@
     "authors": "Sergej Chodarev; Emília Pietriková; Ján Kollár",
     "venue": "",
     "link": "https://doi.org/10.1109/emes.2015.7158423",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/emes.2015.7158423",
     "openalexId": "https://openalex.org/W1596612291",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
       "Sergej Chodarev"
-    ],
-    "manual": false
-  },
-  {
-    "date": "2015",
-    "title": "Challenges in Preserving Intent Comprehensibility in Software",
-    "authors": "Valentino Vranić; Jaroslav Porubän; Michal Bystrický; Tomáš Frt'ala; Ivan Polášek; Milan Nosáľ; Ján Lang; M Bakov; J Porubn; D Lakato; J Blik; Valentino Vrani; A Barii; V Amaral; M Goulo; B Barroca; M Bebjak; V Vrani; P Dolog; M Burnett; B Myers; M Bystrick; V Vrani; O Callau; Tanter; K Casey; C Exton; M Conway; K Cooper; C Longstreet; J Coplien; M Desmond; M.-A Storey; C Exton; K Duske; S Erdweg; P Giarrusso; T Rendel; J Fernandes; S Sousa; T Frala; V Vrani; L Gregorovi; I Polek; B Sobota; J Greppel; V Vrani; F Grznr; P Kapec; I Jacobson; P Kajsa; P Nvrat; P Kapec; P Kapec; P Kapec; P Kapec; Michal Paprka; Adam Paitnaj; Vladimr Polk; A Kay; J Kienzle; W Al Abed; F Fleurey; J.-M Jzquel; J Klein; D Knuth; J Kollr; T Latoza; B Myers; T Lynch; P Mcintosh; R Menkyna; V Vrani; K Mens; B Poll; S Gonzlez; M Mernik; J Heering; A Sloane; M Nos; J Porubn; M Nos; J Porubn; M Nos; J Pilgrim; K Duske; R Pipk; I Polek; I Polek; I Polek; P Lka; J Kelemen; J Lang; I Polek; I Ruttkay-Nedeck; P Ruttkay-Nedeck; T Tth; A ernk; P Duek; I Polek",
-    "venue": "Acta Polytechnica Hungarica",
-    "link": "https://doi.org/10.12700/aph.12.7.2015.7.4",
-    "type": "journal",
-    "doi": "10.12700/aph.12.7.2015.7.4",
-    "openalexId": "https://openalex.org/W4231729643",
-    "sourceType": "journal",
-    "openalexType": "article",
-    "matchedAuthors": [
-      "Jaroslav Porubän"
     ],
     "manual": false
   },
@@ -2085,7 +2247,7 @@
     "doi": "10.1063/1.4912558",
     "openalexId": "https://openalex.org/W2076614028",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2097,11 +2259,11 @@
     "authors": "Jaroslav Porubän; Sergej Chodarev",
     "venue": "",
     "link": "https://doi.org/10.1109/emes.2015.7158424",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/emes.2015.7158424",
     "openalexId": "https://openalex.org/W1562454726",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Sergej Chodarev"
@@ -2114,11 +2276,11 @@
     "authors": "Daniel Erro; Inma Hernáez; Agustín Alonso; D. García-Lorenzo; Eva Navas; Jinhua Ye; Haritz Arzelus; Igor Jauk; Neujahr Hy; Carmen Magariños; R. Pérez-Ramón; Matúš Sulír; Xiaohai Tian; Xin Wang",
     "venue": "",
     "link": "https://doi.org/10.21437/interspeech.2015-314",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.21437/interspeech.2015-314",
     "openalexId": "https://openalex.org/W2405755256",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -2134,7 +2296,7 @@
     "doi": "10.15439/2015f238",
     "openalexId": "https://openalex.org/W1918348315",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková",
       "Sergej Chodarev"
@@ -2147,11 +2309,11 @@
     "authors": "Milan Nosáľ; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/emes.2015.7158420",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/emes.2015.7158420",
     "openalexId": "https://openalex.org/W1529563009",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2163,11 +2325,11 @@
     "authors": "Matúš Sulír; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377843",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377843",
     "openalexId": "https://openalex.org/W2241813887",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Matúš Sulír"
@@ -2184,7 +2346,7 @@
     "doi": "10.15439/2015f301",
     "openalexId": "https://openalex.org/W1940770334",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -2200,7 +2362,7 @@
     "doi": "10.15439/2015f173",
     "openalexId": "https://openalex.org/W1936829477",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Matúš Sulír"
     ],
@@ -2230,11 +2392,11 @@
     "authors": "Emília Pietriková; Ján Juhár; Jana Šťastná",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2015.7558505",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2015.7558505",
     "openalexId": "https://openalex.org/W2516094730",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -2246,11 +2408,11 @@
     "authors": "Matúš Sulír; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2015.7558513",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2015.7558513",
     "openalexId": "https://openalex.org/W2511257149",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Matúš Sulír"
@@ -2263,11 +2425,11 @@
     "authors": "Michaela Bačíková; Martin Zbuska",
     "venue": "",
     "link": "https://doi.org/10.1109/informatics.2015.7377805",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/informatics.2015.7377805",
     "openalexId": "https://openalex.org/W2541661440",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -2283,7 +2445,7 @@
     "doi": "10.15439/2015f274",
     "openalexId": "https://openalex.org/W1935650009",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Michaela Bačíková"
     ],
@@ -2311,11 +2473,11 @@
     "authors": "Sergej Chodarev; Dominik Lakatoš; Jaroslav Porubän; Ján Kollár",
     "venue": "Open Computer Science",
     "link": "https://doi.org/10.2478/s13537-014-0211-8",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.2478/s13537-014-0211-8",
     "openalexId": "https://openalex.org/W2077342594",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Sergej Chodarev"
@@ -2328,11 +2490,11 @@
     "authors": "Jaroslav Porubän; Ján Kollár; Miroslav Sabo",
     "venue": "Computational Linguistics",
     "link": "https://doi.org/10.4018/978-1-4666-6042-7.ch069",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.4018/978-1-4666-6042-7.ch069",
     "openalexId": "https://openalex.org/W4235797919",
     "sourceType": "journal",
-    "openalexType": "book-chapter",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2394,11 +2556,11 @@
     "authors": "Marek Paralič; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2014.7107617",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2014.7107617",
     "openalexId": "https://openalex.org/W1504654810",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -2442,11 +2604,11 @@
     "authors": "Jaroslav Porubän; Milan Nosáľ",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2014.7107613",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2014.7107613",
     "openalexId": "https://openalex.org/W1546018397",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2462,7 +2624,7 @@
     "doi": "10.15439/2014f266",
     "openalexId": "https://openalex.org/W2000650597",
     "sourceType": "conference",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Sergej Chodarev",
@@ -2508,11 +2670,11 @@
     "authors": "M. Biňas; Emília Pietriková",
     "venue": "",
     "link": "https://doi.org/10.1109/iceta.2014.7107618",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/iceta.2014.7107618",
     "openalexId": "https://openalex.org/W1598073803",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Emília Pietriková"
     ],
@@ -2554,13 +2716,13 @@
     "date": "2013",
     "title": "Declarative specification of references in DSLs",
     "authors": "Dominik Lakatoš; Jaroslav Porubän; Michaela Bačíková",
-    "venue": "Federated Conference on Computer Science and Information Systems",
+    "venue": "",
     "link": "https://fedcsis.org/proceedings/2013/pliks/342.pdf",
     "type": "conference",
     "doi": "",
     "openalexId": "https://openalex.org/W2125386157",
-    "sourceType": "conference",
-    "openalexType": "article",
+    "sourceType": "",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -2590,11 +2752,11 @@
     "authors": "Michaela Bačíková; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/hsi.2013.6577817",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/hsi.2013.6577817",
     "openalexId": "https://openalex.org/W2051176938",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän",
       "Michaela Bačíková"
@@ -2673,11 +2835,11 @@
     "authors": "Ján Kollár; Emília Pietriková; Sergej Chodarev",
     "venue": "Acta Electrotechnica et Informatica",
     "link": "https://doi.org/10.2478/v10198-012-0017-3",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.2478/v10198-012-0017-3",
     "openalexId": "https://openalex.org/W2313440849",
     "sourceType": "journal",
-    "openalexType": "article",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Emília Pietriková",
       "Sergej Chodarev"
@@ -2690,11 +2852,11 @@
     "authors": "Jaroslav Porubän; Ján Kollár; Miroslav Sabo",
     "venue": "IGI Global eBooks",
     "link": "https://doi.org/10.4018/978-1-4666-2092-6.ch013",
-    "type": "",
+    "type": "conference",
     "doi": "10.4018/978-1-4666-2092-6.ch013",
     "openalexId": "https://openalex.org/W2483415553",
     "sourceType": "ebook platform",
-    "openalexType": "book-chapter",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2753,12 +2915,12 @@
     "date": "2012",
     "title": "Separating Concerns in Programming: Data, Control and Actions",
     "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík",
-    "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+    "venue": "",
     "link": "http://dblp.uni-trier.de/db/journals/cai/cai24.html#KollarPV05",
     "type": "journal",
     "doi": "",
     "openalexId": "https://openalex.org/W189113341",
-    "sourceType": "journal",
+    "sourceType": "",
     "openalexType": "article",
     "matchedAuthors": [
       "Jaroslav Porubän"
@@ -2801,13 +2963,13 @@
     "date": "2011",
     "title": "Computer language notation specification through program examples",
     "authors": "Miroslav Sabo; Jaroslav Porubän; Dominik Lakatoš; Michaela Kreutzova",
-    "venue": "Federated Conference on Computer Science and Information Systems",
+    "venue": "",
     "link": "https://dblp.uni-trier.de/db/conf/fedcsis/fedcsis2011.html#SaboPLK11",
     "type": "conference",
     "doi": "",
     "openalexId": "https://openalex.org/W1733475916",
-    "sourceType": "conference",
-    "openalexType": "article",
+    "sourceType": "",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2826,22 +2988,6 @@
     "openalexType": "article",
     "matchedAuthors": [
       "Sergej Chodarev"
-    ],
-    "manual": false
-  },
-  {
-    "date": "2011",
-    "title": "Hodnocení finanční situace podniku a návrhy na její zlepšení",
-    "authors": "Michaela Bačíková",
-    "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
-    "link": "http://hdl.handle.net/11012/4044",
-    "type": "",
-    "doi": "",
-    "openalexId": "https://openalex.org/W2795019982",
-    "sourceType": "repository",
-    "openalexType": "dissertation",
-    "matchedAuthors": [
-      "Michaela Bačíková"
     ],
     "manual": false
   },
@@ -2868,11 +3014,11 @@
     "authors": "Jaroslav Porubän; Miroslav Sabo; Ján Kollár; Marjan Mernik",
     "venue": "",
     "link": "https://doi.org/10.1145/1943397.1943399",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1145/1943397.1943399",
     "openalexId": "https://openalex.org/W1981280281",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-abstract",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2900,11 +3046,11 @@
     "authors": "Jaroslav Porubän; Michal Forgáč; Miroslav Sabo",
     "venue": "",
     "link": "https://doi.org/10.1109/imcsit.2009.5352763",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/imcsit.2009.5352763",
     "openalexId": "https://openalex.org/W2023402128",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2914,8 +3060,8 @@
     "date": "2009",
     "title": "Odložená daň z příjmů v obchodní společnosti",
     "authors": "Michaela Bačíková",
-    "venue": "Brno University of Technology Digital Library (Brno University of Technology)",
-    "link": "http://hdl.handle.net/11012/64100",
+    "venue": "Digital Repository (National Repository of Grey Literature)",
+    "link": "http://www.nusl.cz/ntk/nusl-264998",
     "type": "",
     "doi": "",
     "openalexId": "https://openalex.org/W3185056115",
@@ -2964,11 +3110,11 @@
     "authors": "Michal Forgáč; Ján Kollár; Jaroslav Porubän",
     "venue": "",
     "link": "https://doi.org/10.1109/sami.2008.4469160",
-    "type": "journal",
+    "type": "conference",
     "doi": "10.1109/sami.2008.4469160",
     "openalexId": "https://openalex.org/W2139222118",
     "sourceType": "",
-    "openalexType": "article",
+    "openalexType": "conference-paper",
     "matchedAuthors": [
       "Jaroslav Porubän"
     ],
@@ -2994,12 +3140,12 @@
     "date": "2006",
     "title": "From Eager PFL to Lazy Haskell.",
     "authors": "Ján Kollár; Jaroslav Porubän; Peter Václavík",
-    "venue": "Computing and Informatics / Computers and Artificial Intelligence",
+    "venue": "",
     "link": "https://dblp.uni-trier.de/db/journals/cai/cai25.html#KollarPV06",
     "type": "journal",
     "doi": "",
     "openalexId": "https://openalex.org/W94341436",
-    "sourceType": "journal",
+    "sourceType": "",
     "openalexType": "article",
     "matchedAuthors": [
       "Jaroslav Porubän"

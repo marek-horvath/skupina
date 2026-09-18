@@ -98,6 +98,11 @@ Manual publication edits are protected after saving through admin. The next
 OpenAlex sync preserves edited publication fields, keeps manual publications,
 and does not re-add publications that were deleted in admin.
 
+People can opt out of publication matching with the "Sync OpenAlex publications"
+checkbox in admin. New people start with it off. Disabling it removes the
+cached OpenAlex author match; the next sync removes publications that came only
+from that author while retaining manually edited publications.
+
 Member photos are loaded from the original filenames stored in the people data,
 for example `marek.jpg`. Do not switch these to generated formats unless the
 rendering is checked in the browser.

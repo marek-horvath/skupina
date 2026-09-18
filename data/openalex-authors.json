@@ -1,7 +1,7 @@
 {
   "source": "OpenAlex",
   "institutionRor": "https://ror.org/05xm08015",
-  "updatedAt": "2026-07-02T10:34:11.670Z",
+  "updatedAt": "2026-09-18T14:43:18.658Z",
   "authors": [
     {
       "key": "emilia pietrikova",
@@ -121,5 +121,5 @@
       "resolvedAt": "2026-07-02T10:18:08.242Z"
     }
   ],
-  "peopleSource": "C:\\Users\\marek\\OneDrive\\Počítač\\skupina\\data\\people-db.json"
+  "peopleSource": "/var/lib/seug/data/people-db.json"
 }

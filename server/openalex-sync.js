@@ -176,6 +176,7 @@ async function fetchPeople() {
     .map(person => ({
       name: String(person.name || "").trim(),
       role: String(person.role || "").trim(),
+      syncPublications: person.syncPublications !== false,
       orcid: extractOrcid(
         person.orcid ||
         (person.links || []).find(link => link.label && link.label.toLowerCase() === "orcid")?.url
@@ -307,9 +308,18 @@ async function resolveAuthors(people, options = {}) {
   const db = await readJson(AUTHOR_DB_PATH, emptyAuthorDb());
   const resolved = [];
   const unresolved = [];
+  const skipped = people.filter(person => !person.syncPublications);
+  const skippedKeys = new Set(skipped.map(authorDbKey));
+  db.authors = (db.authors || []).filter(author => !skippedKeys.has(author.key));
 
   for (const person of people) {
-    const cached = !options.refreshAuthors && findCachedAuthor(db, person);
+    if (!person.syncPublications) {
+      continue;
+    }
+    const cachedAuthor = !options.refreshAuthors && findCachedAuthor(db, person);
+    const cached = cachedAuthor && (!person.orcid || cachedAuthor.openalexOrcid === person.orcid)
+      ? cachedAuthor
+      : null;
     if (cached) {
       resolved.push({
         ...cached,
@@ -348,7 +358,7 @@ async function resolveAuthors(people, options = {}) {
   db.updatedAt = nowIso();
   await writeJson(AUTHOR_DB_PATH, db);
 
-  return { resolved, unresolved, authorDb: db };
+  return { resolved, unresolved, skipped, authorDb: db };
 }
 
 async function fetchWorksForAuthor(author) {
@@ -653,7 +663,7 @@ async function syncPublications(options = {}) {
     ? previousDb.meta.deletedPublicationKeys
     : [];
   const people = await fetchPeople();
-  const { resolved, unresolved } = await resolveAuthors(people, options);
+  const { resolved, unresolved, skipped } = await resolveAuthors(people, options);
   const rawWorks = [];
 
   for (const author of resolved) {
@@ -674,6 +684,7 @@ async function syncPublications(options = {}) {
     peopleCount: people.length,
     resolvedAuthorCount: resolved.length,
     unresolvedAuthorCount: unresolved.length,
+    skippedAuthorCount: skipped.length,
     rawWorkCount: rawWorks.length,
     syncedPublicationCount: syncedPublications.length,
     publicationCount: publications.length,
@@ -703,6 +714,7 @@ async function syncPublications(options = {}) {
     peopleCount: people.length,
     resolvedAuthorCount: resolved.length,
     unresolvedAuthorCount: unresolved.length,
+    skippedAuthorCount: skipped.length,
     rawWorkCount: rawWorks.length,
     syncedPublicationCount: syncedPublications.length,
     publicationCount: publications.length,
@@ -724,7 +736,8 @@ async function syncPublications(options = {}) {
       role: author.role,
       orcid: author.orcid || "",
       error: author.error || ""
-    }))
+    })),
+    skippedAuthors: skipped.map(author => author.name)
   };
 
   await writeJson(PUBLICATION_DB_PATH, { meta, publications });
