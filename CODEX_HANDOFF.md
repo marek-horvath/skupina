@@ -302,6 +302,10 @@ Verified on 2026-09-18:
   match was removed and none of the 194 current publications are attributed to
   him. The pre-change VPS data backup is
   `/var/backups/seug/before-gabriel-sync-2026-09-18.tar.gz`.
+- Person detail publication matching now uses exact normalized author names or
+  explicit `matchedAuthors`. For people with `syncPublications: false`, only
+  explicit matches are shown. This prevents `Sás` matching `Sasak`; empty
+  profiles show a localized "No publications yet" message.
 - `node --test server/openalex-sync.test.js`, `npm run lint`, and `npm run build`
   pass. The normal sync also dropped three non-manual records no longer returned
   by OpenAlex.

@@ -102,7 +102,7 @@
 
           <div class="person-publications">
             <h2>{{ t("publications") }}</h2>
-            <div class="legend">
+            <div v-if="flatSelectedPublications.length" class="legend">
               <span class="legend-item">
                 <span class="legend-swatch conference"></span>
                 {{ t("conference") }}
@@ -134,6 +134,8 @@
                 </div>
               </div>
             </div>
+            <p v-else-if="publicationLoadState === 'loaded'" class="person-publications-empty">{{ t("no_publications_yet") }}</p>
+            <p v-else-if="publicationLoadState === 'error'" class="person-publications-empty">{{ t("publications_unavailable") }}</p>
             <div v-if="hasMoreSelectedPublications" ref="personLoadMore" class="person-load-more">{{ language === "sk" ? "Načítavam..." : "Loading more..." }}</div>
           </div>
         </div>
@@ -230,6 +232,7 @@ export default {
       content: defaultContent(),
       teachingSubjects: [],
       publications: [],
+      publicationLoadState: "loading",
       contentMeta: {},
       currentSlug: "",
       suppressRouteSync: false,
@@ -519,6 +522,8 @@ export default {
           research_group: "Research Group",
           people: "People",
           publications: "Publications",
+          no_publications_yet: "No publications yet.",
+          publications_unavailable: "Publications are temporarily unavailable.",
           teaching: "Teaching",
           events: "Events",
           conference: "Conference",
@@ -538,6 +543,8 @@ export default {
           research_group: "Výskumná skupina",
           people: "Ľudia",
           publications: "Publikácie",
+          no_publications_yet: "Zatiaľ žiadne publikácie.",
+          publications_unavailable: "Publikácie sú momentálne nedostupné.",
           teaching: "Pedagogika",
           events: "Udalosti",
           conference: "Konferencia",
@@ -665,7 +672,9 @@ export default {
         .toString()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
     },
     personSlug(person) {
       const lastName = person.name.split(" ").slice(-1)[0] || person.name;
@@ -879,10 +888,12 @@ export default {
           .then(response => response.json()))
         .then(payload => {
           this.publications = this.normalizePublicationsPayload(payload);
+          this.publicationLoadState = "loaded";
         })
         .catch(error => {
           console.error("Error loading publications data:", error);
           this.publications = [];
+          this.publicationLoadState = "error";
         });
     },
     applyTeachingCsv(teachingCsvText) {
@@ -898,10 +909,17 @@ export default {
         }));
     },
     isAuthorMatch(pub, person) {
-      const authors = this.normalizeText(pub.authors || "");
       const fullName = this.normalizeText(person.name);
-      const lastName = this.normalizeText(person.name.split(" ").slice(-1)[0]);
-      return authors.includes(fullName) || authors.includes(lastName);
+      const matchedAuthors = Array.isArray(pub.matchedAuthors) ? pub.matchedAuthors : [];
+      if (matchedAuthors.some(name => this.normalizeText(name) === fullName)) {
+        return true;
+      }
+      if (person.syncPublications === false) {
+        return false;
+      }
+      return String(pub.authors || "")
+        .split(";")
+        .some(name => this.normalizeText(name) === fullName);
     },
     openPerson(person) {
       const slug = this.personSlug(person);
@@ -1263,6 +1281,11 @@ export default {
 .person-publications {
   display: grid;
   gap: 12px;
+}
+
+.person-publications-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .legend {
