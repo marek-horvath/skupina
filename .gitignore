@@ -6,6 +6,7 @@ data/audit-db.json
 
 
 # local env files
+.env
 .env.local
 .env.*.local
 

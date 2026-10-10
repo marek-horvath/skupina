@@ -29,6 +29,17 @@ Server entry points:
 - `server/openalex-sync.js` - OpenAlex publication sync with manual edit/delete protection.
 - `server/export-people.js` - exports `data/people-db.json` to `public/data/people.json`.
 
+Local Docker development:
+- `start.bat` creates an ignored `.env` with a random admin password when
+  needed, starts Compose, waits for readiness, and opens the frontend.
+- `stop.bat` runs `docker compose down` without deleting volumes.
+- Compose runs the Vue dev server on host port `8090` and the Node API on
+  `5174` by default. Both ports can be overridden in `.env`.
+- `seug_app_data` and `seug_public_data` preserve JSON data. They are seeded
+  from the repository only when empty. `seug_node_modules` prevents the source
+  bind mount from hiding container dependencies.
+- Frontend polling and Node `--watch` provide hot reload on Docker Desktop.
+
 Historical Excel/RTF publication tooling still exists in `clan/`, but the live
 site no longer reads publication data from that flow.
 
@@ -296,6 +307,15 @@ Publication:
 Expected `type` values are mainly `journal`, `conference`, `book`, or empty.
 
 ## Current Verification
+
+Verified on 2026-10-10:
+- `docker compose config --quiet` passes.
+- A clean Docker image build passes with Node 22 Alpine.
+- `start.bat` starts healthy API and frontend containers at
+  `http://localhost:5174` and `http://localhost:8090`.
+- Frontend API proxy and authenticated admin loading work in Docker.
+- `stop.bat` removes containers without deleting named volumes; a test file in
+  `seug_app_data` survived stop and restart.
 
 Verified on 2026-09-18:
 - Gabriel Sás is excluded from OpenAlex sync on the VPS; his incorrect cached

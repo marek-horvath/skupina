@@ -1,5 +1,39 @@
 # SEUG website
 
+## Docker on Windows
+
+Prerequisite: Docker Desktop with Docker Compose v2.
+
+For the simplest local start, double-click start.bat. On the first run it
+creates a Git-ignored .env with a random admin password, builds both containers,
+waits for the API and frontend healthchecks, and opens:
+
+    http://localhost:8090/
+
+The local API is also available at http://localhost:5174/. The host ports can
+be changed with FRONTEND_PORT and API_PORT in .env. To stop the application,
+double-click stop.bat. It runs docker compose down and keeps all application
+data.
+
+The same commands can be run manually:
+
+    Copy-Item .env.example .env
+    # Set a local ADMIN_PASSWORD in .env before continuing.
+    docker compose up -d --build
+    docker compose down
+
+Docker runs the Vue frontend and Node API in development mode. The repository is
+mounted into both containers and file polling is enabled, so frontend and API
+source changes reload automatically. Rebuild after changing dependencies,
+Dockerfile, or Compose configuration:
+
+    docker compose up -d --build
+
+The JSON databases use the named volumes seug_app_data and seug_public_data.
+They are initialized from the repository only when empty and survive
+docker compose down. Use docker compose down -v only when you explicitly want
+to delete the local Docker data and initialize it again from the repository.
+
 ## Project setup
 ```
 npm install
